@@ -1,2 +1,2 @@
 # TaskManagementSystem
-Telerik  fist project task.
+Telerik  first project task.
