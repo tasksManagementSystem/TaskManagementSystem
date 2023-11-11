@@ -2,11 +2,11 @@
 Telerik,  first Team project task.
 
 Team:
-Aleksandar Patrashkov
-Ventsislav Stoyanov
-Veronika Kashaykova
+/Aleksandar Patrashkov/
+Ventsislav Stoyanov/
+Veronika Kashaykova/
 
 Mentors:
-Konstantin Valchanov
-Simeon Pantileev
-Stoyanka Karashtranova
+/Konstantin Valchanov/
+Simeon Pantileev/
+Stoyanka Karashtranova/
