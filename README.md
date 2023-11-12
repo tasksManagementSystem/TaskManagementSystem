@@ -15,7 +15,7 @@ Stoyanka Karashtranova/
 **Project Description**
 Design and implement a Tasks Management console application.
 The application will be used by a small team of developers, who need to keep track of all the tasks, surrounding a software product they are building.
-Functional Requirements
+###**Functional Requirements**
 The application must support multiple teams. 
 Each team must have a name, members, and boards.
 •	The name must be unique in the application.
@@ -27,6 +27,8 @@ Each board must have a name, list of tasks and activity history.
 •	Name must be unique in the team.
 •	Name is a string between 5 and 10 symbols.
 There are 3 types of tasks: bug, story, and feedback.
+
+
 **Bug**
 Bugs must have an ID, a title, a description, a list of steps to reproduce it, a priority, a severity, a status, an assignee, a list of comments and a list of changes history.
 •	Title is a string between 10 and 50 symbols.
@@ -38,6 +40,8 @@ Bugs must have an ID, a title, a description, a list of steps to reproduce it, a
 •	Assignee is a member from the team.
 •	Comments is a list of comments (string messages with an author).
 •	History is a list of all changes (string messages) that were done to the bug.
+
+
 **Story**
 Stories must have an ID, a title, a description, a priority, a size, a status, an assignee, a list of comments and a list of changes history.
 •	Title is a string between 10 and 50 symbols.
@@ -77,6 +81,7 @@ The application must support the following operations:
 •	Assign/Unassign a task to a person.
 •	Add comment to a task.
 
+
 **•	Listing:**
 o	List all tasks (display the most important info).
 •	Filter by title
@@ -87,6 +92,8 @@ o	List bugs/stories/feedback only.
 o	List tasks with assignee.
 •	Filter by status and/or assignee
 •	Sort by title
+
+
 **Use cases**
 Use case #1
 One of the developers has noticed a bug in the company’s product. He starts the application and goes on to create a new Task for it. He creates a new Bug and gives it the title "The program freezes when the Log In button is clicked." For the description he adds "This needs to be fixed quickly!", he marks the Bug as High priority and gives it Critical severity. Since it is a new bug, it gets the Active status. The developer also assigns it to the senior developer in the team. To be able to fix the bug, the senior developer needs to know how to reproduce it, so the developer who logged the bug adds a list of steps to reproduce: "1. Open the application; 2. Click "Log In"; 3. The application freezes!" The bug is saved to the application and is ready to be fixed.
@@ -94,6 +101,9 @@ Use case #2
 A new developer has joined the team. One of the other developers starts the application and creates a new team member. After that, he adds the new team member to one of the existing teams and assigns all Critical bugs to him.
 Use case #3
 One of the developers has fixed a bug that was assigned to him. He adds a comment to that bug, saying "This one took me a while, but it is fixed now!", and then changes the status of the bug to Done. Just to be sure, he checks the changes history list of the bug and sees that the last entry in the list says, "The status of item with ID 42 switched from Active to Done."
+
+
+
 **Technical Requirements**
 •	Follow the OOP best practices:
 o	Use data encapsulation.
