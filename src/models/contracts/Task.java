@@ -1,7 +1,6 @@
 package models.contracts;
 
 import models.enums.Status;
-
 import java.util.List;
 
 public interface Task {

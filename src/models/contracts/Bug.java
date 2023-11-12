@@ -5,7 +5,7 @@ import models.enums.Severity;
 
 import java.util.List;
 
-public interface Bug extends Task,TaskInfo {
+public interface Bug extends Task, TaskInfo {
 
     List<String> getStepOfReproduce();
 
