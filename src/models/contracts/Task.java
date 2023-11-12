@@ -1,4 +1,4 @@
 package models.contracts;
 
-public class test {
+public interface Task {
 }
