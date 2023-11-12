@@ -1,4 +1,7 @@
 package models.contracts;
 
-public interface Member extends User{
+import java.util.List;
+
+public interface Member extends User {
+
 }

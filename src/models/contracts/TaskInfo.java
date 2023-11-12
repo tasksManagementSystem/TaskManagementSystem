@@ -3,9 +3,8 @@ package models.contracts;
 import models.enums.Priority;
 import models.enums.Size;
 
-public interface Story extends Task, TaskInfo {
+public interface TaskInfo {
+    Priority getPriority();
 
-    Size getSize();
-
-
+    String getAssignee();
 }
