@@ -1,25 +1,20 @@
 package models;
 
-import models.contracts.Comment;
-import models.contracts.History;
 import models.contracts.Story;
-import models.contracts.Task;
 import models.enums.Priority;
 import models.enums.Size;
 import models.enums.Status;
-
-import java.util.List;
 
 public class StoryImpl extends TaskImpl implements Story {
     private Priority priority;
     private Size size;
     private String assignee;
 
-    public StoryImpl(int ID, String title, String description, Status status, List<Comment> comments, List<History> histories, Priority priority, Size size, String assignee) {
-        super(ID, title, description, status, comments, histories);
-        this.priority = priority;
-        this.size = size;
-        this.assignee = assignee;
+    public StoryImpl(String title, String description, Status status, Priority priority, Size size, String assignee) {
+        super(title, description, status);
+        setPriority(priority);
+        setSize(size);
+        setAssignee(assignee);
     }
 
     public Priority getPriority() {
@@ -32,5 +27,17 @@ public class StoryImpl extends TaskImpl implements Story {
 
     public String getAssignee() {
         return assignee;
+    }
+
+    private void setPriority(Priority priority) {
+        this.priority = priority;
+    }
+
+    private void setSize(Size size) {
+        this.size = size;
+    }
+
+    private void setAssignee(String assignee) {
+        this.assignee = assignee;
     }
 }
