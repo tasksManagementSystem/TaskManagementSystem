@@ -4,7 +4,7 @@ import models.enums.Status;
 import java.util.List;
 
 public interface Task {
-    int getID();
+    int getId();
 
     String getTitle();
 
