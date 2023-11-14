@@ -1,5 +1,8 @@
 package models.contracts;
 
+import models.enums.StatusFeedback;
+
 public interface Feedback extends Task {
     int getRating();
+    StatusFeedback getStatusFeedback();
 }

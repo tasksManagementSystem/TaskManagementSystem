@@ -1,30 +1,34 @@
 package models;
 
 import models.contracts.Story;
+import models.contracts.TaskInfo;
 import models.enums.Priority;
 import models.enums.Size;
-import models.enums.Status;
+import models.enums.StatusStory;
 
 public class StoryImpl extends TaskImpl implements Story {
     private Priority priority;
     private Size size;
     private String assignee;
 
-    public StoryImpl(String title, String description, Status status, Priority priority, Size size, String assignee) {
-        super(title, description, status);
+    private StatusStory statusStory;
+
+    public StoryImpl(String title, String description, Priority priority, Size size, String assignee) {
+        super(title, description);
         setPriority(priority);
         setSize(size);
         setAssignee(assignee);
+        statusStory = StatusStory.NOT_DONE;
     }
-
+@Override
     public Priority getPriority() {
         return priority;
     }
-
+@Override
     public Size getSize() {
         return size;
     }
-
+@Override
     public String getAssignee() {
         return assignee;
     }

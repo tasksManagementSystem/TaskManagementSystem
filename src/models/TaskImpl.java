@@ -3,7 +3,6 @@ package models;
 import models.contracts.Comment;
 import models.contracts.History;
 import models.contracts.Task;
-import models.enums.Status;
 import utils.ValidationHelpers;
 
 import java.util.ArrayList;
@@ -22,43 +21,38 @@ abstract class TaskImpl implements Task {
     private static int totalId=1;
     private String title;
     private String description;
-    private Status status;
     private List<Comment> comments;
     private List<History> histories;
 
 
-    public TaskImpl(String title, String description, Status status) {
+    public TaskImpl(String title, String description) {
 
         this.id=totalId;
         totalId++;
 
         setTitle(title);
         setDescription(description);
-        this.status = status;
         this.comments = new ArrayList<>(comments);
         this.histories = new ArrayList<>(histories);
     }
-
+    @Override
     public int getId() {
         return id;
     }
-
+    @Override
     public String getTitle() {
         return title;
     }
-
+    @Override
     public String getDescription() {
         return description;
     }
 
-    public Status getStatus() {
-        return status;
-    }
-
+    @Override
     public List<Comment> getComments() {
         return new ArrayList<>(comments);
     }
-
+    @Override
     public List<History> getHistories() {
         return new ArrayList<>(histories);
     }
@@ -77,9 +71,7 @@ abstract class TaskImpl implements Task {
         this.description = description;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
-    }
+
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;

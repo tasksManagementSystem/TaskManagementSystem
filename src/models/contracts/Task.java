@@ -1,6 +1,5 @@
 package models.contracts;
 
-import models.enums.Status;
 import java.util.List;
 
 public interface Task {
@@ -10,7 +9,6 @@ public interface Task {
 
     String getDescription();
 
-    Status getStatus();
 
     List<Comment> getComments();
 
