@@ -22,7 +22,7 @@ abstract class TaskImpl implements Task {
     private String title;
     private String description;
     private List<Comment> comments;
-    private List<History> histories;
+    private List<History> history=new ArrayList<>();
 
 
     public TaskImpl(String title, String description) {
@@ -33,8 +33,14 @@ abstract class TaskImpl implements Task {
         setTitle(title);
         setDescription(description);
         this.comments = new ArrayList<>(comments);
-        this.histories = new ArrayList<>(histories);
+        addHistory(String.format(""));
     }
+
+    protected void addHistory(String logs) {
+        History log= new HistoryImpl(logs);
+       history.add(log);
+    }
+
     @Override
     public int getId() {
         return id;
@@ -54,7 +60,7 @@ abstract class TaskImpl implements Task {
     }
     @Override
     public List<History> getHistories() {
-        return new ArrayList<>(histories);
+        return new ArrayList<>(history);
     }
 
     public void setId(int id) {
@@ -77,7 +83,7 @@ abstract class TaskImpl implements Task {
         this.comments = comments;
     }
 
-    public void setHistories(List<History> histories) {
-        this.histories = histories;
+    public void setHistories(List<History> history) {
+        this.history = history;
     }
 }
