@@ -10,7 +10,7 @@ import java.util.List;
 
 abstract class TaskImpl implements Task {
     public static final int TITLE_MIN_LENGTH = 10;
-    public static final int TITLE_MAX_LENGTH = 50;
+    public static final int TITLE_MAX_LENGTH = 100;
     public static final String INVALID_TITLE_MESSAGE =
             String.format("Title should be between %d and %d symbols.", TITLE_MIN_LENGTH, TITLE_MAX_LENGTH);
     public static final int DESCRIPTION_MIN_LENGTH = 10;

@@ -11,15 +11,16 @@ import java.util.List;
 public class TeamImpl implements Team {
 
     public static final String INVALID_NAME_MESSAGE = "Name should be between %d and %d symbols.";
-    public static final int MAX_LENGTH = 15;
-    public static final int MIN_LENGTH = 5;
+    public static final int NAME_MAX_LENGTH = 15;
+    public static final int NAME_MIN_LENGTH = 5;
 
+    static List<String> teamNames;
     private String name;
     private List<Member> members;
     private List<Board> boards;
 
     public TeamImpl(String name, List<Member> members, List<Board> boards) {
-        this.name = name;
+        setName(name);
         this.members = new ArrayList<>(members);
         this.boards = new ArrayList<>(boards);
     }
@@ -36,15 +37,30 @@ public class TeamImpl implements Team {
         return boards;
     }
 
-    public void setName(String name) {
-        ValidationHelpers.validateStringLength(name, MIN_LENGTH, MAX_LENGTH, INVALID_NAME_MESSAGE);
+
+    private void setName(String name) {
+        ValidationHelpers.validateMemberName(teamNames,name);
+        ValidationHelpers.validateTeamName(teamNames,name);
+        ValidationHelpers.validateStringLength(name, NAME_MIN_LENGTH, NAME_MAX_LENGTH,String.format(INVALID_NAME_MESSAGE));
         this.name = name;
+        teamNames.add(name);
     }
 
-    public void setMembers(List<Member> members) {
+
+    private void setMembers(List<Member> members) {
     }
 
-    public void setBoards(List<Board> boards) {
+    private void setBoards(List<Board> boards) {
+
         this.boards = boards;
+    }
+
+    public String showAllTeams(){
+        StringBuilder allNames = new StringBuilder();
+        for (String name :
+                teamNames) {
+            allNames.append(name + " ");
+        }
+        return allNames.toString();
     }
 }

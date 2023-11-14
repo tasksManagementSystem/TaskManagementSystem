@@ -2,6 +2,14 @@ package models.contracts;
 
 import java.util.List;
 
-public interface Member extends User {
+public interface Member {
+
+    String getName();
+
+    List<Task> getTasks();
+
+    List<String> getActivityHistory();
+
+    String showAllMembers();
 
 }
