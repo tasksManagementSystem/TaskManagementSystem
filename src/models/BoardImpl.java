@@ -2,19 +2,24 @@ package models;
 
 import models.contracts.Board;
 import models.contracts.Task;
+import utils.ValidationHelpers;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BoardImpl implements Board {
+
+    public static final String INVALID_NAME_MESSAGE = "Name should be between %d and %d symbols.";
+    public static final int BOARD_NAME_MIN_LENGTH = 5;
+    public static final int BOARD_NAME_MAX_LENGTH = 10;
     private String name;
     private List<Task> tasks;
     private List<String> activityHistory;
 
-    public BoardImpl(String name, List<Task> tasks, List<String> activityHistory) {
-        this.name = name;
-        this.tasks = tasks;
-        this.activityHistory = new ArrayList<>(activityHistory);
+    public BoardImpl(String name) {
+        setName(name);
+        this.tasks = new ArrayList<>();
+        this.activityHistory = new ArrayList<>();
     }
 
     public String getName() {
@@ -30,7 +35,7 @@ public class BoardImpl implements Board {
     }
 
     public void setName(String name) {
-
+        ValidationHelpers.validateStringLength(name, BOARD_NAME_MIN_LENGTH,BOARD_NAME_MAX_LENGTH,String.format(INVALID_NAME_MESSAGE));
         this.name = name;
     }
 

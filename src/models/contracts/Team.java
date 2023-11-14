@@ -8,4 +8,6 @@ public interface Team {
     List<Board> getBoards();
 
     String showAllTeams();
+
+    void addBoard(Board board);
 }
