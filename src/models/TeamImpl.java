@@ -10,6 +10,7 @@ import java.util.List;
 
 public class TeamImpl implements Team {
 
+    public static final String INVALID_BOARD_NAME_MESSAGE = "This board name already exist.";
     public static final String INVALID_NAME_MESSAGE = "Name should be between %d and %d symbols.";
     public static final int NAME_MAX_LENGTH = 15;
     public static final int NAME_MIN_LENGTH = 5;
@@ -19,10 +20,10 @@ public class TeamImpl implements Team {
     private List<Member> members;
     private List<Board> boards;
 
-    public TeamImpl(String name, List<Member> members, List<Board> boards) {
+    public TeamImpl(String name) {
         setName(name);
-        this.members = new ArrayList<>(members);
-        this.boards = new ArrayList<>(boards);
+        this.members = new ArrayList<>();
+        this.boards = new ArrayList<>();
     }
 
     public String getName() {
@@ -63,4 +64,11 @@ public class TeamImpl implements Team {
         }
         return allNames.toString();
     }
+
+    public void addBoard(Board board){
+        ValidationHelpers.validateBoardName(boards,board.getName(),INVALID_BOARD_NAME_MESSAGE);
+        boards.add(board);
+
+    }
+
 }
