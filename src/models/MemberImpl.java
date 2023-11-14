@@ -19,10 +19,10 @@ public class MemberImpl implements Member {
     private List<Task> tasks;
     private List<String> activityHistory;
 
-    public MemberImpl(String name, List<Task> tasks, List<String> activityHistory) {
+    public MemberImpl(String name) {
         setName(name);
-        this.tasks = tasks;
-        this.activityHistory = new ArrayList<>(activityHistory);
+        this.tasks = new ArrayList<>();
+        this.activityHistory = new ArrayList<>();
     }
 
     public String getName() {

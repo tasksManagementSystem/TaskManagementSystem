@@ -16,8 +16,6 @@ public class TeamImpl implements Team {
     public static final int NAME_MAX_LENGTH = 15;
     public static final int NAME_MIN_LENGTH = 5;
 
-    public static final int BOARD_NAME_MIN_LENGTH = 5;
-    public static final int BOARD_NAME_MAX_LENGTH = 10;
     static List<String> teamNames;
     private String name;
     private List<Member> members;
@@ -70,7 +68,6 @@ public class TeamImpl implements Team {
 
     public void addBoard(Board board){
         ValidationHelpers.validateBoardName(boards,board.getName(),BOARD_NAME_ALREADY_EXIST_MESSAGE);
-        ValidationHelpers.validateStringLength(board.getName(), BOARD_NAME_MIN_LENGTH,BOARD_NAME_MAX_LENGTH,String.format(INVALID_NAME_MESSAGE));
         boards.add(board);
 
     }
