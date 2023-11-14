@@ -1,5 +1,6 @@
 package models;
 
+import models.contracts.Board;
 import models.contracts.Member;
 import models.contracts.Task;
 import utils.ValidationHelpers;
@@ -9,6 +10,7 @@ import java.util.List;
 
 public class MemberImpl implements Member {
 
+    public static final String NAME_ALREADY_EXIST_MESSAGE = "This name already exist.";
     public static final String INVALID_NAME_MESSAGE = "Name should be between %d and %d symbols.";
     public static final int NAME_MAX_LENGTH = 15;
     public static final int NAME_MIN_LENGTH = 5;
@@ -36,8 +38,8 @@ public class MemberImpl implements Member {
     }
 
     private void setName(String name) {
-        ValidationHelpers.validateMemberName(memberNames,name);
-        ValidationHelpers.validateTeamName(memberNames,name);
+        ValidationHelpers.validateMemberName(memberNames,name,NAME_ALREADY_EXIST_MESSAGE);
+        ValidationHelpers.validateTeamName(TeamImpl.teamNames,name,NAME_ALREADY_EXIST_MESSAGE);
         ValidationHelpers.validateStringLength(name, NAME_MIN_LENGTH, NAME_MAX_LENGTH,String.format(INVALID_NAME_MESSAGE));
         this.name = name;
         memberNames.add(name);

@@ -17,17 +17,17 @@ public class ValidationHelpers {
         }
     }
 
-    public static void validateMemberName(List<String> memberNames, String nameToValidate){
+    public static void validateMemberName(List<String> memberNames, String nameToValidate,String message){
         for (int i = 0; i <= memberNames.size(); i++){
             if(memberNames.get(i).equals(nameToValidate)){
-                throw new IllegalArgumentException("This name already exist.");
+                throw new IllegalArgumentException(message);
             }
         }
     }
-    public static void validateTeamName(List<String> teamNames, String nameToValidate){
+    public static void validateTeamName(List<String> teamNames, String nameToValidate,String message){
         for (int i = 0; i <= teamNames.size(); i++){
             if(teamNames.get(i).equals(nameToValidate)){
-                throw new IllegalArgumentException("This name already exist!");
+                throw new IllegalArgumentException(message);
             }
         }
     }

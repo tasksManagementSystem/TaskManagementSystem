@@ -10,11 +10,14 @@ import java.util.List;
 
 public class TeamImpl implements Team {
 
-    public static final String INVALID_BOARD_NAME_MESSAGE = "This board name already exist.";
+    public static final String NAME_ALREADY_EXIST_MESSAGE = "This name already exist.";
+    public static final String BOARD_NAME_ALREADY_EXIST_MESSAGE = "This board name already exist.";
     public static final String INVALID_NAME_MESSAGE = "Name should be between %d and %d symbols.";
     public static final int NAME_MAX_LENGTH = 15;
     public static final int NAME_MIN_LENGTH = 5;
 
+    public static final int BOARD_NAME_MIN_LENGTH = 5;
+    public static final int BOARD_NAME_MAX_LENGTH = 10;
     static List<String> teamNames;
     private String name;
     private List<Member> members;
@@ -40,8 +43,8 @@ public class TeamImpl implements Team {
 
 
     private void setName(String name) {
-        ValidationHelpers.validateMemberName(teamNames,name);
-        ValidationHelpers.validateTeamName(teamNames,name);
+        ValidationHelpers.validateMemberName(MemberImpl.memberNames,name,NAME_ALREADY_EXIST_MESSAGE);
+        ValidationHelpers.validateTeamName(teamNames,name,NAME_ALREADY_EXIST_MESSAGE);
         ValidationHelpers.validateStringLength(name, NAME_MIN_LENGTH, NAME_MAX_LENGTH,String.format(INVALID_NAME_MESSAGE));
         this.name = name;
         teamNames.add(name);
@@ -66,7 +69,8 @@ public class TeamImpl implements Team {
     }
 
     public void addBoard(Board board){
-        ValidationHelpers.validateBoardName(boards,board.getName(),INVALID_BOARD_NAME_MESSAGE);
+        ValidationHelpers.validateBoardName(boards,board.getName(),BOARD_NAME_ALREADY_EXIST_MESSAGE);
+        ValidationHelpers.validateStringLength(board.getName(), BOARD_NAME_MIN_LENGTH,BOARD_NAME_MAX_LENGTH,String.format(INVALID_NAME_MESSAGE));
         boards.add(board);
 
     }
