@@ -26,7 +26,6 @@ public class TaskManagementEngineImpl implements TaskManagementEngine {
         this.commandFactory = new CommandFactoryImpl();
         this.taskManagementRepository = new TaskManagementRepositoryImpl();
     }
-
     public void start() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
