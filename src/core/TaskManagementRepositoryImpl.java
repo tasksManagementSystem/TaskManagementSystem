@@ -5,8 +5,10 @@ import models.BoardImpl;
 import models.MemberImpl;
 import models.contracts.Board;
 import models.contracts.Member;
+import models.contracts.Team;
 import utils.ValidationHelpers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TaskManagementRepositoryImpl implements TaskManagementRepository {
@@ -17,6 +19,8 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
 
     List<Member> memberList;
     List<Board> boardList;
+
+    List<Team> teams;
 
 
     public TaskManagementRepositoryImpl (){
@@ -53,6 +57,16 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
         ValidationHelpers.validateBoardName(boardList,board.getName(),BOARD_NAME_ALREADY_EXIST_MESSAGE);
         boardList.add(board);
 
+    }
+
+    @Override
+    public List<Board> getBoards() {
+        return new ArrayList<>(boardList);
+    }
+
+    @Override
+    public List<Team> getTeams() {
+        return new ArrayList<>(teams);
     }
 
 }

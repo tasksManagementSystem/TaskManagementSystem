@@ -22,6 +22,6 @@ public abstract class BaseCommand implements Command {
         return repository;
     }
 
-
+    protected abstract String executeCommand(List<String> parameters);
 
 }
