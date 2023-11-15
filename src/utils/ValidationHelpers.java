@@ -40,4 +40,12 @@ public class ValidationHelpers {
         }
     }
 
+    public static void validateArgumentCount (List<String>parameters,int count, String message ){
+        if(parameters.size() != count){
+            throw new IllegalArgumentException(message);
+
+        }
+
+    }
+
 }

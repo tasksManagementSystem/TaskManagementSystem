@@ -10,10 +10,11 @@ import java.util.List;
 
 public class MemberImpl implements Member {
 
-    public static final String NAME_ALREADY_EXIST_MESSAGE = "This name already exist.";
-    public static final String INVALID_NAME_MESSAGE = "Name should be between %d and %d symbols.";
     public static final int NAME_MAX_LENGTH = 15;
     public static final int NAME_MIN_LENGTH = 5;
+    public static final String NAME_ALREADY_EXIST_MESSAGE = "This name already exist.";
+    public static final String INVALID_NAME_MESSAGE =
+            String.format("Name should be between %d and %d symbols.",NAME_MIN_LENGTH,NAME_MAX_LENGTH);
     static List<String> memberNames = new ArrayList<>();
     private String name;
     private List<Task> tasks;
