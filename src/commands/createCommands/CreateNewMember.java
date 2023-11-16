@@ -18,11 +18,11 @@ public class CreateNewMember extends BaseCommand {
     public CreateNewMember(TaskManagementRepository repository) {
         super(repository);
     }
-@Override
-public String execute (List<String> parameters) {
+    @Override
+    public String execute (List<String> parameters) {
         ValidationHelpers.validateArgumentCount(parameters, COUNT, INVALID_NUMBER_OF_ARGUMENTS);
         String username = parameters.get(0);
-        trowIfMemberExist(username);
+        /*trowIfMemberExist(username);*/
 
         return registerMember(username);
 
@@ -33,13 +33,13 @@ public String execute (List<String> parameters) {
        return String.format(MEMBER_S_REGISTER_SUCCESSFULLY,username);
     }
 
-    private void trowIfMemberExist(String username){
+   /* private void trowIfMemberExist(String username){
         if(getRepository().memberExist(username)){
             throw new IllegalArgumentException(
                     String.format(MEMBER_S_ALREADY_EXIST_CHOOSE_A_DIFFERENT_NAME, username)
             );
         }
 
-    }
+    }*/
 
 }

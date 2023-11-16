@@ -13,10 +13,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     List<Member> memberList;
 
 
-    public TaskManagementRepositoryImpl (){
-
-
-    }
+    public TaskManagementRepositoryImpl (){}
 
     public List<Member> getMemberList() {
         return memberList;
