@@ -3,6 +3,7 @@ package core;
 import core.contracts.TaskManagementRepository;
 import models.BoardImpl;
 import models.MemberImpl;
+import models.TeamImpl;
 import models.contracts.Board;
 import models.contracts.Member;
 import models.contracts.Team;
@@ -26,6 +27,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
 
     public TaskManagementRepositoryImpl (){}
 
+
     @Override
     public Member findMemberByUsername(String username){
         return memberList
@@ -48,11 +50,18 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public Board createBoard (String name){
         return new BoardImpl(name);
     }
+
+    @Override
+    public Team createTeam(String name) {
+        return new TeamImpl(name);
+    }
+
     public void addBoard(Board board){
         ValidationHelpers.validateBoardName(boardList,board.getName(),BOARD_NAME_ALREADY_EXIST_MESSAGE);
         boardList.add(board);
 
     }
+
     @Override
     public List<Board> getBoards() {
         return new ArrayList<>(boardList);

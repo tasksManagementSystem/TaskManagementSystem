@@ -18,6 +18,7 @@ public interface TaskManagementRepository {
 
     Member createMember(String username);
     Board createBoard(String name);
+    Team createTeam(String name);
     void addBoard(Board board);
     List<Board> getBoards();
     List<Team> getTeamsList();
