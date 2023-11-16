@@ -29,7 +29,7 @@ public class CreateNewMember extends BaseCommand {
     }
 
     private String registerMember(String username) {
-        Member member = getRepository().creatMember(username);
+        Member member = getRepository().createMember(username);
        return String.format(MEMBER_S_REGISTER_SUCCESSFULLY,username);
     }
 
