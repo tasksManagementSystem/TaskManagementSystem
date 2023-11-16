@@ -13,6 +13,7 @@ public interface TaskManagementRepository {
     List<Member> getMemberList();
 
     Member findMemberByUsername (String username);
+    Board findBoardByName (String name);
 
     boolean memberExist(String username);
 

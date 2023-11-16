@@ -90,4 +90,12 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
                 .orElseThrow(() ->new IllegalArgumentException(String.format(THERE_IS_NO_TEAM_WITH_NAME_S,name)));
                 return team;
     }
+    @Override
+    public Board findBoardByName(String name){
+        Board board = boardList.stream()
+                .filter(u -> u.getName().equalsIgnoreCase(name))
+                .findFirst()
+                .orElseThrow(() ->new IllegalArgumentException(String.format(THERE_IS_NO_TEAM_WITH_NAME_S,name)));
+        return board;
+    }
 }
