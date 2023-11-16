@@ -25,6 +25,8 @@ public class CreateNewBoard extends BaseCommand {
 
     }
 
+
+
     private String createBoard(String name) {
         Board board=getRepository().createBoard(name);
         getRepository().addBoard(board);

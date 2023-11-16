@@ -20,7 +20,7 @@ public class ShowTeamBoardsCommand extends BaseCommand {
     }
 
     @Override
-    protected String executeCommand(List<String> parameters) {
+    public String execute(List<String> parameters) {
         ValidationHelpers.validateArgumentCount(parameters, EXPECTED_NUMBER_OF_ARGUMENTS,INVALID_NUMBER_OF_ARGUMENTS);
 
         return showTeamBoard();
