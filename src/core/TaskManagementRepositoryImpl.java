@@ -19,15 +19,11 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
 
     List<Member> memberList;
     List<Board> boardList;
-
-    List<Team> teams;
+    List<Team> teamsList;
 
 
     public TaskManagementRepositoryImpl (){}
 
-    public List<Member> getMemberList() {
-        return memberList;
-    }
     @Override
     public Member findMemberByUsername(String username){
         return memberList
@@ -55,15 +51,19 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
         boardList.add(board);
 
     }
-
     @Override
     public List<Board> getBoards() {
         return new ArrayList<>(boardList);
     }
 
     @Override
-    public List<Team> getTeams() {
-        return new ArrayList<>(teams);
+    public List<Team> getTeamsList() {
+        return new ArrayList<>(teamsList);
     }
 
+
+    @Override
+    public List<Member> getMemberList() {
+        return new ArrayList<>(memberList);
+    }
 }
