@@ -4,6 +4,7 @@ import models.contracts.Board;
 import models.contracts.Member;
 import models.contracts.Task;
 import models.contracts.Team;
+import models.enums.Severity;
 
 import java.util.List;
 
@@ -20,5 +21,8 @@ public interface TaskManagementRepository {
     void addBoard(Board board);
     List<Board> getBoards();
     List<Team> getTeamsList();
+
+    Severity getSeverity();
+    Team findTeamByName(String name);
 
 }

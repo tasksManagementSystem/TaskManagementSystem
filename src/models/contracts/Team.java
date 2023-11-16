@@ -10,4 +10,6 @@ public interface Team {
     String showAllTeams();
 
     void addBoard(Board board);
+
+    String getName();
 }

@@ -6,6 +6,7 @@ import models.MemberImpl;
 import models.contracts.Board;
 import models.contracts.Member;
 import models.contracts.Team;
+import models.enums.Severity;
 import utils.ValidationHelpers;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
 
     public static final String THERE_ARE_IS_NO_MEMBER_WITH_NAME = "There are is no member with this name";
     public static final String BOARD_NAME_ALREADY_EXIST_MESSAGE = "This board name already exist.";
+    public static final String THERE_IS_NO_TEAM_WITH_NAME_S = "There is no Team with name %s ";
 
     List<Member> memberList;
     List<Board> boardList;
@@ -61,9 +63,22 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
         return new ArrayList<>(teamsList);
     }
 
+    @Override
+    public Severity getSeverity() {
+        return null;
+    }
 
     @Override
     public List<Member> getMemberList() {
         return new ArrayList<>(memberList);
+    }
+
+    @Override
+    public Team findTeamByName(String name){
+        Team team = teamsList.stream()
+                .filter(u -> u.getName().equalsIgnoreCase(name))
+                .findFirst()
+                .orElseThrow(() ->new IllegalArgumentException(String.format(THERE_IS_NO_TEAM_WITH_NAME_S,name)));
+                return team;
     }
 }
