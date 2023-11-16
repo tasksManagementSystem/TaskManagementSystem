@@ -51,7 +51,7 @@ public class MemberImpl implements Member {
     }
 
     private void setActivityHistory(List<String> activityHistory) {
-        this.activityHistory = activityHistory;
+        this.activityHistory = new ArrayList<>(activityHistory) ;
     }
 
     public String showAllMembers(){

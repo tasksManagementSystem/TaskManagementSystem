@@ -2,7 +2,6 @@ package commands.showCommands;
 
 import commands.BaseCommand;
 import core.contracts.TaskManagementRepository;
-import models.contracts.Board;
 import models.contracts.Team;
 import utils.ValidationHelpers;
 
@@ -26,7 +25,7 @@ public class ShowTeamBoardsCommand extends BaseCommand {
         return showTeamBoard();
     }
     private String showTeamBoard() {
-        List<Team> teams = getRepository().getTeams();
+        List<Team> teams = getRepository().getTeamsList();
         StringBuilder sb=new StringBuilder();
         for(Team team:teams){
             sb.append(team.getBoards());

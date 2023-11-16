@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface TaskManagementRepository {
 
+    List<Member> getMemberList();
+
     Member findMemberByUsername (String username);
 
     boolean memberExist(String username);
@@ -18,7 +20,6 @@ public interface TaskManagementRepository {
     Team createTeam(String name);
     void addBoard(Board board);
     List<Board> getBoards();
-    List<Team> getTeams();
-
+    List<Team> getTeamsList();
 
 }
