@@ -10,7 +10,7 @@ import java.util.List;
 public class CreateNewBoard extends BaseCommand {
     public static final String INVALID_NUMBER_OF_ARGUMENTS = "Invalid number of arguments.";
     public static final int COUNT = 1;
-    public static final String BOARD_CREATED_SUCCESSFULLY = "Board with name %s was created ina team.";
+    public static final String BOARD_CREATED_SUCCESSFULLY = "Board with name %s was created in a team.";
 
 
     public CreateNewBoard(TaskManagementRepository repository) {

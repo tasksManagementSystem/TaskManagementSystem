@@ -70,11 +70,6 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
 
     @Override
     public List<Team> getTeamsList() {
-        return null;
-    }
-
-
-    public List<Team> getTeams() {
         return new ArrayList<>(teams);
     }
 

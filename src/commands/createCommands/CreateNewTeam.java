@@ -11,7 +11,7 @@ import java.util.List;
 public class CreateNewTeam extends BaseCommand {
     public static final String INVALID_NUMBER_OF_ARGUMENTS = "Invalid number of arguments.";
     public static final int COUNT = 1;
-    public static final String BOARD_CREATED_SUCCESSFULLY = "Board with name %s was created ina team.";
+    public static final String TEAM_CREATED_SUCCESSFULLY = "Team with name %s was created.";
 
 
     public CreateNewTeam(TaskManagementRepository repository) {
@@ -29,6 +29,6 @@ public class CreateNewTeam extends BaseCommand {
 
     private String createTeam(String name) {
         Team team = getRepository().createTeam(name);
-        return String.format(BOARD_CREATED_SUCCESSFULLY, name);
+        return String.format(TEAM_CREATED_SUCCESSFULLY, name);
     }
 }
