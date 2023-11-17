@@ -30,7 +30,6 @@ public class CommandFactoryImpl implements CommandFactory {
                 return new CreateNewBoard(taskManagementRepository);
             case CHANGE_FEEDBACK_RATING:
                 return new ChangeFeedbackRatingCommand(taskManagementRepository);
-                return new ShowTeamBoardsCommand(taskManagementRepository);
             case SHOW_BOARD_ACTIVITY:
                 return new ShowBoardActivityCommand(taskManagementRepository);
 

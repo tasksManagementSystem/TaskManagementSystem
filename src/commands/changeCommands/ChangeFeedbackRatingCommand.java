@@ -31,8 +31,8 @@ public class ChangeFeedbackRatingCommand extends BaseCommand {
     }
     private String changeFeedback(String title, String description,int rating) {
         return null;
+    }
 
-    @Override
     protected boolean requiresLogin() {
         return true;
     }
