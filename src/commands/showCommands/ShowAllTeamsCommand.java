@@ -25,6 +25,12 @@ public class ShowAllTeamsCommand extends BaseCommand {
 
         return showAllTeams();
     }
+
+    @Override
+    protected boolean requiresLogin() {
+        return false;
+    }
+
     private String showAllTeams() {
         List<Team> teams = getRepository().getTeamsList();
         StringBuilder allTeamsNames = new StringBuilder();

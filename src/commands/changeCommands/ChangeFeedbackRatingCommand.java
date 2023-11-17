@@ -11,5 +11,10 @@ public class ChangeFeedbackRatingCommand extends BaseCommand {
         super(repository);
     }
 
+    @Override
+    protected boolean requiresLogin() {
+        return true;
+    }
+
 
 }

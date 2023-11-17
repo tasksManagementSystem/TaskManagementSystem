@@ -1,17 +1,16 @@
 package core;
-
 import core.contracts.TaskManagementRepository;
-import models.BoardImpl;
-import models.MemberImpl;
-import models.TeamImpl;
-import models.contracts.Board;
-import models.contracts.Member;
-import models.contracts.Team;
+import models.*;
+import models.contracts.*;
+import models.enums.Priority;
 import models.enums.Severity;
+import models.enums.Size;
 import utils.ValidationHelpers;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 public class TaskManagementRepositoryImpl implements TaskManagementRepository {
 
@@ -19,13 +18,22 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public static final String THERE_ARE_IS_NO_MEMBER_WITH_NAME = "There are is no member with this name";
     public static final String BOARD_NAME_ALREADY_EXIST_MESSAGE = "This board name already exist.";
     public static final String THERE_IS_NO_TEAM_WITH_NAME_S = "There is no Team with name %s ";
+    public static final String NO_LOGGED_IN_MEMBER = "There is no logged in member.";
 
     List<Member> memberList;
     List<Board> boardList;
     List<Team> teamsList;
+    private Member loggedMember;
+
+    private int id;
 
 
-    public TaskManagementRepositoryImpl (){}
+    public TaskManagementRepositoryImpl (){
+        this.memberList = new ArrayList<>();
+        this.teamsList = new ArrayList<>();
+        this.loggedMember = null;
+        this.id = 1;
+    }
 
 
     @Override
@@ -63,6 +71,17 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
+    public Bug createBug(String title, String boardToAdd, String description, List<String> stepsToReproduce,
+                         Priority priority,Severity severity, String assignee) {
+        return new BugImpl(++id, title, description, stepsToReproduce, priority, severity, assignee);
+    }
+
+    @Override
+    public Story createStory(String title, String description, Priority priority, Size size, String assignee) {
+        return null;
+    }
+
+    @Override
     public List<Board> getBoards() {
         return new ArrayList<>(boardList);
     }
@@ -90,4 +109,32 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
                 .orElseThrow(() ->new IllegalArgumentException(String.format(THERE_IS_NO_TEAM_WITH_NAME_S,name)));
                 return team;
     }
+    @Override
+    public Member getLoggedInMember() {
+        if (loggedMember == null) {
+            throw new IllegalArgumentException(NO_LOGGED_IN_MEMBER);
+        }
+        return loggedMember;
+    }
+
+    @Override
+    public boolean hasLoggedInMember() {
+        return loggedMember != null;
+    }
+
+    @Override
+    public void login(Member member) {
+        loggedMember = member;
+    }
+
+    @Override
+    public void logout() {
+        loggedMember = null;
+    }
+
+    public Feedback createFeedback(String title, String description, int rating) {
+        return new FeedbackImpl(title, description, rating);
+    }
+
+
 }

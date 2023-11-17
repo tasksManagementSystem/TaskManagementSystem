@@ -29,6 +29,11 @@ public class CreateNewMember extends BaseCommand {
 
     }
 
+    @Override
+    protected boolean requiresLogin() {
+        return false;
+    }
+
     private String registerMember(String username) {
         Member member = getRepository().createMember(username);
         return String.format(MEMBER_S_REGISTER_SUCCESSFULLY, username);

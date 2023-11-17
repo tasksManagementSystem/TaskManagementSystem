@@ -28,4 +28,9 @@ public class FeedbackImpl extends TaskImpl implements Feedback {
     public void setStatusFeedback(StatusFeedback statusFeedback) {
         this.statusFeedback = statusFeedback;
     }
+
+    @Override
+    public void logEvent(String event) {
+
+    }
 }

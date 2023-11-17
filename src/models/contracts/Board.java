@@ -8,6 +8,14 @@ public interface Board {
 
     List<Task> getTasks();
 
+    List<Bug> getBugs();
+
     List<String> getActivityHistory();
+
+    void addBug(Bug bug);
+
+    void addStory(Story story);
+
+    void addFeedback(Feedback feedback);
 
 }

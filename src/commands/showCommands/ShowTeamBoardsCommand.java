@@ -24,6 +24,12 @@ public class ShowTeamBoardsCommand extends BaseCommand {
 
         return showTeamBoard();
     }
+
+    @Override
+    protected boolean requiresLogin() {
+        return true;
+    }
+
     private String showTeamBoard() {
         List<Team> teams = getRepository().getTeamsList();
         StringBuilder sb=new StringBuilder();

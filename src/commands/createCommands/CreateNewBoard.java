@@ -25,6 +25,10 @@ public class CreateNewBoard extends BaseCommand {
 
     }
 
+    @Override
+    protected boolean requiresLogin() {
+        return true;
+    }
 
 
     private String createBoard(String name) {

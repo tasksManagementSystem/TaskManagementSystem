@@ -13,4 +13,6 @@ public interface Task {
     List<Comment> getComments();
 
     List<History> getHistories();
+
+    void logEvent(String event);
 }

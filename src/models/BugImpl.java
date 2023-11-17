@@ -16,7 +16,9 @@ public class BugImpl extends TaskImpl implements Bug {
     private String assignee;
     private StatusBug statusBug;
 
-    public BugImpl( String title, String description, List<String> stepOfReproduce,
+    private int id;
+
+    public BugImpl( int id, String title, String description, List<String> stepOfReproduce,
                    Priority priority, Severity severity, String assignee) {
         super( title, description);
         this.stepOfReproduce=new ArrayList<>(stepOfReproduce);
@@ -66,5 +68,8 @@ public class BugImpl extends TaskImpl implements Bug {
     public void setAssignee(String assignee) {
         this.assignee = assignee;
     }
+
+    @Override
+    public void logEvent(String event) {}
 
 }

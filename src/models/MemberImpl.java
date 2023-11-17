@@ -63,4 +63,9 @@ public class MemberImpl implements Member {
         return allNames.toString();
     }
 
+    @Override
+    public void logEvent(String event) {
+
+    }
+
 }

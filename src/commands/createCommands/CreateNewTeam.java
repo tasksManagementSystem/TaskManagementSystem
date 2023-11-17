@@ -26,6 +26,11 @@ public class CreateNewTeam extends BaseCommand {
 
     }
 
+    @Override
+    protected boolean requiresLogin() {
+        return false;
+    }
+
 
     private String createTeam(String name) {
         Team team = getRepository().createTeam(name);

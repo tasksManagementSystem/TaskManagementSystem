@@ -23,6 +23,11 @@ public class ShowMemberActivityCommand extends BaseCommand {
         return showMemberActivity();
     }
 
+    @Override
+    protected boolean requiresLogin() {
+        return true;
+    }
+
 
     private String showMemberActivity(){
         List<Member> memberList = getRepository().getMemberList();

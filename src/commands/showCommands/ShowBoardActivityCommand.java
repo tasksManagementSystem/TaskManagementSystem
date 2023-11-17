@@ -23,6 +23,11 @@ public class ShowBoardActivityCommand extends BaseCommand {
 
     }
 
+    @Override
+    protected boolean requiresLogin() {
+        return true;
+    }
+
     private String showBoardActivity() {
         List<Board> boards = getRepository().getBoards();
         StringBuilder sb = new StringBuilder();

@@ -26,6 +26,11 @@ public class ShowTeamMembersCommand extends BaseCommand {
         return showTeamMembers(teamName);
     }
 
+    @Override
+    protected boolean requiresLogin() {
+        return true;
+    }
+
     private String showTeamMembers (String teamName){
         Team team  = getRepository().findTeamByName(teamName);
         List<Member> memberList = team.getMembers();

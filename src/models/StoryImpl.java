@@ -44,4 +44,9 @@ public class StoryImpl extends TaskImpl implements Story {
     private void setAssignee(String assignee) {
         this.assignee = assignee;
     }
+
+    @Override
+    public void logEvent(String event) {
+
+    }
 }

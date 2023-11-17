@@ -12,4 +12,6 @@ public interface Member {
 
     String showAllMembers();
 
+    void logEvent(String event);
+
 }

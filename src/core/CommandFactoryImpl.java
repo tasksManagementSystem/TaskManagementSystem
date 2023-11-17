@@ -1,6 +1,9 @@
 package core;
 
+import commands.LoginCommand;
+import commands.LogoutCommand;
 import commands.contracts.Command;
+import commands.createCommands.CreateNewMember;
 import commands.enums.CommandType;
 import commands.showCommands.ShowBoardActivityCommand;
 import commands.showCommands.ShowTeamBoardsCommand;
@@ -13,14 +16,16 @@ public class CommandFactoryImpl implements CommandFactory {
     public Command createCommandFromCommandName(String commandTypeAsString, TaskManagementRepository taskManagementRepository) {
         CommandType commandType = ParsingHelpers.tryParseEnum(commandTypeAsString, CommandType.class);
         switch (commandType) {
+            case LOGIN:
+                return new LoginCommand(taskManagementRepository);
+            case LOGOUT:
+                return new LogoutCommand((TaskManagementRepositoryImpl) taskManagementRepository);
+            case CREATEMEMBER:
+                return new CreateNewMember(taskManagementRepository);
+            case SHOW_TEAM_BOARD_ACTIVITY:
+                return new ShowTeamBoardsCommand(taskManagementRepository);
             case SHOW_BOARD_ACTIVITY:
                 return new ShowBoardActivityCommand(taskManagementRepository);
-            case SHOW_TEAM_BOARD_ACTIVITY:
-               return new ShowTeamBoardsCommand(taskManagementRepository);
-//            case SHOWUSERS:
-//                return new ShowUsersCommand(vehicleDealershipRepository);
-//            case ADDCOMMENT:
-//                return new AddCommentCommand(vehicleDealershipRepository);
 //            case ADDVEHICLE:
 //                return new AddVehicleCommand(vehicleDealershipRepository);
 //            case REGISTERUSER:
@@ -33,6 +38,7 @@ public class CommandFactoryImpl implements CommandFactory {
 //                return new RemoveVehicleCommand(vehicleDealershipRepository);
             default:
                 throw new IllegalArgumentException();
+
         }
 
     }

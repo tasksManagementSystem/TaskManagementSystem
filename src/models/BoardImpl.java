@@ -1,7 +1,6 @@
 package models;
 
-import models.contracts.Board;
-import models.contracts.Task;
+import models.contracts.*;
 import utils.ValidationHelpers;
 
 import java.util.ArrayList;
@@ -16,10 +15,15 @@ public class BoardImpl implements Board {
     private List<Task> tasks;
     private List<String> activityHistory;
 
+    private final List<Feedback> feedbacks;
+    private final List<Story> stories;
+
     public BoardImpl(String name) {
         setName(name);
         this.tasks = new ArrayList<>();
         this.activityHistory = new ArrayList<>();
+        this.feedbacks = new ArrayList<>();
+        this.stories = new ArrayList<>();
     }
 
     public String getName() {
@@ -32,6 +36,17 @@ public class BoardImpl implements Board {
 
     public List<String> getActivityHistory() {
         return activityHistory;
+    }
+
+    @Override
+    public void addBug(Bug bug) {
+    }
+    public void addFeedback(Feedback feedback) {
+        feedbacks.add(feedback);
+    }
+
+    public void addStory(Story story) {
+        stories.add(story);
     }
 
     public void setName(String name) {
