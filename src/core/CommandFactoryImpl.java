@@ -2,8 +2,10 @@ package core;
 
 import commands.LoginCommand;
 import commands.LogoutCommand;
+import commands.changeCommands.ChangeFeedbackRatingCommand;
 import commands.contracts.Command;
 import commands.createCommands.CreateNewMember;
+import commands.createCommands.CreateNewBoard;
 import commands.enums.CommandType;
 import commands.showCommands.ShowBoardActivityCommand;
 import commands.showCommands.ShowTeamBoardsCommand;
@@ -23,22 +25,17 @@ public class CommandFactoryImpl implements CommandFactory {
             case CREATEMEMBER:
                 return new CreateNewMember(taskManagementRepository);
             case SHOW_TEAM_BOARD_ACTIVITY:
+               return new ShowTeamBoardsCommand(taskManagementRepository);
+            case CREATE_NEW_BOARD:
+                return new CreateNewBoard(taskManagementRepository);
+            case CHANGE_FEEDBACK_RATING:
+                return new ChangeFeedbackRatingCommand(taskManagementRepository);
                 return new ShowTeamBoardsCommand(taskManagementRepository);
             case SHOW_BOARD_ACTIVITY:
                 return new ShowBoardActivityCommand(taskManagementRepository);
-//            case ADDVEHICLE:
-//                return new AddVehicleCommand(vehicleDealershipRepository);
-//            case REGISTERUSER:
-//                return new RegisterUserCommand(vehicleDealershipRepository);
-//            case SHOWVEHICLES:
-//                return new ShowVehiclesCommand(vehicleDealershipRepository);
-//            case REMOVECOMMENT:
-//                return new RemoveCommentCommand(vehicleDealershipRepository);
-//            case REMOVEVEHICLE:
-//                return new RemoveVehicleCommand(vehicleDealershipRepository);
+
             default:
                 throw new IllegalArgumentException();
-
         }
 
     }

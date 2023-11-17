@@ -22,7 +22,6 @@ public class CreateNewBoard extends BaseCommand {
         ValidationHelpers.validateArgumentCount(parameters, COUNT, INVALID_NUMBER_OF_ARGUMENTS);
         String name = parameters.get(0);
         return createBoard(name);
-
     }
 
     @Override
@@ -32,7 +31,7 @@ public class CreateNewBoard extends BaseCommand {
 
 
     private String createBoard(String name) {
-        Board board=getRepository().createBoard(name);
+        Board board = getRepository().createBoard(name);
         getRepository().addBoard(board);
         return String.format(BOARD_CREATED_SUCCESSFULLY, name);
     }

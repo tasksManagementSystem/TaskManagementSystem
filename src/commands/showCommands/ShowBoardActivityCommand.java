@@ -18,7 +18,8 @@ public class ShowBoardActivityCommand extends BaseCommand {
 
     @Override
     public String execute(List<String> parameters) {
-        ValidationHelpers.validateArgumentCount(parameters, EXPECTED_NUMBER_OF_ARGUMENTS, INVALID_NUMBER_OF_ARGUMENTS);
+        ValidationHelpers.validateArgumentCount(parameters,
+                EXPECTED_NUMBER_OF_ARGUMENTS, INVALID_NUMBER_OF_ARGUMENTS);
         return showBoardActivity();
 
     }
@@ -29,13 +30,15 @@ public class ShowBoardActivityCommand extends BaseCommand {
     }
 
     private String showBoardActivity() {
-        List<Board> boards = getRepository().getBoards();
-        StringBuilder sb = new StringBuilder();
-        for (Board board1 : boards) {
-            sb.append(board1.getActivityHistory());
+        {
+            List<Board> boards = getRepository().getBoards();
+            StringBuilder sb = new StringBuilder();
+            for (Board board : boards) {
+                sb.append(board.getActivityHistory());
+            }
+            return sb.toString();
+
+
         }
-        return sb.toString();
-
-
     }
 }
