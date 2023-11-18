@@ -13,7 +13,7 @@ public class AddMemberToTeamCommand extends BaseCommand {
 
     public static final String INVALID_NUMBER_OF_ARGUMENTS = "Invalid number of arguments.";
     public static final String MEMBER_ADDED_SUCCESSFULLY = "Member added successfully.";
-    public static final int COUNT = 2;
+    public static final int COUNT = 1;
     public AddMemberToTeamCommand(TaskManagementRepository repository){
         super(repository);
     }

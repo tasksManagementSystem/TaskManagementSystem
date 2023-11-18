@@ -2,6 +2,7 @@ package core;
 
 import commands.LoginCommand;
 import commands.LogoutCommand;
+import commands.addCommands.AddMemberToTeamCommand;
 import commands.changeCommands.ChangeFeedbackRatingCommand;
 import commands.contracts.Command;
 import commands.createCommands.*;
@@ -44,6 +45,8 @@ public class CommandFactoryImpl implements CommandFactory {
                 return new ShowMemberActivityCommand(taskManagementRepository);
             case SHOW_TEAM_MEMBERS:
                 return new ShowTeamMembersCommand(taskManagementRepository);
+            case ADD_MEMBER_TO_TEAM:
+                return new AddMemberToTeamCommand(taskManagementRepository);
 
             default:
                 throw new IllegalArgumentException();
