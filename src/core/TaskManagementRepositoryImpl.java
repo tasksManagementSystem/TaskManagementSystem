@@ -21,17 +21,15 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public static final String THERE_IS_NO_TEAM_WITH_NAME_S = "There is no Team with name %s ";
     public static final String NO_LOGGED_IN_MEMBER = "There is no logged in member.";
 
-    List<Member> memberList;
-    List<Board> boardList;
-    List<Team> teamsList;
+    public static List<Member> memberList = new ArrayList<>();
+    static List<Board> boardList = new ArrayList<>();
+    public static List<Team> teamsList = new ArrayList<>();
     private Member loggedMember;
 
     private int id;
 
 
     public TaskManagementRepositoryImpl (){
-        this.memberList = new ArrayList<>();
-        this.teamsList = new ArrayList<>();
         this.loggedMember = null;
         this.id = 1;
     }

@@ -16,7 +16,7 @@ public class TeamImpl implements Team {
     public static final int NAME_MAX_LENGTH = 15;
     public static final int NAME_MIN_LENGTH = 5;
 
-    static List<String> teamNames;
+    static List<String> teamNames = new ArrayList<>();
     private String name;
     private List<Member> members;
     private List<Board> boards;
@@ -41,9 +41,9 @@ public class TeamImpl implements Team {
 
 
     private void setName(String name) {
+        ValidationHelpers.validateStringLength(name, NAME_MIN_LENGTH, NAME_MAX_LENGTH,String.format(INVALID_NAME_MESSAGE,NAME_MIN_LENGTH,NAME_MAX_LENGTH));
         ValidationHelpers.validateMemberName(MemberImpl.memberNames,name,NAME_ALREADY_EXIST_MESSAGE);
         ValidationHelpers.validateTeamName(teamNames,name,NAME_ALREADY_EXIST_MESSAGE);
-        ValidationHelpers.validateStringLength(name, NAME_MIN_LENGTH, NAME_MAX_LENGTH,String.format(INVALID_NAME_MESSAGE));
         this.name = name;
         teamNames.add(name);
     }

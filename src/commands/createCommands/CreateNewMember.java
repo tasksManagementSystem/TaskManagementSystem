@@ -1,6 +1,7 @@
 package commands.createCommands;
 
 import commands.BaseCommand;
+import core.TaskManagementRepositoryImpl;
 import core.contracts.TaskManagementRepository;
 import models.contracts.Member;
 import utils.ValidationHelpers;
@@ -22,7 +23,7 @@ public class CreateNewMember extends BaseCommand {
     @Override
     public String execute(List<String> parameters) {
         ValidationHelpers.validateArgumentCount(parameters, COUNT, INVALID_NUMBER_OF_ARGUMENTS);
-        String username = parameters.get(1);
+        String username = parameters.get(0);
         /*trowIfMemberExist(username);*/
 
         return registerMember(username);
@@ -36,6 +37,7 @@ public class CreateNewMember extends BaseCommand {
 
     private String registerMember(String username) {
         Member member = getRepository().createMember(username);
+        TaskManagementRepositoryImpl.memberList.add(member);
         return String.format(MEMBER_S_REGISTER_SUCCESSFULLY, username);
     }
 

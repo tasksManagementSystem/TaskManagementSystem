@@ -34,7 +34,7 @@ public class BoardImpl implements Board {
         return tasks;
     }
 
-    @Override
+
     public List<Bug> getBugs() {
         return new ArrayList<>();
     }
@@ -55,7 +55,7 @@ public class BoardImpl implements Board {
     }
 
     public void setName(String name) {
-        ValidationHelpers.validateStringLength(name, BOARD_NAME_MIN_LENGTH,BOARD_NAME_MAX_LENGTH,String.format(INVALID_NAME_MESSAGE));
+        ValidationHelpers.validateStringLength(name, BOARD_NAME_MIN_LENGTH,BOARD_NAME_MAX_LENGTH,String.format(INVALID_NAME_MESSAGE, BOARD_NAME_MIN_LENGTH,BOARD_NAME_MAX_LENGTH));
         this.name = name;
     }
     public int changeFeedback(Feedback feedback) {

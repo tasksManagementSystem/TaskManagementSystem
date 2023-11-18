@@ -39,9 +39,9 @@ public class MemberImpl implements Member {
     }
 
     private void setName(String name) {
+        ValidationHelpers.validateStringLength(name, NAME_MIN_LENGTH, NAME_MAX_LENGTH,String.format(INVALID_NAME_MESSAGE));
         ValidationHelpers.validateMemberName(memberNames,name,NAME_ALREADY_EXIST_MESSAGE);
         ValidationHelpers.validateTeamName(TeamImpl.teamNames,name,NAME_ALREADY_EXIST_MESSAGE);
-        ValidationHelpers.validateStringLength(name, NAME_MIN_LENGTH, NAME_MAX_LENGTH,String.format(INVALID_NAME_MESSAGE));
         this.name = name;
         memberNames.add(name);
     }
@@ -54,6 +54,14 @@ public class MemberImpl implements Member {
         this.activityHistory = new ArrayList<>(activityHistory) ;
     }
 
+    public List<String> getAllMemberNames(){
+        List<String> allMemberNames = new ArrayList<>();
+        for (String name :
+                memberNames) {
+            allMemberNames.add(name);
+        }
+        return allMemberNames;
+    }
     public String showAllMembers(){
         StringBuilder allNames = new StringBuilder();
         for (String name :

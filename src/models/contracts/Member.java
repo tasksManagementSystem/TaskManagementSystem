@@ -14,4 +14,6 @@ public interface Member {
 
     void logEvent(String event);
 
+    List<String> getAllMemberNames();
+
 }

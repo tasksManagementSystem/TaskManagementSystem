@@ -18,14 +18,20 @@ public class ValidationHelpers {
     }
 
     public static void validateMemberName(List<String> memberNames, String nameToValidate,String message){
-        for (int i = 0; i <= memberNames.size(); i++){
+        if(memberNames.size() == 0){
+            return;
+        }
+        for (int i = 0; i < memberNames.size(); i++){
             if(memberNames.get(i).equals(nameToValidate)){
                 throw new IllegalArgumentException(message);
             }
         }
     }
     public static void validateTeamName(List<String> teamNames, String nameToValidate,String message){
-        for (int i = 0; i <= teamNames.size(); i++){
+        if(teamNames.size() == 0){
+            return;
+        }
+        for (int i = 0; i < teamNames.size(); i++){
             if(teamNames.get(i).equals(nameToValidate)){
                 throw new IllegalArgumentException(message);
             }
