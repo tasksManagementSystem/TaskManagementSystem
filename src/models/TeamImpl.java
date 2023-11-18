@@ -62,7 +62,7 @@ public class TeamImpl implements Team {
         StringBuilder allNames = new StringBuilder();
         for (String name :
                 teamNames) {
-            allNames.append(name + " ");
+            allNames.append(name + ", ");
         }
         return allNames.toString();
     }

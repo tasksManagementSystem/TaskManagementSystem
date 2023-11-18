@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ShowTeamBoardsCommand extends BaseCommand {
 
-    public static final int EXPECTED_NUMBER_OF_ARGUMENTS = 0;
+    public static final int EXPECTED_NUMBER_OF_ARGUMENTS = 1;
     public static final String INVALID_NUMBER_OF_ARGUMENTS = "Invalid number of arguments.";
     public static final String THERE_ARE_NO_BOARDS = "There are no boards in %s.";
 

@@ -68,7 +68,6 @@ public class ChangeFeedbackRatingCommand extends BaseCommand {
     }
 
     @Override
-    protected boolean requiresLogin() {
-        return false;
+    protected boolean requiresLogin() {return true;
     }
 }

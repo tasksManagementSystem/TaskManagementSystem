@@ -1,6 +1,7 @@
 package commands.createCommands;
 
 import commands.BaseCommand;
+import core.TaskManagementRepositoryImpl;
 import core.contracts.TaskManagementRepository;
 import models.contracts.Board;
 import models.contracts.Team;
@@ -36,6 +37,7 @@ public class CreateNewBoard extends BaseCommand {
         Board board = getRepository().createBoard(boardName);
         Team team = getRepository().findTeamByName(teamName);
         team.addBoard(board);
+        TaskManagementRepositoryImpl.boardList.add(board);
 
         return String.format(BOARD_CREATED_SUCCESSFULLY, boardName);
     }
