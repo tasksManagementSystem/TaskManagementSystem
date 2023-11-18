@@ -12,4 +12,6 @@ public interface Team {
     void addBoard(Board board);
 
     String getName();
+
+    void addMembers(Member member);
 }

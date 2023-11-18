@@ -49,7 +49,8 @@ public class TeamImpl implements Team {
     }
 
 
-    private void setMembers(List<Member> members) {
+    public void addMembers(Member member) {
+        members.add(member);
     }
 
     private void setBoards(List<Board> boards) {

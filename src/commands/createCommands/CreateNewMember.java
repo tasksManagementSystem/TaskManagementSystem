@@ -22,7 +22,7 @@ public class CreateNewMember extends BaseCommand {
     @Override
     public String execute(List<String> parameters) {
         ValidationHelpers.validateArgumentCount(parameters, COUNT, INVALID_NUMBER_OF_ARGUMENTS);
-        String username = parameters.get(0);
+        String username = parameters.get(1);
         /*trowIfMemberExist(username);*/
 
         return registerMember(username);

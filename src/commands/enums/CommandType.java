@@ -3,7 +3,6 @@ package commands.enums;
 public enum CommandType {
 
     LOGIN,
-
     LOGOUT,
     CREATEMEMBER,
     SHOW_BOARD_ACTIVITY,
