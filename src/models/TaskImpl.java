@@ -36,10 +36,6 @@ abstract class TaskImpl implements Task {
         addHistory(String.format(""));
     }
 
-    protected void addHistory(String logs) {
-        History log= new HistoryImpl(logs);
-       history.add(log);
-    }
 
     @Override
     public int getId() {
@@ -76,8 +72,10 @@ abstract class TaskImpl implements Task {
         ValidationHelpers.validateStringLength(description, DESCRIPTION_MIN_LENGTH, DESCRIPTION_MAX_LENGTH, INVALID_DESCRIPTION_MESSAGE);
         this.description = description;
     }
-
-
+    public void addHistory(String events) {
+        History event= new HistoryImpl(events);
+        history.add(event);
+    }
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;

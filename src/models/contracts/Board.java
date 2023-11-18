@@ -18,4 +18,5 @@ public interface Board {
 
     void addFeedback(Feedback feedback);
 
+     int changeFeedback(Feedback feedback);
 }

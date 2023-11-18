@@ -15,4 +15,6 @@ public interface Task {
     List<History> getHistories();
 
     void logEvent(String event);
+
+    void addHistory(String events);
 }

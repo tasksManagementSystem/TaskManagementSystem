@@ -34,6 +34,12 @@ public class BoardImpl implements Board {
         return tasks;
     }
 
+    @Override
+    public List<Bug> getBugs() {
+        return new ArrayList<>();
+    }
+
+
     public List<String> getActivityHistory() {
         return activityHistory;
     }
@@ -41,8 +47,7 @@ public class BoardImpl implements Board {
     @Override
     public void addBug(Bug bug) {
     }
-    public void addFeedback(Feedback feedback) {
-        feedbacks.add(feedback);
+    public void addFeedback(Feedback feedback) {feedbacks.add(feedback);
     }
 
     public void addStory(Story story) {
@@ -53,7 +58,21 @@ public class BoardImpl implements Board {
         ValidationHelpers.validateStringLength(name, BOARD_NAME_MIN_LENGTH,BOARD_NAME_MAX_LENGTH,String.format(INVALID_NAME_MESSAGE));
         this.name = name;
     }
+    public int changeFeedback(Feedback feedback) {
+        int currentIndex=-1;
+        int currentRating=0;
 
+        for(Feedback feedback1:feedbacks){
+            currentIndex++;
+            currentRating=feedback1.getRating();
+            if(feedback1.getTitle().equals(feedback.getTitle()) && feedback1.getDescription().equals(feedback.getDescription())){
+                feedbacks.set(currentIndex,feedback);
+
+            }
+        }
+
+        return currentRating;
+    }
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
     }
