@@ -1,18 +1,18 @@
 package models.enums;
 
 public enum Priority {
-    High,
-    Medium,
-    Low;
+    HIGH,
+    MEDIUM,
+    LOW;
 
     @Override
     public String toString() {
         switch (this){
-            case High:
+            case HIGH:
                 return "High";
-            case Medium:
+            case MEDIUM:
                 return "Medium";
-            case Low:
+            case LOW:
                 return "Low";
             default:
                 throw new UnsupportedOperationException("Invalid priority.");
