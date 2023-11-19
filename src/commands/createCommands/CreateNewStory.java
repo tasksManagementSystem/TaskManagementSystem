@@ -52,9 +52,10 @@ public class CreateNewStory extends BaseCommand {
 
         board.addStory(storyToAdd);
 
-        member.logEvent(String.format("Story %s created by member %s", title, member.getName()));
-        storyToAdd.logEvent(String.format("Story %s created by member %s", title, member.getName()));
+//        member.logEvent(String.format("Story %s created by member %s", title, member.getName()));
+//        storyToAdd.logEvent(String.format("Story %s created by member %s", title, member.getName()));
 
+        board.addHistory(String.format(STORY_CREATED, title, boardToAdd));
         return String.format(STORY_CREATED, title, boardToAdd);
     }
 

@@ -11,13 +11,14 @@ public class BoardImpl implements Board {
     public static final String INVALID_NAME_MESSAGE = "Name should be between %d and %d symbols.";
     public static final int BOARD_NAME_MIN_LENGTH = 5;
     public static final int BOARD_NAME_MAX_LENGTH = 10;
+
     private String name;
     private List<Task> tasks;
-    private List<String> activityHistory;
+    private List<History> activityHistory= new ArrayList<>();
 
     private final List<Feedback> feedbacks;
     private final List<Story> stories;
-    private final List<Bug> bugs= new ArrayList<>();
+    private final List<Bug> bugs;
 
     public BoardImpl(String name) {
         setName(name);
@@ -25,6 +26,7 @@ public class BoardImpl implements Board {
         this.activityHistory = new ArrayList<>();
         this.feedbacks = new ArrayList<>();
         this.stories = new ArrayList<>();
+        this.bugs=new ArrayList<>();
     }
 
     public String getName() {
@@ -48,14 +50,22 @@ public class BoardImpl implements Board {
         return new ArrayList<>(stories);
     }
 
-    public List<String> getActivityHistory() {
-        return activityHistory;
+    public List<History> getActivityHistory() {
+        return new ArrayList<>();
+    }
+
+    public void addActivityHistory(History history){
+
+        activityHistory.add(history);
     }
 
     @Override
-    public void addBug(Bug bug) { bugs.add(bug);
+    public void addBug(Bug bug) {
+        bugs.add(bug);
+
     }
-    public void addFeedback(Feedback feedback) {feedbacks.add(feedback);
+    public void addFeedback(Feedback feedback) {
+        feedbacks.add(feedback);
     }
 
     public void addStory(Story story) {
@@ -85,7 +95,13 @@ public class BoardImpl implements Board {
         this.tasks = tasks;
     }
 
-    public void setActivityHistory(List<String> activityHistory) {
-        this.activityHistory = activityHistory;
+    public void addHistory(String events) {
+        History event= new HistoryImpl(events);
+        addActivityHistory(event);
+    }
+    @Override
+    public  String viewInfo(History event) {
+        return String.format("%s",event);
     }
 }
+

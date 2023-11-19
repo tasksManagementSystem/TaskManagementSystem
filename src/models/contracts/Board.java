@@ -12,7 +12,7 @@ public interface Board {
     List<Story> getStories();
     List<Feedback> getFeedbacks();
 
-    List<String> getActivityHistory();
+    List<History> getActivityHistory();
 
     void addBug(Bug bug);
 
@@ -21,4 +21,6 @@ public interface Board {
     void addFeedback(Feedback feedback);
 
      int changeFeedback(Feedback feedback);
+     void addHistory(String events);
+    String viewInfo(History event);
 }

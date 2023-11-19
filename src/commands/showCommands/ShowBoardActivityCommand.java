@@ -31,7 +31,7 @@ public class ShowBoardActivityCommand extends BaseCommand {
 
     private String showBoardActivity() {
         {
-            List<Board> boards = getRepository().getBoards();
+            List<Board> boards = getRepository().getBoardList();
             StringBuilder sb = new StringBuilder();
             for (Board board : boards) {
                 sb.append(board.getActivityHistory());

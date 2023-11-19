@@ -14,4 +14,5 @@ public interface Team {
     String getName();
 
     void addMembers(Member member);
+   // List<String> getTeamNames();
 }

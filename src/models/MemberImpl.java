@@ -1,8 +1,6 @@
 package models;
 
-import models.contracts.Board;
-import models.contracts.Member;
-import models.contracts.Task;
+import models.contracts.*;
 import utils.ValidationHelpers;
 
 import java.util.ArrayList;
@@ -19,7 +17,7 @@ public class MemberImpl implements Member {
     static List<String> memberNames = new ArrayList<>();
     private String name;
     private List<Task> tasks;
-    private List<String> activityHistory;
+    private List<History> activityHistory;
 
     public MemberImpl(String name) {
         setName(name);
@@ -35,13 +33,17 @@ public class MemberImpl implements Member {
         return tasks;
     }
 
-    public List<String> getActivityHistory() {
-        return activityHistory;
+    public List<History> getActivityHistory() {
+        return new ArrayList<>(activityHistory);
+    }
+    public void addActivityHistory(History history){
+        activityHistory.add(history);
     }
 
     private void setName(String name) {
         ValidationHelpers.validateStringLength(name, NAME_MIN_LENGTH, NAME_MAX_LENGTH,String.format(INVALID_NAME_MESSAGE));
         ValidationHelpers.validateMemberName(memberNames,name,NAME_ALREADY_EXIST_MESSAGE);
+
         ValidationHelpers.validateTeamName(TeamImpl.teamNames,name,NAME_ALREADY_EXIST_MESSAGE);
         this.name = name;
         memberNames.add(name);
@@ -51,9 +53,7 @@ public class MemberImpl implements Member {
         this.tasks = tasks;
     }
 
-    private void setActivityHistory(List<String> activityHistory) {
-        this.activityHistory = new ArrayList<>(activityHistory) ;
-    }
+
 
     public List<String> getAllMemberNames(){
         List<String> allMemberNames = new ArrayList<>();
@@ -74,7 +74,6 @@ public class MemberImpl implements Member {
 
     @Override
     public void logEvent(String event) {
-
     }
 
     @Override
@@ -85,5 +84,11 @@ public class MemberImpl implements Member {
         return Objects.equals(name, member.name) && Objects.equals(tasks, member.tasks) && Objects.equals(activityHistory, member.activityHistory);
     }
 
+
+
+    public void addHistory(String events) {
+        History event= new HistoryImpl(events);
+        addActivityHistory(event);
+    }
 
 }

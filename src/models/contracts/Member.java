@@ -8,12 +8,13 @@ public interface Member {
 
     List<Task> getTasks();
 
-    List<String> getActivityHistory();
+    List<History> getActivityHistory();
 
     String showAllMembers();
 
     void logEvent(String event);
 
     List<String> getAllMemberNames();
+    void addHistory(String events);
 
 }

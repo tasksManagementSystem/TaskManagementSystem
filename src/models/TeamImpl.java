@@ -31,6 +31,11 @@ public class TeamImpl implements Team {
         return name;
     }
 
+
+   // public List<String> getTeamNames() {
+//        return new ArrayList<>();
+//    }
+
     public List<Member> getMembers() {
         return members;
     }
@@ -73,4 +78,12 @@ public class TeamImpl implements Team {
 
     }
 
+    @Override
+    public String toString() {
+        return "TeamImpl{" +
+                "name='" + name + '\'' +
+                ", members=" + members +
+                ", boards=" + boards +
+                '}';
+    }
 }

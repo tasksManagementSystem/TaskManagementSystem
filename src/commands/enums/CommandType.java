@@ -18,6 +18,7 @@ public enum CommandType {
     SHOW_TEAM_MEMBERS,
     ADD_MEMBER_TO_TEAM,
     SHOW_ALL_MEMBERS,
+    SHOW_TEAM_ACTIVITY,
 
 
 

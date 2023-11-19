@@ -35,7 +35,8 @@ public class CreateNewTeam extends BaseCommand {
 
     private String createTeam(String name) {
         Team team = getRepository().createTeam(name);
-        TaskManagementRepositoryImpl.teamsList.add(team);
+        getRepository().addTeam(team);
+        //TaskManagementRepositoryImpl.teamsList.add(team);
         return String.format(TEAM_CREATED_SUCCESSFULLY, name);
     }
 }

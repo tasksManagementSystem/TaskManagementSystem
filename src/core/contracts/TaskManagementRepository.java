@@ -20,8 +20,12 @@ public interface TaskManagementRepository {
     Board createBoard(String name);
     Team createTeam(String name);
     void addBoard(Board board);
-    List<Board> getBoards();
+    void addMember(Member member);
+    void addTeam(Team team);
+
     List<Team> getTeamsList();
+    List<Board> getBoardList();
+
 
     Severity getSeverity();
     Team findTeamByName(String name);

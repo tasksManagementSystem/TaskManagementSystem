@@ -34,6 +34,7 @@ abstract class TaskImpl implements Task {
         setDescription(description);
         this.comments = new ArrayList<>();
         addHistory(String.format("Create task with ID %d",id));
+
     }
 
 

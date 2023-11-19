@@ -3,7 +3,7 @@ package core;
 import commands.LoginCommand;
 import commands.LogoutCommand;
 import commands.addCommands.AddMemberToTeamCommand;
-import commands.changeCommands.ChangeFeedbackRatingCommand;
+//import commands.changeCommands.ChangeFeedbackRatingCommand;
 import commands.contracts.Command;
 import commands.createCommands.*;
 import commands.enums.CommandType;
@@ -27,8 +27,8 @@ public class CommandFactoryImpl implements CommandFactory {
                return new ShowTeamBoardsCommand(taskManagementRepository);
             case CREATE_NEW_BOARD:
                 return new CreateNewBoard(taskManagementRepository);
-            case CHANGE_FEEDBACK_RATING:
-                return new ChangeFeedbackRatingCommand(taskManagementRepository);
+//            case CHANGE_FEEDBACK_RATING:
+//                return new ChangeFeedbackRatingCommand(taskManagementRepository);
             case SHOW_BOARD_ACTIVITY:
                 return new ShowBoardActivityCommand(taskManagementRepository);
             case CREATE_NEW_BUG:
@@ -49,6 +49,8 @@ public class CommandFactoryImpl implements CommandFactory {
                 return new AddMemberToTeamCommand(taskManagementRepository);
             case SHOW_ALL_MEMBERS:
                     return new ShowAllMembersCommand(taskManagementRepository);
+            case SHOW_TEAM_ACTIVITY:
+                 return  new ShowTeamActivityCommand(taskManagementRepository);
             default:
                 throw new IllegalArgumentException();
         }

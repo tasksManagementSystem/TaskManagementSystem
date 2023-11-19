@@ -43,9 +43,10 @@ public class CreateNewFeedback extends BaseCommand {
         Feedback feedbackToAdd = getRepository().createFeedback(title, description, rating);
         board.addFeedback(feedbackToAdd);
 
-        member.logEvent(String.format("Feedback %s created by member %s", title, member.getName()));
-        feedbackToAdd.logEvent(String.format("Feedback %s created by member %s", title, member.getName()));
+//        member.logEvent(String.format("Feedback %s created by member %s", title, member.getName()));
+//        feedbackToAdd.logEvent(String.format("Feedback %s created by member %s", title, member.getName()));
 
+        board.addHistory(String.format(FEEDBACK_CREATED, title, boardToAdd));
         return String.format(FEEDBACK_CREATED, title, boardToAdd);
     }
 

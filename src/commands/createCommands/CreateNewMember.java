@@ -37,7 +37,9 @@ public class CreateNewMember extends BaseCommand {
 
     private String registerMember(String username) {
         Member member = getRepository().createMember(username);
-        TaskManagementRepositoryImpl.memberList.add(member);
+        getRepository().addMember(member);
+
+        member.addHistory(String.format(MEMBER_S_REGISTER_SUCCESSFULLY,username));
         return String.format(MEMBER_S_REGISTER_SUCCESSFULLY, username);
     }
 

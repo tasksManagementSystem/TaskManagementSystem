@@ -3,6 +3,7 @@ package commands.createCommands;
 import commands.BaseCommand;
 import core.TaskManagementRepositoryImpl;
 import core.contracts.TaskManagementRepository;
+import models.BoardImpl;
 import models.contracts.Board;
 import models.contracts.Team;
 import utils.ValidationHelpers;
@@ -37,8 +38,10 @@ public class CreateNewBoard extends BaseCommand {
         Board board = getRepository().createBoard(boardName);
         Team team = getRepository().findTeamByName(teamName);
         team.addBoard(board);
-        TaskManagementRepositoryImpl.boardList.add(board);
+        getRepository().addBoard(board);
+       // TaskManagementRepositoryImpl.boardList.add(board);
 
+        board.addHistory(String.format(BOARD_CREATED_SUCCESSFULLY,boardName));
         return String.format(BOARD_CREATED_SUCCESSFULLY, boardName);
     }
 

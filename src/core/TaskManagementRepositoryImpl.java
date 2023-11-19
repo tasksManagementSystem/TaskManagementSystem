@@ -22,9 +22,9 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public static final String NO_LOGGED_IN_MEMBER = "There is no logged in member.";
     public static final String THERE_IS_NO_TEAM_WITH_THIS_MEMBER = "There is no team with this member";
 
-    public static List<Member> memberList = new ArrayList<>();
-     public static List<Board> boardList = new ArrayList<>();
-    public static List<Team> teamsList = new ArrayList<>();
+    private final List<Member> memberList = new ArrayList<>();
+    private final List<Board> boardList = new ArrayList<>();
+    private final List<Team> teamsList = new ArrayList<>();
     private Member loggedMember;
 
     private int id;
@@ -32,7 +32,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
 
     public TaskManagementRepositoryImpl() {
         this.loggedMember = null;
-        this.id = 1;
+        this.id = 0;
     }
 
 
@@ -52,6 +52,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
                 .anyMatch(u -> u.getName().equals(username));
     }
 
+
     @Override
     public Member createMember(String username) {
         return new MemberImpl(username);
@@ -67,11 +68,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
         return new TeamImpl(name);
     }
 
-    public void addBoard(Board board) {
-        ValidationHelpers.validateBoardName(boardList, board.getName(), BOARD_NAME_ALREADY_EXIST_MESSAGE);
-        boardList.add(board);
 
-    }
 
     @Override
     public Bug createBug(String title, String boardToAdd, String description, List<String> stepsToReproduce,
@@ -80,18 +77,18 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public Story createStory(String title,String boardToAdd,String description, Priority priority, Size size, String assignee) {
-        return new StoryImpl(++id,title, description, priority, size, assignee);
+    public Story createStory(String title, String boardToAdd, String description, Priority priority, Size size, String assignee) {
+        return new StoryImpl(++id, title, description, priority, size, assignee);
     }
 
     @Override
     public Team findTeamByMember(Member member) {
-        for (Team team:
-             teamsList) {
+        for (Team team :
+                teamsList) {
             List<Member> members = team.getMembers();
-            for (Member memberName:
+            for (Member memberName :
                     members) {
-                if(memberName.equals(member)){
+                if (memberName.equals(member)) {
 
                     return team;
                 }
@@ -101,21 +98,31 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
 
-
-
     @Override
     public int hashCode() {
         return Objects.hash(loggedMember, id);
     }
 
-    @Override
-    public List<Board> getBoards() {
-        return new ArrayList<>(boardList);
-    }
 
     @Override
     public List<Team> getTeamsList() {
         return new ArrayList<>(teamsList);
+    }
+
+    public void addTeam(Team team) {
+        //ValidationHelpers.validateTeamName(teamsList, team.getName(), BOARD_NAME_ALREADY_EXIST_MESSAGE);
+        teamsList.add(team);
+
+    }
+
+    @Override
+    public List<Board> getBoardList() {return new ArrayList<>(boardList);
+
+    }
+    public void addBoard(Board board) {
+        ValidationHelpers.validateBoardName(boardList, board.getName(), BOARD_NAME_ALREADY_EXIST_MESSAGE);
+        boardList.add(board);
+
     }
 
     @Override
@@ -127,7 +134,11 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public List<Member> getMemberList() {
         return new ArrayList<>(memberList);
     }
+    public void addMember(Member member) {
+        // ValidationHelpers.validateMemberName(memberList, member.getName(), BOARD_NAME_ALREADY_EXIST_MESSAGE);
+        memberList.add(member);
 
+    }
     @Override
     public Team findTeamByName(String name) {
         Team team = teamsList.stream()
@@ -161,7 +172,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     public Feedback createFeedback(String title, String description, int rating) {
-        return new FeedbackImpl(++id,title, description, rating);
+        return new FeedbackImpl(++id, title, description, rating);
     }
 
     @Override
