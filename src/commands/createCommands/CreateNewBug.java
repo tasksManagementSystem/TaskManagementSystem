@@ -5,9 +5,11 @@ import core.contracts.TaskManagementRepository;
 import models.contracts.*;
 import models.enums.Priority;
 import models.enums.Severity;
+import models.enums.StatusBug;
 import utils.ParsingHelpers;
 import utils.ValidationHelpers;
 
+import java.io.ObjectInputFilter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -36,18 +38,19 @@ public class CreateNewBug extends BaseCommand {
     public String execute(List<String> parameters) {
 
         ValidationHelpers.validateArgumentCount(parameters, EXPECTED_NUMBER_OF_ARGUMENTS, WRONG_NUMBERS_OF_ARGUMENTS);
-        String description = parameters.get(0);
-        String title = parameters.get(2);
-        String boardToAdd = parameters.get(3);
-        List<String> stepsToReproduce = Arrays.asList(parameters.get(1).split("; "));
+        String boardToAdd = parameters.get(0);
+        String title = parameters.get(1);
+        String description = parameters.get(2);
+        List<String> stepsToReproduce = Arrays.asList(parameters.get(3).split("; "));
         Priority priority = ParsingHelpers.tryParseEnum(parameters.get(4), Priority.class);
         Severity severity = ParsingHelpers.tryParseEnum(parameters.get(5), Severity.class);
-        String assignee = parameters.get(6);
+        StatusBug statusBug= ParsingHelpers.tryParseEnum(parameters.get(6),StatusBug.class);
+        String assignee = parameters.get(7);
 
-        return createBug(title, boardToAdd, description, stepsToReproduce, priority, severity, assignee);
+        return createBug( boardToAdd, title, description, stepsToReproduce, priority, severity,statusBug, assignee);
     }
 
-    public String createBug(String title, String boardToAdd, String description, List<String> stepsToReproduce, Priority priority, Severity severity, String assignee) {
+    public String createBug(String boardToAdd,String title,  String description, List<String> stepsToReproduce, Priority priority, Severity severity,StatusBug statusBug, String assignee) {
         Member member = getRepository().getLoggedInMember();
         Team teamOfLoggedInMember = getRepository().findTeamByMember(member.getName());
         List<Member> membersInTeam = teamOfLoggedInMember.getMembers();
