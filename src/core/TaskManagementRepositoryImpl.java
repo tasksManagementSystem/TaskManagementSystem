@@ -80,8 +80,8 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public Story createStory(String title, String description, Priority priority, Size size, String assignee) {
-        return null;
+    public Story createStory(String title,String boardToAdd,String description, Priority priority, Size size, String assignee) {
+        return new StoryImpl(++id,title, description, priority, size, assignee);
     }
 
     @Override
@@ -161,7 +161,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     public Feedback createFeedback(String title, String description, int rating) {
-        return new FeedbackImpl(title, description, rating);
+        return new FeedbackImpl(++id,title, description, rating);
     }
 
     @Override

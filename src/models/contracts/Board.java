@@ -9,6 +9,8 @@ public interface Board {
     List<Task> getTasks();
 
      List<Bug> getBugs();
+    List<Story> getStories();
+    List<Feedback> getFeedbacks();
 
     List<String> getActivityHistory();
 

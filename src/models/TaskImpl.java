@@ -25,7 +25,7 @@ abstract class TaskImpl implements Task {
     private List<History> history=new ArrayList<>();
 
 
-    public TaskImpl(String title, String description) {
+    public TaskImpl(int id,String title, String description) {
 
         this.id=totalId;
         totalId++;

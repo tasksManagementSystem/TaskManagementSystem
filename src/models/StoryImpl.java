@@ -13,8 +13,8 @@ public class StoryImpl extends TaskImpl implements Story {
 
     private StatusStory statusStory;
 
-    public StoryImpl(String title, String description, Priority priority, Size size, String assignee) {
-        super(title, description);
+    public StoryImpl(int id,String title, String description, Priority priority, Size size, String assignee) {
+        super(id, title, description);
         setPriority(priority);
         setSize(size);
         setAssignee(assignee);

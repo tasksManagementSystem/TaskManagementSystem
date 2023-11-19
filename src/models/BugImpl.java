@@ -20,7 +20,7 @@ public class BugImpl extends TaskImpl implements Bug {
 
     public BugImpl( int id, String title, String description, List<String> stepOfReproduce,
                    Priority priority, Severity severity, String assignee) {
-        super( title, description);
+        super(id,title, description);
         this.stepOfReproduce=stepOfReproduce;
         this.priority=priority;
         this.severity=severity;

@@ -30,26 +30,25 @@ public class CreateNewStory extends BaseCommand {
     @Override
     public String execute(List<String> parameters) {
         ValidationHelpers.validateArgumentCount(parameters, EXPECTED_NUMBER_OF_ARGUMENTS, WRONG_NUMBER_OF_ARGUMENTS);
-        String description = parameters.get(0);
+        String boardToAdd = parameters.get(0);
         String title = parameters.get(1);
-        String boardToAdd = parameters.get(2);
+        String description = parameters.get(2);
         Priority priority = ParsingHelpers.tryParseEnum(parameters.get(3), Priority.class);
         Size size = ParsingHelpers.tryParseEnum(parameters.get(4), Size.class);
         String assignee = parameters.get(5);
-        return createStory(title, boardToAdd, description, priority, size, assignee);
+        return createStory( boardToAdd,title,description, priority, size, assignee);
     }
 
-    private String createStory(String title, String boardToAdd, String description, Priority priority, Size size, String assignee) {
+    private String createStory(String boardToAdd,String title,String description, Priority priority, Size size, String assignee) {
         Member member = getRepository().getLoggedInMember();
         Team teamOfLoggedInMember = getRepository().findTeamByMember(member);
         List<Member> membersInTeam = teamOfLoggedInMember.getMembers();
         throwIfInvalidAssignee(assignee, teamOfLoggedInMember, membersInTeam);
-
         List<Board> boards = teamOfLoggedInMember.getBoards();
         Board board = findBoardInTeam(boards, boardToAdd);
-        Story storyToAdd = getRepository().createStory(title, description, priority, size, assignee);
-        List<Task> taskList = board.getTasks();
-        throwIfTaskExist(title, taskList);
+        Story storyToAdd = getRepository().createStory(title,boardToAdd, description,priority, size, assignee);
+        List<Story> storyList = board.getStories();
+        throwIfStoryExist(title, storyList);
 
         board.addStory(storyToAdd);
 
@@ -59,9 +58,9 @@ public class CreateNewStory extends BaseCommand {
         return String.format(STORY_CREATED, title, boardToAdd);
     }
 
-    private static void throwIfTaskExist(String nameOfTask, List<Task> taskList) {
-        if (taskList.stream().anyMatch(task -> task.getTitle().equals(nameOfTask))) {
-            throw new IllegalArgumentException("Task with such a title already exists");
+    private static void throwIfStoryExist(String nameOfTask, List<Story> storyList) {
+        if (storyList.stream().anyMatch(story -> story.getTitle().equals(nameOfTask))) {
+            throw new IllegalArgumentException("Story with such a title already exists");
         }
     }
 

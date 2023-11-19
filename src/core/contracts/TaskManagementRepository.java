@@ -37,7 +37,7 @@ public interface TaskManagementRepository {
     Bug createBug(String title, String boardToAdd, String description, List<String> stepsToReproduce,
                   Priority priority, Severity severity, String assignee);
 
-    Story createStory(String title, String description, Priority priority, Size size, String assignee);
+    Story createStory(String title,String boardToAdd, String description, Priority priority, Size size, String assignee);
 
     Team findTeamByMember(Member member);
 

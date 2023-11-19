@@ -40,6 +40,13 @@ public class BoardImpl implements Board {
         return new ArrayList<>(bugs);
     }
 
+    public List<Feedback> getFeedbacks() {
+        return new ArrayList<>(feedbacks);
+    }
+
+    public List<Story> getStories() {
+        return new ArrayList<>(stories);
+    }
 
     public List<String> getActivityHistory() {
         return activityHistory;
