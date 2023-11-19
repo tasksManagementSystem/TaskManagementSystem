@@ -52,12 +52,12 @@ There are 3 types of tasks: **bug**, **story**, and **feedback**.
 
 Bugs must have an ID, a title, a description, a list of steps to reproduce it, a priority, a severity, a status, an assignee, a list of comments and a list of changes history.
 
-- Title is a string between 10 and 50 symbols.
+- Title is a string between 10 and 100 symbols.
 - Description is a string between 10 and 500 symbols.
 - Steps to reproduce is a list of strings.
 - Priority is one of the following: High, Medium, or Low.
 - Severity is one of the following: Critical, Major, or Minor.
-- Status is one of the following: Active or Fixed.
+- Status is one of the following: Active or Done.
 - Assignee is a member from the team.
 - Comments is a list of comments (string messages with an author).
 - History is a list of all changes (string messages) that were done to the bug.
@@ -66,7 +66,7 @@ Bugs must have an ID, a title, a description, a list of steps to reproduce it, a
 
 Stories must have an ID, a title, a description, a priority, a size, a status, an assignee, a list of comments and a list of changes history.
 
-- Title is a string between 10 and 50 symbols.
+- Title is a string between 10 and 100 symbols.
 - Description is a string between 10 and 500 symbols.
 - Priority is one of the following: High, Medium, or Low.
 - Size is one of the following: Large, Medium, or Small.
@@ -79,7 +79,7 @@ Stories must have an ID, a title, a description, a priority, a size, a status, a
 
 Feedbacks must have an ID, a title, a description, a rating, a status, a list of comments and a list of changes history.
 
-- Title is a string between 10 and 50 symbols.
+- Title is a string between 10 and 100 symbols.
 - Description is a string between 10 and 500 symbols.
 - Rating is an integer.
 - Status is one of the following: New, Unscheduled, Scheduled, or Done.
