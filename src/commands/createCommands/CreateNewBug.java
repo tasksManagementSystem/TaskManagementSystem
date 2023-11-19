@@ -49,7 +49,7 @@ public class CreateNewBug extends BaseCommand {
 
     public String createBug(String title, String boardToAdd, String description, List<String> stepsToReproduce, Priority priority, Severity severity, String assignee) {
         Member member = getRepository().getLoggedInMember();
-        Team teamOfLoggedInMember = getRepository().findTeamByName(member.getName());
+        Team teamOfLoggedInMember = getRepository().findTeamByMember(member.getName());
         List<Member> membersInTeam = teamOfLoggedInMember.getMembers();
         throwIfInvalidAssignee(assignee, teamOfLoggedInMember, membersInTeam);
         Board board = findBoardInTeam(teamOfLoggedInMember, boardToAdd);

@@ -20,6 +20,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public static final String BOARD_NAME_ALREADY_EXIST_MESSAGE = "This board name already exist.";
     public static final String THERE_IS_NO_TEAM_WITH_NAME_S = "There is no Team with name %s ";
     public static final String NO_LOGGED_IN_MEMBER = "There is no logged in member.";
+    public static final String THERE_IS_NO_TEAM_WITH_THIS_MEMBER = "There is no team with this member";
 
     public static List<Member> memberList = new ArrayList<>();
      public static List<Board> boardList = new ArrayList<>();
@@ -81,6 +82,21 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     @Override
     public Story createStory(String title, String description, Priority priority, Size size, String assignee) {
         return null;
+    }
+
+    @Override
+    public Team findTeamByMember(String member) {
+        for (Team team:
+             teamsList) {
+            List<Member> members = team.getMembers();
+            for (Member memberName:
+                    members) {
+                if(memberName.equals(member)){
+                    return team;
+                }
+            }
+        }
+        throw new IllegalArgumentException(THERE_IS_NO_TEAM_WITH_THIS_MEMBER);
     }
 
     @Override
@@ -147,5 +163,6 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
                 .orElseThrow(() -> new IllegalArgumentException(String.format(THERE_IS_NO_TEAM_WITH_NAME_S, name)));
         return board;
     }
+
 
 }

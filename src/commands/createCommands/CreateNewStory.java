@@ -41,7 +41,7 @@ public class CreateNewStory extends BaseCommand {
 
     private String createStory(String title, String boardToAdd, String description, Priority priority, Size size, String assignee) {
         Member member = getRepository().getLoggedInMember();
-        Team teamOfLoggedInMember = getRepository().findTeamOfMember(member.getName());
+        Team teamOfLoggedInMember = getRepository().findTeamByMember(member.getName());
         List<Member> membersInTeam = teamOfLoggedInMember.getMembers();
         throwIfInvalidAssignee(assignee, teamOfLoggedInMember, membersInTeam);
 

@@ -37,7 +37,7 @@ public class ChangeFeedbackRatingCommand extends BaseCommand {
     private String changeFeedback(String title, String description, String boardToChange, int rating) {
 
         Member member = getRepository().getLoggedInMember();
-        Team teamOfLoggedInMember = getRepository().findTeamOfMember(member.getName());
+        Team teamOfLoggedInMember = getRepository().findTeamByMember(member.getName());
         List<Board> boards = teamOfLoggedInMember.getBoards();
         Board board = findBoardInTeam(boards, boardToChange);
         List<Task> taskList = board.getTasks();
