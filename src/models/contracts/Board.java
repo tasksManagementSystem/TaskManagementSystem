@@ -8,7 +8,7 @@ public interface Board {
 
     List<Task> getTasks();
 
-//    List<Bug> getBugs();
+     List<Bug> getBugs();
 
     List<String> getActivityHistory();
 

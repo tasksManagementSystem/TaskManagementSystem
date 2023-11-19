@@ -7,6 +7,7 @@ import utils.ValidationHelpers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MemberImpl implements Member {
 
@@ -75,5 +76,14 @@ public class MemberImpl implements Member {
     public void logEvent(String event) {
 
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MemberImpl member = (MemberImpl) o;
+        return Objects.equals(name, member.name) && Objects.equals(tasks, member.tasks) && Objects.equals(activityHistory, member.activityHistory);
+    }
+
 
 }

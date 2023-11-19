@@ -17,6 +17,7 @@ public class BoardImpl implements Board {
 
     private final List<Feedback> feedbacks;
     private final List<Story> stories;
+    private final List<Bug> bugs= new ArrayList<>();
 
     public BoardImpl(String name) {
         setName(name);
@@ -31,12 +32,12 @@ public class BoardImpl implements Board {
     }
 
     public List<Task> getTasks() {
-        return tasks;
+        return new ArrayList<>();
     }
 
 
     public List<Bug> getBugs() {
-        return new ArrayList<>();
+        return new ArrayList<>(bugs);
     }
 
 
@@ -45,7 +46,7 @@ public class BoardImpl implements Board {
     }
 
     @Override
-    public void addBug(Bug bug) {
+    public void addBug(Bug bug) { bugs.add(bug);
     }
     public void addFeedback(Feedback feedback) {feedbacks.add(feedback);
     }

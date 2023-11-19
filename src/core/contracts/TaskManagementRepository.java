@@ -39,7 +39,7 @@ public interface TaskManagementRepository {
 
     Story createStory(String title, String description, Priority priority, Size size, String assignee);
 
-    Team findTeamByMember(String member);
+    Team findTeamByMember(Member member);
 
     Feedback createFeedback(String title, String description, int rating);
 

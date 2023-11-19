@@ -10,7 +10,7 @@ import utils.ValidationHelpers;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Objects;
 
 
 public class TaskManagementRepositoryImpl implements TaskManagementRepository {
@@ -85,18 +85,27 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public Team findTeamByMember(String member) {
+    public Team findTeamByMember(Member member) {
         for (Team team:
              teamsList) {
             List<Member> members = team.getMembers();
             for (Member memberName:
                     members) {
                 if(memberName.equals(member)){
+
                     return team;
                 }
             }
         }
         throw new IllegalArgumentException(THERE_IS_NO_TEAM_WITH_THIS_MEMBER);
+    }
+
+
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(loggedMember, id);
     }
 
     @Override

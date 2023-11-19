@@ -15,7 +15,7 @@ import java.util.List;
 
 public class CreateNewBug extends BaseCommand {
 
-    public static final String INVALID_NUMBERS_OF_ARGUMENTS = "Invalid numbers of arguments.";
+
     public static final String WRONG_NUMBERS_OF_ARGUMENTS = "Wrong numbers of arguments.";
     public static final String BUG_CREATED = "Bug %s created successfully in board %s!";
 
@@ -26,7 +26,6 @@ public class CreateNewBug extends BaseCommand {
     public CreateNewBug(TaskManagementRepository repository) {
         super(repository);
     }
-
 
 
     @Override
@@ -44,21 +43,20 @@ public class CreateNewBug extends BaseCommand {
         List<String> stepsToReproduce = Arrays.asList(parameters.get(3).split("; "));
         Priority priority = ParsingHelpers.tryParseEnum(parameters.get(4), Priority.class);
         Severity severity = ParsingHelpers.tryParseEnum(parameters.get(5), Severity.class);
-        StatusBug statusBug= ParsingHelpers.tryParseEnum(parameters.get(6),StatusBug.class);
-        String assignee = parameters.get(7);
+        String assignee = parameters.get(6);
 
-        return createBug( boardToAdd, title, description, stepsToReproduce, priority, severity,statusBug, assignee);
+        return createBug(boardToAdd, title, description, stepsToReproduce, priority, severity, assignee);
     }
 
-    public String createBug(String boardToAdd,String title,  String description, List<String> stepsToReproduce, Priority priority, Severity severity,StatusBug statusBug, String assignee) {
+    public String createBug(String boardToAdd, String title, String description, List<String> stepsToReproduce, Priority priority, Severity severity, String assignee) {
         Member member = getRepository().getLoggedInMember();
-        Team teamOfLoggedInMember = getRepository().findTeamByMember(member.getName());
+        Team teamOfLoggedInMember = getRepository().findTeamByMember(member);
         List<Member> membersInTeam = teamOfLoggedInMember.getMembers();
         throwIfInvalidAssignee(assignee, teamOfLoggedInMember, membersInTeam);
         Board board = findBoardInTeam(teamOfLoggedInMember, boardToAdd);
         Bug bugToAdd = getRepository().createBug(title, boardToAdd, description, stepsToReproduce, priority, severity, assignee);
-        List<Task> taskList = board.getTasks();
-        throwIfTaskExist(title, taskList);
+        List<Bug> bugList = board.getBugs();
+        throwIfBugExist(title, bugList);
 
         board.addBug(bugToAdd);
 
@@ -68,10 +66,10 @@ public class CreateNewBug extends BaseCommand {
         return String.format(BUG_CREATED, title, boardToAdd);
     }
 
-    private static void throwIfTaskExist(String nameOfTask, List<Task> taskList) {
-        for (Task task : taskList) {
-            if (task.getTitle().equals(nameOfTask)) {
-                throw new IllegalArgumentException("Task with such a title already exists");
+    private static void throwIfBugExist(String nameOfTask, List<Bug> bugList) {
+        for (Bug bug : bugList) {
+            if (bug.getTitle().equals(nameOfTask)) {
+                throw new IllegalArgumentException("Bug with such a title already exists");
             }
         }
     }

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BugImpl extends TaskImpl implements Bug {
-    private List<String> stepOfReproduce;
+    private List<String> stepOfReproduce= new ArrayList<>();
     private Priority priority;
     private Severity severity;
     private String assignee;
@@ -21,7 +21,7 @@ public class BugImpl extends TaskImpl implements Bug {
     public BugImpl( int id, String title, String description, List<String> stepOfReproduce,
                    Priority priority, Severity severity, String assignee) {
         super( title, description);
-        this.stepOfReproduce=new ArrayList<>(stepOfReproduce);
+        this.stepOfReproduce=stepOfReproduce;
         this.priority=priority;
         this.severity=severity;
         this.assignee=assignee;
