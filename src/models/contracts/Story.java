@@ -5,8 +5,8 @@ import models.enums.Size;
 
 public interface Story extends Task, TaskInfo {
 
-
-
     Size getSize();
+
+    void changeAssignee(String newAssignee);
 
 }

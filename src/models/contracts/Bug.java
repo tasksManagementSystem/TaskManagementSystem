@@ -14,6 +14,7 @@ public interface Bug extends Task, TaskInfo {
     Severity getSeverity();
 
     StatusBug getStatusBug();
+    void changeAssignee(String newAssignee);
 
 
 

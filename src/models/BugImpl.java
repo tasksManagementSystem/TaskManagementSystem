@@ -71,5 +71,10 @@ public class BugImpl extends TaskImpl implements Bug {
 
     @Override
     public void logEvent(String event) {}
+    public void changeAssignee(String newAssignee){
+        this.assignee=newAssignee;
+
+
+    }
 
 }

@@ -5,6 +5,8 @@ import commands.LogoutCommand;
 import commands.addCommands.AddCommentToTaskCommand;
 import commands.addCommands.AddMemberToTeamCommand;
 //import commands.changeCommands.ChangeFeedbackRatingCommand;
+import commands.assignCommands.AssignBugCommand;
+import commands.assignCommands.AssignStoryCommand;
 import commands.contracts.Command;
 import commands.createCommands.*;
 import commands.enums.CommandType;
@@ -25,7 +27,7 @@ public class CommandFactoryImpl implements CommandFactory {
             case CREATE_NEW_MEMBER:
                 return new CreateNewMember(taskManagementRepository);
             case SHOW_TEAM_BOARD:
-               return new ShowTeamBoardsCommand(taskManagementRepository);
+                return new ShowTeamBoardsCommand(taskManagementRepository);
             case CREATE_NEW_BOARD:
                 return new CreateNewBoard(taskManagementRepository);
 //            case CHANGE_FEEDBACK_RATING:
@@ -49,11 +51,15 @@ public class CommandFactoryImpl implements CommandFactory {
             case ADD_MEMBER_TO_TEAM:
                 return new AddMemberToTeamCommand(taskManagementRepository);
             case SHOW_ALL_MEMBERS:
-                    return new ShowAllMembersCommand(taskManagementRepository);
+                return new ShowAllMembersCommand(taskManagementRepository);
             case SHOW_TEAM_ACTIVITY:
-                 return  new ShowTeamActivityCommand(taskManagementRepository);
+                return new ShowTeamActivityCommand(taskManagementRepository);
             case ADD_COMMENT_TO_TASK:
-                    return new AddCommentToTaskCommand(taskManagementRepository);
+                return new AddCommentToTaskCommand(taskManagementRepository);
+            case ASSIGN_BUG:
+                return new AssignBugCommand(taskManagementRepository);
+            case ASSIGN_STORY:
+                return new AssignStoryCommand(taskManagementRepository);
             default:
                 throw new IllegalArgumentException();
         }

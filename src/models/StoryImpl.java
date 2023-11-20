@@ -13,22 +13,25 @@ public class StoryImpl extends TaskImpl implements Story {
 
     private StatusStory statusStory;
 
-    public StoryImpl(int id,String title, String description, Priority priority, Size size, String assignee) {
+    public StoryImpl(int id, String title, String description, Priority priority, Size size, String assignee) {
         super(id, title, description);
         setPriority(priority);
         setSize(size);
         setAssignee(assignee);
         statusStory = StatusStory.NOT_DONE;
     }
-@Override
+
+    @Override
     public Priority getPriority() {
         return priority;
     }
-@Override
+
+    @Override
     public Size getSize() {
         return size;
     }
-@Override
+
+    @Override
     public String getAssignee() {
         return assignee;
     }
@@ -47,6 +50,11 @@ public class StoryImpl extends TaskImpl implements Story {
 
     @Override
     public void logEvent(String event) {
+
+    }
+
+    public void changeAssignee(String newAssignee) {
+        this.assignee = newAssignee;
 
     }
 }
