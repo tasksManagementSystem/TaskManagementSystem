@@ -8,6 +8,7 @@ import models.contracts.History;
 import models.contracts.Member;
 import utils.ParsingHelpers;
 import utils.ValidationHelpers;
+
 import java.util.List;
 
 
@@ -15,17 +16,18 @@ public class ShowMemberActivityCommand extends BaseCommand {
 
     public static final String NO_ACTIVITY_FOR_MEMBER =
             "Currently there is no activity to display for this member.";
-    public static final int EXPECT_NUMBER_OF_ARGUMENTS =1;
+    public static final int EXPECT_NUMBER_OF_ARGUMENTS = 1;
 
     public ShowMemberActivityCommand(TaskManagementRepository taskManagementRepository) {
         super(taskManagementRepository);
     }
-@Override
+
+    @Override
     public String execute(List<String> parameters) {
         ValidationHelpers.validateArgumentCount(parameters,
                 EXPECT_NUMBER_OF_ARGUMENTS, NO_ACTIVITY_FOR_MEMBER);
 
-    String memberName = parameters.get(0);
+        String memberName = parameters.get(0);
         return showMemberActivity(memberName);
     }
 
@@ -35,20 +37,21 @@ public class ShowMemberActivityCommand extends BaseCommand {
     }
 
 
-    private String showMemberActivity(String memberName){
+    private String showMemberActivity(String memberName) {
         List<Member> memberList = getRepository().getMemberList();
         StringBuilder sb = new StringBuilder();
-        sb.append("Member history: ");
-        for(Member member:memberList){
-            if(member.getName().equals(memberName)){
-                    List<History> histories=member.getActivityHistory();
-                    for(History history:histories){
-                        sb.append(history);
-                    }
+
+        for (Member member : memberList) {
+            if (member.getName().equals(memberName)) {
+                sb.append(String.format("Member %s activity:",member.getName()));
+                sb.append(System.lineSeparator());
+                List<History> histories = member.getActivityHistory();
+                for (History history : histories) {
+                    sb.append(history);
+                    sb.append(System.lineSeparator());
+                }
             }
         }
-
-          //  sb.append( member.getActivityHistory());
 
 
         return sb.toString();

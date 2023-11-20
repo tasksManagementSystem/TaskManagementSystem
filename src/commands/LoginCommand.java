@@ -35,6 +35,7 @@ public class LoginCommand extends BaseCommand {
     private String login(String username) {
         Member memberFound = getRepository().findMemberByUsername(username);
         getRepository().login(memberFound);
+        memberFound.addHistory(String.format(MEMBER_LOGGED_IN,username));
         return String.format(MEMBER_LOGGED_IN, username);
     }
 

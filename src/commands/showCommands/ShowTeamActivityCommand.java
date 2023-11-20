@@ -36,17 +36,21 @@ public class ShowTeamActivityCommand extends BaseCommand {
         List<Team> teamList = getRepository().getTeamsList();
         StringBuilder sb = new StringBuilder();
         for (Team team : teamList) {
-            sb.append("Team:" + team.getName());
+            sb.append(String.format("Team %s activity:",team.getName()));
             sb.append(System.lineSeparator());
             List<Member> memberList = team.getMembers();
             for (Member member : memberList) {
+                sb.append(String.format("Member: %s",member.getName()));
+                sb.append(System.lineSeparator());
                 List<History> histories = member.getActivityHistory();
                 for (History history : histories) {
                     sb.append(history);
+                    sb.append(System.lineSeparator());
                 }
 
             }
             sb.append(System.lineSeparator());
+
 
         }
         return sb.toString();

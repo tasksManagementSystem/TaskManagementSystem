@@ -21,7 +21,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public static final String THERE_IS_NO_TEAM_WITH_NAME_S = "There is no Team with name %s ";
     public static final String NO_LOGGED_IN_MEMBER = "There is no logged in member.";
     public static final String THERE_IS_NO_TEAM_WITH_THIS_MEMBER = "There is no team with this member";
-
+    public final static String MEMBER_LOGGED_OUT = "Member logged out!";
     private final List<Member> memberList = new ArrayList<>();
     private final List<Board> boardList = new ArrayList<>();
     private final List<Team> teamsList = new ArrayList<>();
@@ -168,7 +168,9 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
 
     @Override
     public void logout() {
+        loggedMember.addHistory((MEMBER_LOGGED_OUT));
         loggedMember = null;
+
     }
 
     public Feedback createFeedback(String title, String description, int rating) {

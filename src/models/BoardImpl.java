@@ -51,7 +51,7 @@ public class BoardImpl implements Board {
     }
 
     public List<History> getActivityHistory() {
-        return new ArrayList<>();
+        return new ArrayList<>(activityHistory);
     }
 
     public void addActivityHistory(History history){
