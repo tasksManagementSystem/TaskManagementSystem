@@ -25,6 +25,8 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     private final List<Member> memberList = new ArrayList<>();
     private final List<Board> boardList = new ArrayList<>();
     private final List<Team> teamsList = new ArrayList<>();
+
+    private final List<Comment> comments = new ArrayList<>();
     private Member loggedMember;
 
     private int id;
@@ -97,6 +99,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
         throw new IllegalArgumentException(THERE_IS_NO_TEAM_WITH_THIS_MEMBER);
     }
 
+//    public Board findBoardBy
 
     @Override
     public int hashCode() {
@@ -186,5 +189,12 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
         return board;
     }
 
+    public List<Comment> getComments() {
+        return new ArrayList<>(comments);
+    }
+
+    public void addComments(Comment comment){
+        comments.add(comment);
+    }
 
 }

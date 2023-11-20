@@ -19,6 +19,7 @@ public enum CommandType {
     ADD_MEMBER_TO_TEAM,
     SHOW_ALL_MEMBERS,
     SHOW_TEAM_ACTIVITY,
+    ADD_COMMENT_TO_TASK,
 
 
 

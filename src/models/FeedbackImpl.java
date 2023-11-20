@@ -3,9 +3,12 @@ package models;
 import models.contracts.Feedback;
 import models.enums.StatusFeedback;
 
+import java.util.List;
+
 public class FeedbackImpl extends TaskImpl implements Feedback {
     private int rating;
     private StatusFeedback statusFeedback;
+
 
     public FeedbackImpl(int id,String title, String description, int rating) {
         super(id,title, description);

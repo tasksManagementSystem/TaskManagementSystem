@@ -4,4 +4,6 @@ public interface Comment {
     String getComment();
 
     String getAuthor();
+
+
 }

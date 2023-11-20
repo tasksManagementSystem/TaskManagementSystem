@@ -47,6 +47,8 @@ public interface TaskManagementRepository {
 
     Feedback createFeedback(String title, String description, int rating);
 
+    List<Comment> getComments();
 
+    void addComments(Comment comment);
 
 }
