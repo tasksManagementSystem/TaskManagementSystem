@@ -62,6 +62,7 @@ public class CreateNewBug extends BaseCommand {
 
 //        member.logEvent(String.format("Bug %s created by member %s", title, member.getName()));
 //        bugToAdd.logEvent(String.format("Bug %s created by member %s", title, member.getName()));
+        member.addHistory(String.format(BUG_CREATED, title, boardToAdd));;
         board.addHistory(String.format(BUG_CREATED, title, boardToAdd));
         return String.format(BUG_CREATED, title, boardToAdd);
     }

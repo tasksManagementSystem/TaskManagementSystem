@@ -55,6 +55,7 @@ public class CreateNewStory extends BaseCommand {
 //        member.logEvent(String.format("Story %s created by member %s", title, member.getName()));
 //        storyToAdd.logEvent(String.format("Story %s created by member %s", title, member.getName()));
 
+        member.addHistory(String.format(STORY_CREATED, title, boardToAdd));
         board.addHistory(String.format(STORY_CREATED, title, boardToAdd));
         return String.format(STORY_CREATED, title, boardToAdd);
     }

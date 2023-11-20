@@ -46,9 +46,11 @@ public class ShowTeamActivityCommand extends BaseCommand {
                 }
 
             }
+            sb.append(System.lineSeparator());
 
         }
         return sb.toString();
+
     }
 
 }

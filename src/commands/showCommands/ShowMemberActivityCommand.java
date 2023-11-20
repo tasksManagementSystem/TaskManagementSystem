@@ -38,6 +38,7 @@ public class ShowMemberActivityCommand extends BaseCommand {
     private String showMemberActivity(String memberName){
         List<Member> memberList = getRepository().getMemberList();
         StringBuilder sb = new StringBuilder();
+        sb.append("Member history: ");
         for(Member member:memberList){
             if(member.getName().equals(memberName)){
                     List<History> histories=member.getActivityHistory();
