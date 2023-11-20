@@ -36,4 +36,8 @@ public class FeedbackImpl extends TaskImpl implements Feedback {
     public void logEvent(String event) {
 
     }
+    public  void changeStatus(StatusFeedback status){
+        statusFeedback=status;
+
+    }
 }

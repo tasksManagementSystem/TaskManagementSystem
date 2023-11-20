@@ -4,6 +4,7 @@ import models.contracts.Story;
 import models.contracts.TaskInfo;
 import models.enums.Priority;
 import models.enums.Size;
+import models.enums.StatusFeedback;
 import models.enums.StatusStory;
 
 public class StoryImpl extends TaskImpl implements Story {
@@ -13,6 +14,8 @@ public class StoryImpl extends TaskImpl implements Story {
 
     private StatusStory statusStory;
 
+
+
     public StoryImpl(int id, String title, String description, Priority priority, Size size, String assignee) {
         super(id, title, description);
         setPriority(priority);
@@ -20,7 +23,10 @@ public class StoryImpl extends TaskImpl implements Story {
         setAssignee(assignee);
         statusStory = StatusStory.NOT_DONE;
     }
-
+    @Override
+    public StatusStory getStatusStory() {
+        return statusStory;
+    }
     @Override
     public Priority getPriority() {
         return priority;
@@ -55,6 +61,10 @@ public class StoryImpl extends TaskImpl implements Story {
 
     public void changeAssignee(String newAssignee) {
         this.assignee = newAssignee;
+
+    }
+    public  void changeStatus(StatusStory status){
+        statusStory=status;
 
     }
 }

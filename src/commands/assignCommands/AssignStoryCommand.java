@@ -13,6 +13,7 @@ public class AssignStoryCommand extends BaseCommand {
     public static final String TASK_REASSIGNED_SUCCESSFULLY = "Assignee of story %s successfully reassigned from %s to %s!";
     public static final String ASSIGNEE_ERR_MESSAGE = "Assignee %s is not part of team %s!";
     public static final String NO_STORY_ERR_MESSAGE = "There is no story %s in team %s!";
+    public static final String CHANGED_THE_ASSIGNEE_OF_STORY_S_FROM_S_TO_S = "%s changed the assignee of story %s from %s to %s.";
 
     public AssignStoryCommand(TaskManagementRepository repository) {
         super(repository);
@@ -46,8 +47,8 @@ public class AssignStoryCommand extends BaseCommand {
                     throwIfInvalidAssignee(newAssignee, memberTeam, membersInTeam);
                     story.changeAssignee(newAssignee);
 
-                    story.addHistory(String.format("%s changed the assignee of story %s from %s to %s.", member.getName(), story.getTitle(), oldAssignee.getName(), newAssignee));
-                    member.addHistory(String.format("%s changed the assignee of story %s from %s to %s.", member.getName(), story.getTitle(), oldAssignee.getName(), newAssignee));
+                    story.addHistory(String.format(CHANGED_THE_ASSIGNEE_OF_STORY_S_FROM_S_TO_S, member.getName(), story.getTitle(), oldAssignee.getName(), newAssignee));
+                    member.addHistory(String.format(CHANGED_THE_ASSIGNEE_OF_STORY_S_FROM_S_TO_S, member.getName(), story.getTitle(), oldAssignee.getName(), newAssignee));
                     return String.format(TASK_REASSIGNED_SUCCESSFULLY, storyToReassign, oldAssignee.getName(), newAssignee);
                 }
             }

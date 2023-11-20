@@ -6,7 +6,6 @@ import models.contracts.*;
 import models.enums.Priority;
 import models.enums.Severity;
 import models.enums.Size;
-import utils.ValidationHelpers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,6 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
 
 
     public static final String THERE_ARE_IS_NO_MEMBER_WITH_NAME = "There are is no member with this name";
-    public static final String BOARD_NAME_ALREADY_EXIST_MESSAGE = "This board name already exist.";
     public static final String THERE_IS_NO_TEAM_WITH_NAME_S = "There is no Team with name %s ";
     public static final String NO_LOGGED_IN_MEMBER = "There is no logged in member.";
     public static final String THERE_IS_NO_TEAM_WITH_THIS_MEMBER = "There is no team with this member";
@@ -71,7 +69,6 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
 
-
     @Override
     public Bug createBug(String title, String boardToAdd, String description, List<String> stepsToReproduce,
                          Priority priority, Severity severity, String assignee) {
@@ -99,7 +96,6 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
         throw new IllegalArgumentException(THERE_IS_NO_TEAM_WITH_THIS_MEMBER);
     }
 
-//    public Board findBoardBy
 
     @Override
     public int hashCode() {
@@ -113,17 +109,17 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     public void addTeam(Team team) {
-        //ValidationHelpers.validateTeamName(teamsList, team.getName(), BOARD_NAME_ALREADY_EXIST_MESSAGE);
         teamsList.add(team);
 
     }
 
     @Override
-    public List<Board> getBoardList() {return new ArrayList<>(boardList);
+    public List<Board> getBoardList() {
+        return new ArrayList<>(boardList);
 
     }
+
     public void addBoard(Board board) {
-        ValidationHelpers.validateBoardName(boardList, board.getName(), BOARD_NAME_ALREADY_EXIST_MESSAGE);
         boardList.add(board);
 
     }
@@ -137,11 +133,12 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public List<Member> getMemberList() {
         return new ArrayList<>(memberList);
     }
+
     public void addMember(Member member) {
-        // ValidationHelpers.validateMemberName(memberList, member.getName(), BOARD_NAME_ALREADY_EXIST_MESSAGE);
         memberList.add(member);
 
     }
+
     @Override
     public Team findTeamByName(String name) {
         Team team = teamsList.stream()
@@ -193,7 +190,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
         return new ArrayList<>(comments);
     }
 
-    public void addComments(Comment comment){
+    public void addComments(Comment comment) {
         comments.add(comment);
     }
 

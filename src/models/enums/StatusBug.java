@@ -2,7 +2,7 @@ package models.enums;
 
 public enum StatusBug {
     ACTIVE,
-    FIXED,
+    DONE,
 
     ;
 
@@ -11,8 +11,8 @@ public enum StatusBug {
         switch (this) {
             case ACTIVE:
                 return "Active";
-            case FIXED:
-                return "Fixed";
+            case DONE:
+                return "Done";
 
             default:
                 throw new UnsupportedOperationException("Invalid status.");

@@ -16,6 +16,7 @@ public class AssignBugCommand extends BaseCommand {
     public static final String TASK_REASSIGNED_SUCCESSFULLY = "Assignee of bug %s successfully reassigned from %s to %s!";
     public static final String ASSIGNEE_ERR_MESSAGE = "Assignee %s is not part of team %s!";
     public static final String NO_BUG_ERR_MESSAGE = "There is no bug %s in team %s!";
+    public static final String CHANGED_THE_ASSIGNEE_OF_BUG_S_FROM_S_TO_S = "%s changed the assignee of bug %s from %s to %s.";
 
     public AssignBugCommand(TaskManagementRepository repository) {
         super(repository);
@@ -49,8 +50,8 @@ public class AssignBugCommand extends BaseCommand {
                     throwIfInvalidAssignee(newAssignee, memberTeam, membersInTeam);
                     bug.changeAssignee(newAssignee);
 
-                    bug.addHistory(String.format("%s changed the assignee of bug %s from %s to %s.", member.getName(), bug.getTitle(), oldAssignee.getName(), newAssignee));
-                    member.addHistory(String.format("%s changed the assignee of bug %s from %s to %s.", member.getName(), bug.getTitle(), oldAssignee.getName(), newAssignee));
+                    bug.addHistory(String.format(CHANGED_THE_ASSIGNEE_OF_BUG_S_FROM_S_TO_S, member.getName(), bug.getTitle(), oldAssignee.getName(), newAssignee));
+                    member.addHistory(String.format(CHANGED_THE_ASSIGNEE_OF_BUG_S_FROM_S_TO_S, member.getName(), bug.getTitle(), oldAssignee.getName(), newAssignee));
                     return String.format(TASK_REASSIGNED_SUCCESSFULLY, bugToReassign, oldAssignee.getName(), newAssignee);
                 }
             }
