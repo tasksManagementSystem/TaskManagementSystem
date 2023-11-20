@@ -34,6 +34,7 @@ public class ShowAllTeamsCommand extends BaseCommand {
     private String showAllTeams() {
         List<Team> teams = getRepository().getTeamsList();
         StringBuilder allTeamsNames = new StringBuilder();
+        allTeamsNames.append("All teams: ");
         allTeamsNames.append(teams.get(0).showAllTeams());
         allTeamsNames.deleteCharAt(allTeamsNames.length() - 2);
 

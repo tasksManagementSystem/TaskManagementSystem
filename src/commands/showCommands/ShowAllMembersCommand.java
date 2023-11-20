@@ -35,18 +35,21 @@ public class ShowAllMembersCommand extends BaseCommand {
     private String showAllMembers() {
         List<Team> teams = getRepository().getTeamsList();
         StringBuilder sb = new StringBuilder();
+        sb.append("All members: ");
 
         for (Team team : teams) {
             List<Member> memberList = team.getMembers();
             if (memberList.isEmpty()) {
-                sb.append(String.format(THERE_ARE_NO_MEMBERS_IN_S,team.getName()));
+                sb.append(String.format(THERE_ARE_NO_MEMBERS_IN_S, team.getName()));
                 return sb.toString();
             }
             for (Member member : memberList) {
+
                 sb.append(member.getName()).append(", ");
             }
 
-        }sb.deleteCharAt(sb.length() - 2);
+        }
+        sb.deleteCharAt(sb.length() - 2);
         return sb.toString().trim();
     }
 }

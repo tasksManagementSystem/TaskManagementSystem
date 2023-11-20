@@ -40,7 +40,7 @@ public class CreateNewBug extends BaseCommand {
         String boardToAdd = parameters.get(0);
         String title = parameters.get(1);
         String description = parameters.get(2);
-        List<String> stepsToReproduce = Arrays.asList(parameters.get(3).split("; "));
+        List<String> stepsToReproduce = Arrays.asList(parameters.get(3).split(";"));
         Priority priority = ParsingHelpers.tryParseEnum(parameters.get(4), Priority.class);
         Severity severity = ParsingHelpers.tryParseEnum(parameters.get(5), Severity.class);
         String assignee = parameters.get(6);
