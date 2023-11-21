@@ -20,7 +20,7 @@ public interface Bug extends Task, TaskInfo {
 
     void changePriority(Priority bugPriority);
 
-
+    void changeSeverity(Severity bugSeverity);
 
 
 }

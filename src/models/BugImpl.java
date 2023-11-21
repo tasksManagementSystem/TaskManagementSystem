@@ -82,4 +82,9 @@ public class BugImpl extends TaskImpl implements Bug {
     public void changePriority(Priority bugPriority){
         priority = bugPriority;
     }
+
+    public void changeSeverity(Severity bugSeverity){
+        severity = bugSeverity;
+    }
+
 }

@@ -7,10 +7,7 @@ import commands.addCommands.AddMemberToTeamCommand;
 //import commands.changeCommands.ChangeFeedbackRatingCommand;
 import commands.assignCommands.AssignBugCommand;
 import commands.assignCommands.AssignStoryCommand;
-import commands.changeCommands.ChangeBugPriorityCommand;
-import commands.changeCommands.ChangeBugStatusCommand;
-import commands.changeCommands.ChangeFeedbackStatusCommand;
-import commands.changeCommands.ChangeStoryStatusCommand;
+import commands.changeCommands.*;
 import commands.contracts.Command;
 import commands.createCommands.*;
 import commands.enums.CommandType;
@@ -72,6 +69,10 @@ public class CommandFactoryImpl implements CommandFactory {
                 return new ChangeStoryStatusCommand(taskManagementRepository);
             case CHANGE_BUG_PRIORITY:
                 return new ChangeBugPriorityCommand(taskManagementRepository);
+            case CHANGE_BUG_SEVERITY:
+                return new ChangeBugSeverityCommand(taskManagementRepository);
+            case CHANGE_STORY_PRIORITY:
+                return new ChangeStoryPriorityCommand(taskManagementRepository);
             default:
                 throw new IllegalArgumentException();
         }

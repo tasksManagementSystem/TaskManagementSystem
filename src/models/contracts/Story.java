@@ -13,4 +13,6 @@ public interface Story extends Task, TaskInfo {
     void changeStatus(StatusStory status);
     StatusStory getStatusStory();
 
+    void changePriority(Priority storyPriority);
+
 }
