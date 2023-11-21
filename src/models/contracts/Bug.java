@@ -20,9 +20,9 @@ public interface Bug extends Task, TaskInfo,Identifiable {
     void changePriority(Priority newPriority);
     void changeSeverity(Severity newSeverity);
 
+    void changePriority(Priority bugPriority);
 
-
-
+    void changeSeverity(Severity bugSeverity);
 
 
 }
