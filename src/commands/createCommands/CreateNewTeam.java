@@ -1,9 +1,7 @@
 package commands.createCommands;
 
 import commands.BaseCommand;
-import core.TaskManagementRepositoryImpl;
 import core.contracts.TaskManagementRepository;
-import models.contracts.Board;
 import models.contracts.Team;
 import utils.ValidationHelpers;
 
@@ -36,7 +34,6 @@ public class CreateNewTeam extends BaseCommand {
     private String createTeam(String name) {
         Team team = getRepository().createTeam(name);
         getRepository().addTeam(team);
-        //TaskManagementRepositoryImpl.teamsList.add(team);
         return String.format(TEAM_CREATED_SUCCESSFULLY, name);
     }
 }

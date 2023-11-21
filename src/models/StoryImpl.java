@@ -1,17 +1,13 @@
 package models;
 
 import models.contracts.Story;
-import models.contracts.TaskInfo;
 import models.enums.*;
 
 public class StoryImpl extends TaskImpl implements Story {
     private Priority priority;
     private Size size;
     private String assignee;
-
     private StatusStory statusStory;
-
-
 
     public StoryImpl(int id, String title, String description, Priority priority, Size size, String assignee) {
         super(id, title, description);
@@ -20,10 +16,12 @@ public class StoryImpl extends TaskImpl implements Story {
         setAssignee(assignee);
         statusStory = StatusStory.NOT_DONE;
     }
+
     @Override
     public StatusStory getStatusStory() {
         return statusStory;
     }
+
     @Override
     public Priority getPriority() {
         return priority;
@@ -51,25 +49,20 @@ public class StoryImpl extends TaskImpl implements Story {
         this.assignee = assignee;
     }
 
-    @Override
-    public void logEvent(String event) {
-
-    }
-
     public void changeAssignee(String newAssignee) {
         this.assignee = newAssignee;
-
     }
-    public  void changeStatus(StatusStory status){
-        statusStory=status;
 
-    }public  void changePriority(Priority newPriority){
-        priority=newPriority;
-
+    public void changeStatus(StatusStory status) {
+        statusStory = status;
     }
-    public  void changeSize(Size newSize){
-        size=newSize;
 
+    public void changePriority(Priority newPriority) {
+        priority = newPriority;
+    }
+
+    public void changeSize(Size newSize) {
+        size = newSize;
     }
 
     @Override
@@ -81,6 +74,5 @@ public class StoryImpl extends TaskImpl implements Story {
                 ", statusStory=" + statusStory +
                 '}';
     }
-
 
 }

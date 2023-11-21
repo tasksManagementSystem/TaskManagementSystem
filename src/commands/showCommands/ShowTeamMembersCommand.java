@@ -31,19 +31,19 @@ public class ShowTeamMembersCommand extends BaseCommand {
         return true;
     }
 
-    private String showTeamMembers (String teamName){
-        Team team  = getRepository().findTeamByName(teamName);
+    private String showTeamMembers(String teamName) {
+        Team team = getRepository().findTeamByName(teamName);
         List<Member> memberList = team.getMembers();
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("All members in team %s: ",teamName));
-         if (memberList.isEmpty()){
-             sb.append(String.format(THERE_ARE_NO_MEMBERS_IN_S,teamName ));
-             return sb.toString();
-         }
-        for (Member member:memberList) {
+        sb.append(String.format("All members in team %s: ", teamName));
+        if (memberList.isEmpty()) {
+            sb.append(String.format(THERE_ARE_NO_MEMBERS_IN_S, teamName));
+            return sb.toString();
+        }
+        for (Member member : memberList) {
             sb.append(member.getName()).append(", ");
         }
-        sb.deleteCharAt(sb.length()-2);
+        sb.deleteCharAt(sb.length() - 2);
         return sb.toString().trim();
     }
 }

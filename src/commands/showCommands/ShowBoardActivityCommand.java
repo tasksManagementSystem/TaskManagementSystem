@@ -5,7 +5,6 @@ import core.contracts.TaskManagementRepository;
 import models.contracts.Board;
 import models.contracts.History;
 import utils.ValidationHelpers;
-
 import java.util.List;
 
 public class ShowBoardActivityCommand extends BaseCommand {
@@ -31,20 +30,19 @@ public class ShowBoardActivityCommand extends BaseCommand {
     }
 
     private String showBoardActivity() {
-            List<Board> boards = getRepository().getBoardList();
-            StringBuilder sb = new StringBuilder();
-            for (Board board : boards) {
-                sb.append(String.format("Board %s activity:",board.getName()));
+        List<Board> boards = getRepository().getBoardList();
+        StringBuilder sb = new StringBuilder();
+        for (Board board : boards) {
+            sb.append(String.format("Board %s activity:", board.getName()));
+            sb.append(System.lineSeparator());
+            List<History> histories = board.getActivityHistory();
+            for (History history : histories) {
+                sb.append(history);
                 sb.append(System.lineSeparator());
-                List<History> histories=board.getActivityHistory();
-                for(History history:histories){
-                    sb.append(history);
-                    sb.append(System.lineSeparator());
-                }
-
             }
-            return sb.toString();
 
+        }
+        return sb.toString();
 
 
     }

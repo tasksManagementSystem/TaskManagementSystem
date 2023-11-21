@@ -10,13 +10,6 @@ import java.util.List;
 
 public class TeamImpl implements Team {
 
-    public static final String NAME_ALREADY_EXIST_MESSAGE = "This name already exist.";
-    public static final String BOARD_NAME_ALREADY_EXIST_MESSAGE = "This board name already exist.";
-    public static final String INVALID_NAME_MESSAGE = "Name should be between %d and %d symbols.";
-    public static final int NAME_MAX_LENGTH = 15;
-    public static final int NAME_MIN_LENGTH = 5;
-
-    static List<String> teamNames = new ArrayList<>();
     private String name;
     private List<Member> members;
     private List<Board> boards;
@@ -31,11 +24,6 @@ public class TeamImpl implements Team {
         return name;
     }
 
-
-   // public List<String> getTeamNames() {
-//        return new ArrayList<>();
-//    }
-
     public List<Member> getMembers() {
         return members;
     }
@@ -44,38 +32,13 @@ public class TeamImpl implements Team {
         return boards;
     }
 
-
     private void setName(String name) {
-        ValidationHelpers.validateStringLength(name, NAME_MIN_LENGTH, NAME_MAX_LENGTH,String.format(INVALID_NAME_MESSAGE,NAME_MIN_LENGTH,NAME_MAX_LENGTH));
-        ValidationHelpers.validateMemberName(MemberImpl.memberNames,name,NAME_ALREADY_EXIST_MESSAGE);
-        ValidationHelpers.validateTeamName(teamNames,name,NAME_ALREADY_EXIST_MESSAGE);
         this.name = name;
-        teamNames.add(name);
     }
 
 
     public void addMembers(Member member) {
         members.add(member);
-    }
-
-    private void setBoards(List<Board> boards) {
-
-        this.boards = boards;
-    }
-
-    public String showAllTeams(){
-        StringBuilder allNames = new StringBuilder();
-        for (String name :
-                teamNames) {
-            allNames.append(name + ", ");
-        }
-        return allNames.toString();
-    }
-
-    public void addBoard(Board board){
-        ValidationHelpers.validateBoardName(boards,board.getName(),BOARD_NAME_ALREADY_EXIST_MESSAGE);
-        boards.add(board);
-
     }
 
     @Override

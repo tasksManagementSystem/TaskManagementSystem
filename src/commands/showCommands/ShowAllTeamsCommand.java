@@ -2,7 +2,6 @@ package commands.showCommands;
 
 import commands.BaseCommand;
 import core.contracts.TaskManagementRepository;
-import models.TeamImpl;
 import models.contracts.Team;
 import utils.ValidationHelpers;
 
@@ -14,14 +13,13 @@ public class ShowAllTeamsCommand extends BaseCommand {
     public static final String INVALID_NUMBER_OF_ARGUMENTS = "Invalid number of arguments.";
 
 
-
     public ShowAllTeamsCommand(TaskManagementRepository repository) {
         super(repository);
     }
 
     @Override
     public String execute(List<String> parameters) {
-        ValidationHelpers.validateArgumentCount(parameters, EXPECTED_NUMBER_OF_ARGUMENTS,INVALID_NUMBER_OF_ARGUMENTS);
+        ValidationHelpers.validateArgumentCount(parameters, EXPECTED_NUMBER_OF_ARGUMENTS, INVALID_NUMBER_OF_ARGUMENTS);
 
         return showAllTeams();
     }
@@ -35,7 +33,7 @@ public class ShowAllTeamsCommand extends BaseCommand {
         List<Team> teams = getRepository().getTeamsList();
         StringBuilder allTeamsNames = new StringBuilder();
         allTeamsNames.append("All teams: ");
-        allTeamsNames.append(teams.get(0).showAllTeams());
+        allTeamsNames.append(getRepository().showAllTeams());
         allTeamsNames.deleteCharAt(allTeamsNames.length() - 2);
 
         return allTeamsNames.toString().trim();

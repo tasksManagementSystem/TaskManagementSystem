@@ -1,6 +1,9 @@
 package utils;
 
 import models.contracts.Board;
+import models.contracts.Member;
+import models.contracts.Task;
+import models.contracts.Team;
 
 import java.util.List;
 
@@ -17,22 +20,16 @@ public class ValidationHelpers {
         }
     }
 
-    public static void validateMemberName(List<String> memberNames, String nameToValidate,String message){
-        if(memberNames.size() == 0){
-            return;
-        }
-        for (int i = 0; i < memberNames.size(); i++){
-            if(memberNames.get(i).equals(nameToValidate)){
+    public static void validateMemberName(List<Member> memberNames, String nameToValidate, String message){
+        for ( Member name : memberNames) {
+            if(name.getName().equals(nameToValidate)){
                 throw new IllegalArgumentException(message);
             }
         }
     }
-    public static void validateTeamName(List<String> teamNames, String nameToValidate,String message){
-        if(teamNames.size() == 0){
-            return;
-        }
-        for (int i = 0; i < teamNames.size(); i++){
-            if(teamNames.get(i).equals(nameToValidate)){
+    public static void validateTeamName(List<Team> teamNames, String nameToValidate, String message){
+        for ( Team name : teamNames) {
+            if(name.getName().equals(nameToValidate)){
                 throw new IllegalArgumentException(message);
             }
         }
@@ -49,9 +46,7 @@ public class ValidationHelpers {
     public static void validateArgumentCount (List<String>parameters,int count, String message ){
         if(parameters.size() != count){
             throw new IllegalArgumentException(message);
-
         }
-
     }
 
 }

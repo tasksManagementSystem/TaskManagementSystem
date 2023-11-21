@@ -21,7 +21,6 @@ public class CreateNewStory extends BaseCommand {
     }
 
 
-
     @Override
     protected boolean requiresLogin() {
         return true;
@@ -41,7 +40,7 @@ public class CreateNewStory extends BaseCommand {
 
     private String createStory(String boardToAdd,String title,String description, Priority priority, Size size, String assignee) {
         Member member = getRepository().getLoggedInMember();
-        Team teamOfLoggedInMember = getRepository().findTeamByMember(member.getName());
+        Team teamOfLoggedInMember = getRepository().findTeamByName(member.getName());
         List<Member> membersInTeam = teamOfLoggedInMember.getMembers();
         throwIfInvalidAssignee(assignee, teamOfLoggedInMember, membersInTeam);
         List<Board> boards = teamOfLoggedInMember.getBoards();

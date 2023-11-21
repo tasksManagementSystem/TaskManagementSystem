@@ -4,14 +4,9 @@ import commands.LoginCommand;
 import commands.LogoutCommand;
 import commands.addCommands.AddCommentToTaskCommand;
 import commands.addCommands.AddMemberToTeamCommand;
-//import commands.changeCommands.ChangeFeedbackRatingCommand;
 import commands.assignCommands.AssignBugCommand;
 import commands.assignCommands.AssignStoryCommand;
 import commands.changeCommands.ChangeBugCommand;
-
-//import commands.changeCommands.ChangeBugStatusCommand;
-//import commands.changeCommands.ChangeFeedbackStatusCommand;
-//import commands.changeCommands.ChangeStoryStatusCommand;
 import commands.changeCommands.ChangeFeedbackCommand;
 import commands.changeCommands.ChangeStoryCommand;
 import commands.contracts.Command;
@@ -37,8 +32,6 @@ public class CommandFactoryImpl implements CommandFactory {
                 return new ShowTeamBoardsCommand(taskManagementRepository);
             case CREATE_NEW_BOARD:
                 return new CreateNewBoard(taskManagementRepository);
-//            case CHANGE_FEEDBACK_RATING:
-//                return new ChangeFeedbackRatingCommand(taskManagementRepository);
             case SHOW_BOARD_ACTIVITY:
                 return new ShowBoardActivityCommand(taskManagementRepository);
             case CREATE_NEW_BUG:
@@ -67,12 +60,6 @@ public class CommandFactoryImpl implements CommandFactory {
                 return new AssignBugCommand(taskManagementRepository);
             case ASSIGN_STORY:
                 return new AssignStoryCommand(taskManagementRepository);
-//            case CHANGE_FEEDBACK_STATUS:
-//                return new ChangeFeedbackStatusCommand(taskManagementRepository);
-//            case CHANGE_BUG_STATUS:
-//                return new ChangeBugStatusCommand(taskManagementRepository);
-//            case CHANGE_STORY_STATUS:
-//                return new ChangeStoryStatusCommand(taskManagementRepository);
             case CHANGE_BUG:
                 return new ChangeBugCommand(taskManagementRepository);
             case CHANGE_STORY:

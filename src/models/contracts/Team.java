@@ -7,12 +7,8 @@ public interface Team {
 
     List<Board> getBoards();
 
-    String showAllTeams();
-
-    void addBoard(Board board);
-
     String getName();
 
     void addMembers(Member member);
-   // List<String> getTeamNames();
+
 }

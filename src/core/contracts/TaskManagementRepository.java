@@ -52,7 +52,7 @@ public interface TaskManagementRepository {
 
     Story createStory(String title, String boardToAdd, String description, Priority priority, Size size, String assignee);
 
-    Team findTeamByMember(String member);
+//    Team findTeamByMember(String member);
 
     Feedback createFeedback(String title, String description, int rating);
 
@@ -71,4 +71,5 @@ public interface TaskManagementRepository {
     void addBug(Bug bug);
     void addStory(Story story);
     void addFeedback(Feedback feedback);
+    String showAllTeams();
 }

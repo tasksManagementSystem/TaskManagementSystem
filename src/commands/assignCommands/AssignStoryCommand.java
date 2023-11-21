@@ -27,7 +27,7 @@ public class AssignStoryCommand extends BaseCommand {
 
     @Override
     public String execute(List<String> parameters) {
-        ValidationHelpers.validateArgumentCount(parameters,COUNT,INVALID_NUMBER_OF_ARGUMENTS );
+        ValidationHelpers.validateArgumentCount(parameters, COUNT, INVALID_NUMBER_OF_ARGUMENTS);
         String storyToReassign = parameters.get(0);
         String newAssignee = parameters.get(1);
         return reassignStory(storyToReassign, newAssignee);
@@ -35,7 +35,7 @@ public class AssignStoryCommand extends BaseCommand {
 
     private String reassignStory(String storyToReassign, String newAssignee) {
         Member member = getRepository().getLoggedInMember();
-        Team memberTeam = getRepository().findTeamByMember(member.getName());
+        Team memberTeam = getRepository().findTeamByName(member.getName());
         List<Member> membersInTeam = memberTeam.getMembers();
         List<Board> boardsList = memberTeam.getBoards();
 

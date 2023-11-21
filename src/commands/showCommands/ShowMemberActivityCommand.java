@@ -2,11 +2,8 @@ package commands.showCommands;
 
 import commands.BaseCommand;
 import core.contracts.TaskManagementRepository;
-import models.HistoryImpl;
-import models.MemberImpl;
 import models.contracts.History;
 import models.contracts.Member;
-import utils.ParsingHelpers;
 import utils.ValidationHelpers;
 
 import java.util.List;
@@ -43,7 +40,7 @@ public class ShowMemberActivityCommand extends BaseCommand {
 
         for (Member member : memberList) {
             if (member.getName().equals(memberName)) {
-                sb.append(String.format("Member %s activity:",member.getName()));
+                sb.append(String.format("Member %s activity:", member.getName()));
                 sb.append(System.lineSeparator());
                 List<History> histories = member.getActivityHistory();
                 for (History history : histories) {

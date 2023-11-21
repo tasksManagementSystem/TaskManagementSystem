@@ -17,7 +17,6 @@ public interface Story extends Task, TaskInfo, Identifiable {
 
     void changePriority(Priority newPriority);
 
-
     void changeSize(Size newSize);
 
 }

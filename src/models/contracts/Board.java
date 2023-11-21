@@ -8,8 +8,10 @@ public interface Board {
 
     List<Task> getTasks();
 
-     List<Bug> getBugs();
+    List<Bug> getBugs();
+
     List<Story> getStories();
+
     List<Feedback> getFeedbacks();
 
     List<History> getActivityHistory();
@@ -20,7 +22,6 @@ public interface Board {
 
     void addFeedback(Feedback feedback);
 
-     int changeFeedback(Feedback feedback);
-     void addHistory(String events);
-    String viewInfo(History event);
+    void addHistory(String events);
+
 }

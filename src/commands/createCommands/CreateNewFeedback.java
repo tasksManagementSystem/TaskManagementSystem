@@ -37,7 +37,7 @@ public class CreateNewFeedback extends BaseCommand {
 
     private String createFeedback(String boardToAdd, String title, String description, int rating) {
         Member member = getRepository().getLoggedInMember();
-        Team teamOfLoggedInMember = getRepository().findTeamByMember(member.getName());
+        Team teamOfLoggedInMember = getRepository().findTeamByName(member.getName());
         List<Board> boards = teamOfLoggedInMember.getBoards();
         Board board = findBoardInTeam(boards, boardToAdd);
         List<Feedback> feedbacks = getRepository().getFeedbackList();

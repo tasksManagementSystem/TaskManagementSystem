@@ -25,10 +25,6 @@ public class HistoryImpl implements History {
         return description;
     }
 
-    public  String viewInfo() {
-        return String.format("%s",description);
-    }
-
     @Override
     public String toString() {
         return description;

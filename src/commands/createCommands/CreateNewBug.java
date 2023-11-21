@@ -5,11 +5,8 @@ import core.contracts.TaskManagementRepository;
 import models.contracts.*;
 import models.enums.Priority;
 import models.enums.Severity;
-import models.enums.StatusBug;
 import utils.ParsingHelpers;
 import utils.ValidationHelpers;
-
-import java.io.ObjectInputFilter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -50,18 +47,19 @@ public class CreateNewBug extends BaseCommand {
 
     public String createBug(String boardToAdd, String title, String description, List<String> stepsToReproduce, Priority priority, Severity severity, String assignee) {
         Member member = getRepository().getLoggedInMember();
-        Team teamOfLoggedInMember = getRepository().findTeamByMember(member.getName());
+        Team teamOfLoggedInMember = getRepository().findTeamByName(member.getName());
         List<Member> membersInTeam = teamOfLoggedInMember.getMembers();
         throwIfInvalidAssignee(assignee, teamOfLoggedInMember, membersInTeam);
         Board board = findBoardInTeam(teamOfLoggedInMember, boardToAdd);
-        Bug bugToAdd = getRepository().createBug( title, boardToAdd, description, stepsToReproduce, priority, severity, assignee);
+        Bug bugToAdd = getRepository().createBug(title, boardToAdd, description, stepsToReproduce, priority, severity, assignee);
         List<Bug> bugList = getRepository().getBugList();
         throwIfBugExist(title, bugList);
 
         getRepository().addBug(bugToAdd);
         board.addBug(bugToAdd);
 
-        member.addHistory(String.format(BUG_CREATED, title, boardToAdd));;
+        member.addHistory(String.format(BUG_CREATED, title, boardToAdd));
+        ;
         board.addHistory(String.format(BUG_CREATED, title, boardToAdd));
         return String.format(BUG_CREATED, title, boardToAdd);
     }

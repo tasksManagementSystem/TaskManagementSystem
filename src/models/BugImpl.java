@@ -1,38 +1,32 @@
 package models;
 
-import models.contracts.*;
+import models.contracts.Bug;
 import models.enums.Priority;
 import models.enums.Severity;
 import models.enums.StatusBug;
-import models.enums.StatusFeedback;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BugImpl extends TaskImpl implements Bug {
-    private List<String> stepOfReproduce= new ArrayList<>();
+    private List<String> stepOfReproduce = new ArrayList<>();
     private Priority priority;
     private Severity severity;
     private String assignee;
     private StatusBug statusBug;
-
     private int id;
-
 
 
     public BugImpl(int id, String title, String description, List<String> stepOfReproduce,
                    Priority priority, Severity severity, String assignee) {
-        super(id,title, description);
-        this.stepOfReproduce=stepOfReproduce;
-        this.priority=priority;
-        this.severity=severity;
-        this.assignee=assignee;
-        this.statusBug= StatusBug.ACTIVE;
+        super(id, title, description);
+        this.stepOfReproduce = stepOfReproduce;
+        this.priority = priority;
+        this.severity = severity;
+        this.assignee = assignee;
+        this.statusBug = StatusBug.ACTIVE;
 
     }
-
-
-
     @Override
     public List<String> getStepOfReproduce() {
         return new ArrayList<>(stepOfReproduce);
@@ -53,45 +47,18 @@ public class BugImpl extends TaskImpl implements Bug {
     public String getAssignee() {
         return assignee;
     }
-
-    public void setStatusBug(StatusBug statusBug) {
-        this.statusBug = statusBug;
+    public void changeAssignee(String newAssignee) {
+        this.assignee = newAssignee;
     }
-
-    public void setStepOfReproduce(List<String> stepOfReproduce) {
-        this.stepOfReproduce = stepOfReproduce;
+    public void changeStatus(StatusBug status) {
+        statusBug = status;
     }
-
-    public void setPriority(Priority priority) {
-        this.priority = priority;
+    public void changePriority(Priority newPriority) {
+        priority = newPriority;
     }
-
-    public void setSeverity(Severity severity) {
-        this.severity = severity;
+    public void changeSeverity(Severity newSeverity) {
+        severity = newSeverity;
     }
-
-    public void setAssignee(String assignee) {
-        this.assignee = assignee;
-    }
-
-    @Override
-    public void logEvent(String event) {}
-    public void changeAssignee(String newAssignee){
-        this.assignee=newAssignee;
-
-    } public  void changeStatus(StatusBug status){
-        statusBug=status;
-
-    }
-    public  void changePriority(Priority newPriority){
-        priority=newPriority;
-
-    }
-    public  void changeSeverity(Severity newSeverity){
-        severity=newSeverity;
-
-    }
-
     @Override
     public String toString() {
         return "BugImpl{" +
@@ -103,4 +70,5 @@ public class BugImpl extends TaskImpl implements Bug {
                 ", id=" + id +
                 '}';
     }
+
 }

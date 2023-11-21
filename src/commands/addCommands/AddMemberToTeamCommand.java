@@ -1,7 +1,6 @@
 package commands.addCommands;
 
 import commands.BaseCommand;
-import core.TaskManagementEngineImpl;
 import core.contracts.TaskManagementRepository;
 import models.contracts.Member;
 import models.contracts.Team;
@@ -14,7 +13,8 @@ public class AddMemberToTeamCommand extends BaseCommand {
     public static final String INVALID_NUMBER_OF_ARGUMENTS = "Invalid number of arguments.";
     public static final String MEMBER_ADDED_SUCCESSFULLY = "Member added successfully to Team: %s.";
     public static final int COUNT = 1;
-    public AddMemberToTeamCommand(TaskManagementRepository repository){
+
+    public AddMemberToTeamCommand(TaskManagementRepository repository) {
         super(repository);
     }
 
@@ -28,20 +28,20 @@ public class AddMemberToTeamCommand extends BaseCommand {
     }
 
 
-    private String addMemberToTeam(String teamName){
+    private String addMemberToTeam(String teamName) {
         Member member = getRepository().getLoggedInMember();
         List<Team> teams = getRepository().getTeamsList();
-        String currentTeam="";
-        for (Team team:
-             teams) {
-            if(team.getName().equals(teamName)){
+        String currentTeam = "";
+        for (Team team :
+                teams) {
+            if (team.getName().equals(teamName)) {
                 team.addMembers(member);
-                currentTeam=team.getName();
+                currentTeam = team.getName();
             }
 
         }
-        member.addHistory(String.format(String.format(MEMBER_ADDED_SUCCESSFULLY,currentTeam)));
-        return (String.format(String.format(MEMBER_ADDED_SUCCESSFULLY,currentTeam)));
+        member.addHistory(String.format(String.format(MEMBER_ADDED_SUCCESSFULLY, currentTeam)));
+        return (String.format(String.format(MEMBER_ADDED_SUCCESSFULLY, currentTeam)));
     }
 
     @Override
