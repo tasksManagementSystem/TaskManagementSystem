@@ -18,7 +18,7 @@ public interface Bug extends Task, TaskInfo {
     void changeAssignee(String newAssignee);
     void changeStatus(StatusBug status);
 
-
+    void changePriority(Priority bugPriority);
 
 
 

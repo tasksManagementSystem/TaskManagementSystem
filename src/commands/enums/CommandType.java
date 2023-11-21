@@ -25,7 +25,7 @@ public enum CommandType {
     CHANGE_FEEDBACK_STATUS,
     CHANGE_BUG_STATUS,
     CHANGE_STORY_STATUS,
-
+    CHANGE_BUG_PRIORITY,
 
 
 

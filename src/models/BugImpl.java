@@ -74,9 +74,12 @@ public class BugImpl extends TaskImpl implements Bug {
     public void changeAssignee(String newAssignee){
         this.assignee=newAssignee;
 
-    } public  void changeStatus(StatusBug status){
+    }
+    public  void changeStatus(StatusBug status){
         statusBug=status;
 
     }
-
+    public void changePriority(Priority bugPriority){
+        priority = bugPriority;
+    }
 }
