@@ -82,11 +82,5 @@ public class StoryImpl extends TaskImpl implements Story {
                 '}';
     }
 
-    public void changePriority(Priority storyPriority){
-        priority = storyPriority;
-    }
 
-    public void changeSize(Size storySize){
-        size = storySize;
-    }
 }
