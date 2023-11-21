@@ -73,6 +73,8 @@ public class CommandFactoryImpl implements CommandFactory {
                 return new ChangeBugSeverityCommand(taskManagementRepository);
             case CHANGE_STORY_PRIORITY:
                 return new ChangeStoryPriorityCommand(taskManagementRepository);
+            case CHANGE_STORY_SIZE:
+                return new ChangeStorySizeCommand(taskManagementRepository);
             default:
                 throw new IllegalArgumentException();
         }

@@ -28,7 +28,7 @@ public enum CommandType {
     CHANGE_BUG_PRIORITY,
     CHANGE_BUG_SEVERITY,
     CHANGE_STORY_PRIORITY,
-
+    CHANGE_STORY_SIZE,
 
 
 
