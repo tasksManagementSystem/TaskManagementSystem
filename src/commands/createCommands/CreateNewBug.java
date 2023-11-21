@@ -50,18 +50,17 @@ public class CreateNewBug extends BaseCommand {
 
     public String createBug(String boardToAdd, String title, String description, List<String> stepsToReproduce, Priority priority, Severity severity, String assignee) {
         Member member = getRepository().getLoggedInMember();
-        Team teamOfLoggedInMember = getRepository().findTeamByMember(member);
+        Team teamOfLoggedInMember = getRepository().findTeamByMember(member.getName());
         List<Member> membersInTeam = teamOfLoggedInMember.getMembers();
         throwIfInvalidAssignee(assignee, teamOfLoggedInMember, membersInTeam);
         Board board = findBoardInTeam(teamOfLoggedInMember, boardToAdd);
-        Bug bugToAdd = getRepository().createBug(title, boardToAdd, description, stepsToReproduce, priority, severity, assignee);
-        List<Bug> bugList = board.getBugs();
+        Bug bugToAdd = getRepository().createBug( title, boardToAdd, description, stepsToReproduce, priority, severity, assignee);
+        List<Bug> bugList = getRepository().getBugList();
         throwIfBugExist(title, bugList);
 
+        getRepository().addBug(bugToAdd);
         board.addBug(bugToAdd);
 
-//        member.logEvent(String.format("Bug %s created by member %s", title, member.getName()));
-//        bugToAdd.logEvent(String.format("Bug %s created by member %s", title, member.getName()));
         member.addHistory(String.format(BUG_CREATED, title, boardToAdd));;
         board.addHistory(String.format(BUG_CREATED, title, boardToAdd));
         return String.format(BUG_CREATED, title, boardToAdd);

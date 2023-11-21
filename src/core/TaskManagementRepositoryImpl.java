@@ -20,22 +20,51 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public static final String NO_LOGGED_IN_MEMBER = "There is no logged in member.";
     public static final String THERE_IS_NO_TEAM_WITH_THIS_MEMBER = "There is no team with this member";
     public final static String MEMBER_LOGGED_OUT = "Member logged out!";
+    public static final String ID_DOES_NOT_EXIST = "%s with id %d does not exist.";
     private final List<Member> memberList = new ArrayList<>();
     private final List<Board> boardList = new ArrayList<>();
+    private final List<Bug> bugList = new ArrayList<>();
+    private final List<Feedback> feedbackList = new ArrayList<>();
+    private final List<Story> storyList = new ArrayList<>();
     private final List<Team> teamsList = new ArrayList<>();
 
     private final List<Comment> comments = new ArrayList<>();
     private Member loggedMember;
 
-    private int id;
+    private int nextId;
 
 
     public TaskManagementRepositoryImpl() {
         this.loggedMember = null;
-        this.id = 0;
+         nextId =0;
+
     }
 
 
+    public int getNextId() {
+        return nextId;
+    }
+
+    @Override
+    public List<Bug> getBugList() {
+        return new ArrayList<>(bugList);
+    }
+@Override
+    public List<Feedback> getFeedbackList() {
+        return new ArrayList<>(feedbackList);
+    }
+@Override
+    public List<Story> getStoryList() {
+        return new ArrayList<>(storyList);
+    }
+    @Override
+    public <T extends Task> T findElementById(List<T> elements, int id, String elementType){
+        for(T element:elements){
+            if(element.getId()==id){
+                return element;
+            }
+        }throw new IllegalArgumentException(String.format(ID_DOES_NOT_EXIST,elementType,id));
+    }
     @Override
     public Member findMemberByUsername(String username) {
         return memberList
@@ -70,24 +99,25 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
 
 
     @Override
-    public Bug createBug(String title, String boardToAdd, String description, List<String> stepsToReproduce,
+    public Bug createBug(String title,String boardToAdd, String description, List<String> stepsToReproduce,
                          Priority priority, Severity severity, String assignee) {
-        return new BugImpl(++id, title, description, stepsToReproduce, priority, severity, assignee);
+        return new BugImpl(++nextId, title, description, stepsToReproduce, priority, severity, assignee);
     }
+
 
     @Override
     public Story createStory(String title, String boardToAdd, String description, Priority priority, Size size, String assignee) {
-        return new StoryImpl(++id, title, description, priority, size, assignee);
+        return new StoryImpl(++nextId, title, description, priority, size, assignee);
     }
 
     @Override
-    public Team findTeamByMember(Member member) {
+    public Team findTeamByMember(String member) {
         for (Team team :
                 teamsList) {
             List<Member> members = team.getMembers();
             for (Member memberName :
                     members) {
-                if (memberName.equals(member)) {
+                if (memberName.getName().equals(member)) {
 
                     return team;
                 }
@@ -99,7 +129,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
 
     @Override
     public int hashCode() {
-        return Objects.hash(loggedMember, id);
+        return Objects.hash(loggedMember, nextId);
     }
 
 
@@ -174,7 +204,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     public Feedback createFeedback(String title, String description, int rating) {
-        return new FeedbackImpl(++id, title, description, rating);
+        return new FeedbackImpl(++nextId, title, description, rating);
     }
 
     @Override
@@ -192,6 +222,20 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
 
     public void addComments(Comment comment) {
         comments.add(comment);
+    }
+    @Override
+    public void addBug(Bug bug) {
+        bugList.add(bug);
+
+    }
+    @Override
+    public void addStory(Story story) {
+        storyList.add(story);
+
+    } @Override
+    public void addFeedback(Feedback feedback) {
+        feedbackList.add(feedback);
+
     }
 
 }

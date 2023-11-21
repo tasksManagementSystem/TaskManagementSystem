@@ -38,7 +38,7 @@ public class AssignBugCommand extends BaseCommand {
 
     private String reassignBug(String bugToReassign, String newAssignee) {
         Member member = getRepository().getLoggedInMember();
-        Team memberTeam = getRepository().findTeamByMember(member);
+        Team memberTeam = getRepository().findTeamByMember(member.getName());
         List<Member> membersInTeam = memberTeam.getMembers();
         List<Board> boardsList = memberTeam.getBoards();
 

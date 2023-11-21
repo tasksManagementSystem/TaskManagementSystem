@@ -40,4 +40,16 @@ public class FeedbackImpl extends TaskImpl implements Feedback {
         statusFeedback=status;
 
     }
+    public  void changeRating(int newRating){
+        rating=newRating;
+
+    }
+
+    @Override
+    public String toString() {
+        return "FeedbackImpl{" +
+                "rating=" + rating +
+                ", statusFeedback=" + statusFeedback +
+                '}';
+    }
 }

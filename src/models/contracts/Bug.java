@@ -7,7 +7,7 @@ import models.enums.StatusFeedback;
 
 import java.util.List;
 
-public interface Bug extends Task, TaskInfo {
+public interface Bug extends Task, TaskInfo,Identifiable {
 
     List<String> getStepOfReproduce();
 
@@ -17,6 +17,8 @@ public interface Bug extends Task, TaskInfo {
     StatusBug getStatusBug();
     void changeAssignee(String newAssignee);
     void changeStatus(StatusBug status);
+    void changePriority(Priority newPriority);
+    void changeSeverity(Severity newSeverity);
 
 
 

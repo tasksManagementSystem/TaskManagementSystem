@@ -41,19 +41,16 @@ public class CreateNewStory extends BaseCommand {
 
     private String createStory(String boardToAdd,String title,String description, Priority priority, Size size, String assignee) {
         Member member = getRepository().getLoggedInMember();
-        Team teamOfLoggedInMember = getRepository().findTeamByMember(member);
+        Team teamOfLoggedInMember = getRepository().findTeamByMember(member.getName());
         List<Member> membersInTeam = teamOfLoggedInMember.getMembers();
         throwIfInvalidAssignee(assignee, teamOfLoggedInMember, membersInTeam);
         List<Board> boards = teamOfLoggedInMember.getBoards();
         Board board = findBoardInTeam(boards, boardToAdd);
         Story storyToAdd = getRepository().createStory(title,boardToAdd, description,priority, size, assignee);
-        List<Story> storyList = board.getStories();
+        List<Story> storyList = getRepository().getStoryList();
         throwIfStoryExist(title, storyList);
-
+        getRepository().addStory(storyToAdd);
         board.addStory(storyToAdd);
-
-//        member.logEvent(String.format("Story %s created by member %s", title, member.getName()));
-//        storyToAdd.logEvent(String.format("Story %s created by member %s", title, member.getName()));
 
         member.addHistory(String.format(STORY_CREATED, title, boardToAdd));
         board.addHistory(String.format(STORY_CREATED, title, boardToAdd));

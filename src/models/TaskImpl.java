@@ -18,7 +18,7 @@ abstract class TaskImpl implements Task {
     public static final String INVALID_DESCRIPTION_MESSAGE =
             String.format("Description should be between %d and %d symbols.",DESCRIPTION_MIN_LENGTH,DESCRIPTION_MAX_LENGTH);
     private int id;
-    private static int totalId=1;
+    //private int totalId=1;
     private String title;
     private String description;
     private List<Comment> comments;
@@ -27,8 +27,9 @@ abstract class TaskImpl implements Task {
 
     public TaskImpl(int id,String title, String description) {
 
-        this.id=totalId;
-        totalId++;
+        setId(id);
+//        this.id=id;
+//        totalId++;
 
         setTitle(title);
         setDescription(description);
@@ -40,6 +41,7 @@ abstract class TaskImpl implements Task {
 
     @Override
     public int getId() {
+
         return id;
     }
     @Override
@@ -61,7 +63,7 @@ abstract class TaskImpl implements Task {
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id=id;
     }
 
     public void setTitle(String title) {

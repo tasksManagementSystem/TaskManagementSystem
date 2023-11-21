@@ -18,7 +18,9 @@ public class BugImpl extends TaskImpl implements Bug {
 
     private int id;
 
-    public BugImpl( int id, String title, String description, List<String> stepOfReproduce,
+
+
+    public BugImpl(int id, String title, String description, List<String> stepOfReproduce,
                    Priority priority, Severity severity, String assignee) {
         super(id,title, description);
         this.stepOfReproduce=stepOfReproduce;
@@ -28,6 +30,9 @@ public class BugImpl extends TaskImpl implements Bug {
         this.statusBug= StatusBug.ACTIVE;
 
     }
+
+
+
     @Override
     public List<String> getStepOfReproduce() {
         return new ArrayList<>(stepOfReproduce);
@@ -78,5 +83,24 @@ public class BugImpl extends TaskImpl implements Bug {
         statusBug=status;
 
     }
+    public  void changePriority(Priority newPriority){
+        priority=newPriority;
 
+    }
+    public  void changeSeverity(Severity newSeverity){
+        severity=newSeverity;
+
+    }
+
+    @Override
+    public String toString() {
+        return "BugImpl{" +
+                "stepOfReproduce=" + stepOfReproduce +
+                ", priority=" + priority +
+                ", severity=" + severity +
+                ", assignee='" + assignee + '\'' +
+                ", statusBug=" + statusBug +
+                ", id=" + id +
+                '}';
+    }
 }

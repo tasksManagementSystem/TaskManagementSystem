@@ -2,10 +2,7 @@ package models;
 
 import models.contracts.Story;
 import models.contracts.TaskInfo;
-import models.enums.Priority;
-import models.enums.Size;
-import models.enums.StatusFeedback;
-import models.enums.StatusStory;
+import models.enums.*;
 
 public class StoryImpl extends TaskImpl implements Story {
     private Priority priority;
@@ -66,5 +63,22 @@ public class StoryImpl extends TaskImpl implements Story {
     public  void changeStatus(StatusStory status){
         statusStory=status;
 
+    }public  void changePriority(Priority newPriority){
+        priority=newPriority;
+
+    }
+    public  void changeSize(Size newSize){
+        size=newSize;
+
+    }
+
+    @Override
+    public String toString() {
+        return "StoryImpl{" +
+                "priority=" + priority +
+                ", size=" + size +
+                ", assignee='" + assignee + '\'' +
+                ", statusStory=" + statusStory +
+                '}';
     }
 }

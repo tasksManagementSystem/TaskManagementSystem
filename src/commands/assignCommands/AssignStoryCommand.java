@@ -35,7 +35,7 @@ public class AssignStoryCommand extends BaseCommand {
 
     private String reassignStory(String storyToReassign, String newAssignee) {
         Member member = getRepository().getLoggedInMember();
-        Team memberTeam = getRepository().findTeamByMember(member);
+        Team memberTeam = getRepository().findTeamByMember(member.getName());
         List<Member> membersInTeam = memberTeam.getMembers();
         List<Board> boardsList = memberTeam.getBoards();
 

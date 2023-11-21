@@ -7,9 +7,13 @@ import commands.addCommands.AddMemberToTeamCommand;
 //import commands.changeCommands.ChangeFeedbackRatingCommand;
 import commands.assignCommands.AssignBugCommand;
 import commands.assignCommands.AssignStoryCommand;
-import commands.changeCommands.ChangeBugStatusCommand;
-import commands.changeCommands.ChangeFeedbackStatusCommand;
-import commands.changeCommands.ChangeStoryStatusCommand;
+import commands.changeCommands.ChangeBugCommand;
+
+//import commands.changeCommands.ChangeBugStatusCommand;
+//import commands.changeCommands.ChangeFeedbackStatusCommand;
+//import commands.changeCommands.ChangeStoryStatusCommand;
+import commands.changeCommands.ChangeFeedbackCommand;
+import commands.changeCommands.ChangeStoryCommand;
 import commands.contracts.Command;
 import commands.createCommands.*;
 import commands.enums.CommandType;
@@ -63,12 +67,18 @@ public class CommandFactoryImpl implements CommandFactory {
                 return new AssignBugCommand(taskManagementRepository);
             case ASSIGN_STORY:
                 return new AssignStoryCommand(taskManagementRepository);
-            case CHANGE_FEEDBACK_STATUS:
-                return new ChangeFeedbackStatusCommand(taskManagementRepository);
-            case CHANGE_BUG_STATUS:
-                return new ChangeBugStatusCommand(taskManagementRepository);
-            case CHANGE_STORY_STATUS:
-                return new ChangeStoryStatusCommand(taskManagementRepository);
+//            case CHANGE_FEEDBACK_STATUS:
+//                return new ChangeFeedbackStatusCommand(taskManagementRepository);
+//            case CHANGE_BUG_STATUS:
+//                return new ChangeBugStatusCommand(taskManagementRepository);
+//            case CHANGE_STORY_STATUS:
+//                return new ChangeStoryStatusCommand(taskManagementRepository);
+            case CHANGE_BUG:
+                return new ChangeBugCommand(taskManagementRepository);
+            case CHANGE_STORY:
+                return new ChangeStoryCommand(taskManagementRepository);
+            case CHANGE_FEEDBACK:
+                return new ChangeFeedbackCommand(taskManagementRepository);
             default:
                 throw new IllegalArgumentException();
         }
