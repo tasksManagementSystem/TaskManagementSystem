@@ -1,41 +1,49 @@
 package com.company.oop.TaskManagementSystem2.tests.models;
-import com.company.oop.TaskManagementSystem2.tests.utils.TestUtilities;
-import models.MemberImpl;
 
+import com.company.oop.TaskManagementSystem2.tests.utils.TaskBaseConstants;
+import models.MemberImpl;
 import models.contracts.Member;
-import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 
 public class MemberImplTests {
-    private static final int NAME_MIN_LENGTH = 5;
-    private static final String VALID_MEMBER_NAME = TestUtilities.getString(NAME_MIN_LENGTH + 1);
+    private Member member;
+
+    @BeforeEach
+    public void setupBug() {
+        member = new MemberImpl(TaskBaseConstants.VALID_NAME);
+    }
 
     @Test
     public void MemberImpl_Should_ImplementMemberInterface() {
-        // Arrange, Act
-        MemberImpl member = initializeTestMember();
-        // Assert
+        // Arrange, Act, Assert
         Assertions.assertTrue(member instanceof Member);
     }
+
     @Test
     public void constructor_Should_InitializeName_When_ArgumentsAreValid() {
-        Member member = initializeTestMember();
-        Assertions.assertEquals(VALID_MEMBER_NAME, member.getName());
+        // Arrange, Act, Assert
+        Assertions.assertEquals(TaskBaseConstants.VALID_NAME, member.getName());
     }
 
     @Test
     public void constructor_Should_InitializeActivityHistoryList_When_ArgumentsAreValid() {
-        Member member = initializeTestMember();
+        // Arrange, Act, Assert
         Assertions.assertNotNull(member.getActivityHistory());
     }
 
+    @Test
+    public void getTask_Should_ReturnCopyOfCollection() {
+        // Arrange, Act
 
+        member.getTasks().clear();
 
+        // Assert
+        Assertions.assertEquals(1, member.getTasks().size());
 
-
-
-    public static MemberImpl initializeTestMember() {
-        return new MemberImpl(VALID_MEMBER_NAME);
     }
+
+
 }

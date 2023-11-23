@@ -10,30 +10,28 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BugTests {
 
     private BugImpl bug;
+
     @BeforeEach
-    public void setupBug(){
+    public void setupBug() {
         bug = new BugImpl(
-                1,
+                TaskBaseConstants.VALID_ID,
                 TaskBaseConstants.VALID_TITLE,
                 TaskBaseConstants.VALID_DESCRIPTION,
-                List.of("test1;test2;test3"),
+                TaskBaseConstants.STEP_TO_REPRODUCE,
                 Priority.LOW,
                 Severity.CRITICAL,
-                "Ivan");
+                TaskBaseConstants.ASSIGNEE);
     }
+
     @Test
     public void BugImpl_Should_ImplementBugInterface() {
-        // Arrange, Act
-
-        // Assert
+        // Arrange, Act, Assert
         Assertions.assertTrue(bug instanceof Bug);
     }
 
@@ -42,13 +40,13 @@ public class BugTests {
         // Arrange, Act, Assert
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> new BugImpl(
-                        1,
+                        TaskBaseConstants.VALID_ID,
                         TaskBaseConstants.INVALID_TITLE,
                         TaskBaseConstants.VALID_DESCRIPTION,
-                        List.of("test1;test2;test3"),
+                        TaskBaseConstants.STEP_TO_REPRODUCE,
                         Priority.LOW,
                         Severity.CRITICAL,
-                        "Ivan"));
+                        TaskBaseConstants.ASSIGNEE));
     }
 
     @Test
@@ -56,34 +54,31 @@ public class BugTests {
         // Arrange, Act, Assert
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> new BugImpl(
-                        1,
+                        TaskBaseConstants.VALID_ID,
                         TaskBaseConstants.VALID_TITLE,
                         TaskBaseConstants.INVALID_DESCRIPTION,
-                        List.of("test1;test2;test3"),
+                        TaskBaseConstants.STEP_TO_REPRODUCE,
                         Priority.LOW,
                         Severity.CRITICAL,
-                        "Ivan"));
+                        TaskBaseConstants.ASSIGNEE));
     }
 
     @Test
     public void should_Create_Bug_When_ValidValuesArePassed() {
         // Arrange, Act, Assert
         assertDoesNotThrow(() -> new BugImpl(
-                1,
+                TaskBaseConstants.VALID_ID,
                 TaskBaseConstants.VALID_TITLE,
                 TaskBaseConstants.VALID_DESCRIPTION,
-                List.of("test1;test2;test3"),
+                TaskBaseConstants.STEP_TO_REPRODUCE,
                 Priority.LOW,
                 Severity.CRITICAL,
-                "Ivan"));
+                TaskBaseConstants.ASSIGNEE));
     }
 
     @Test
     public void change_Should_changePriority_WithNewOne() {
-        //Arrange
-
-
-        // Act
+        //Arrange, Act
         bug.changePriority(Priority.MEDIUM);
         // Assert
         assertEquals(Priority.MEDIUM, bug.getPriority());
@@ -92,10 +87,7 @@ public class BugTests {
 
     @Test
     public void change_Should_changeSeverity_WithNewOne() {
-        //Arrange
-
-
-        // Act
+        //Arrange, Act
         bug.changeSeverity(Severity.MINOR);
         // Assert
         assertEquals(Severity.MINOR, bug.getSeverity());
@@ -104,10 +96,7 @@ public class BugTests {
 
     @Test
     public void change_Should_changeStatus_WithNewOne() {
-        //Arrange
-
-
-        // Act
+        //Arrange, Act
         bug.changeStatus(StatusBug.DONE);
         // Assert
         assertEquals(StatusBug.DONE, bug.getStatusBug());
@@ -116,9 +105,7 @@ public class BugTests {
 
     @Test
     public void change_Should_changeAssignee_WithNewOne() {
-        //Arrange
-
-        // Act
+        //Arrange, Act
         bug.changeAssignee("Pesho");
         // Assert
         assertEquals("Pesho", bug.getAssignee());

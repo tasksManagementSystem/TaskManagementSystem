@@ -12,9 +12,9 @@ public enum StatusStory {
     public String toString() {
         switch (this) {
             case NOT_DONE:
-                return "Not_done";
+                return "Not done";
             case IN_PROGRESS:
-                return "In_Progress";
+                return "In Progress";
             case DONE:
                 return "Done";
 

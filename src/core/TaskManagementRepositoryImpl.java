@@ -105,8 +105,14 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(THERE_ARE_IS_NO_MEMBER_WITH_NAME));
     }
-//    @Override
-//    public Team findTeamByMember(String member) {
+    @Override
+    public Team findTeamByMember(String member) {
+        return teamsList.stream()
+                .filter(team1 -> team1.getMembers().stream()
+                .anyMatch(memberName->memberName.getName().equals(member)))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(THERE_IS_NO_TEAM_WITH_THIS_MEMBER));
+
 //        for (Team team :
 //                teamsList) {
 //            List<Member> members = team.getMembers();
@@ -115,11 +121,11 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
 //                if (memberName.getName().equals(member)) {
 //
 //                    return team;
-//                }
-//            }
-//        }
-//        throw new IllegalArgumentException(THERE_IS_NO_TEAM_WITH_THIS_MEMBER);
-//    }
+                //}
+
+
+//     throw new IllegalArgumentException(THERE_IS_NO_TEAM_WITH_THIS_MEMBER);
+    }
     @Override
     public Team findTeamByName(String name) {
         Team team = teamsList.stream()
@@ -203,7 +209,8 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
     @Override
     public void logout() {
-        loggedMember.addHistory((MEMBER_LOGGED_OUT));
+            loggedMember.addHistory((MEMBER_LOGGED_OUT));
+
         loggedMember = null;
     }
 
@@ -215,5 +222,14 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
         }
         return allNames.toString();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TaskManagementRepositoryImpl that = (TaskManagementRepositoryImpl) o;
+        return nextId == that.nextId && Objects.equals(memberList, that.memberList) && Objects.equals(boardList, that.boardList) && Objects.equals(bugList, that.bugList) && Objects.equals(feedbackList, that.feedbackList) && Objects.equals(storyList, that.storyList) && Objects.equals(teamsList, that.teamsList) && Objects.equals(comments, that.comments) && Objects.equals(loggedMember, that.loggedMember);
+    }
+
 
 }

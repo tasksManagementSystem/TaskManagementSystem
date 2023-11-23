@@ -39,6 +39,8 @@ public interface TaskManagementRepository {
 
     Team findTeamByName(String name);
 
+    Team findTeamByMember(String member);
+
     Member getLoggedInMember();
 
     boolean hasLoggedInMember();
@@ -67,9 +69,14 @@ public interface TaskManagementRepository {
     List<Feedback> getFeedbackList();
 
     public List<Story> getStoryList();
+
     int getNextId();
+
     void addBug(Bug bug);
+
     void addStory(Story story);
+
     void addFeedback(Feedback feedback);
+
     String showAllTeams();
 }
