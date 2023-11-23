@@ -4,10 +4,7 @@ import com.company.oop.TaskManagementSystem2.tests.utils.TaskBaseConstants;
 import models.BoardImpl;
 import models.MemberImpl;
 import models.TeamImpl;
-import models.contracts.Board;
-import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
