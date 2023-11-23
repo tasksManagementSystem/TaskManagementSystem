@@ -9,6 +9,7 @@ import models.enums.Severity;
 import models.enums.StatusFeedback;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 
 import java.util.List;
 
@@ -16,7 +17,17 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FeedbackTest {
+    private FeedbackImpl feedback;
 
+    @BeforeEach
+    public static FeedbackImpl initializeTestFeedback() {
+        return new FeedbackImpl(
+                1,
+                TaskBaseConstants.VALID_TITLE,
+                TaskBaseConstants.VALID_DESCRIPTION,
+                12
+        );
+    }
     @Test
     public void BugImpl_Should_ImplementFeedbackInterface() {
         // Arrange, Act
@@ -90,13 +101,5 @@ public class FeedbackTest {
 
 
 
-    public static FeedbackImpl initializeTestFeedback() {
-        return new FeedbackImpl(
-                1,
-                TaskBaseConstants.VALID_TITLE,
-                TaskBaseConstants.VALID_DESCRIPTION,
-                12
-                );
 
-    }
 }
