@@ -64,7 +64,7 @@ public class BugTests {
     }
 
     @Test
-    public void changePriority_Bug() {
+    public void change_Should_changePriority_WithNewOne() {
         //Arrange
         BugImpl bug = initializeTestBug();
 
@@ -75,7 +75,7 @@ public class BugTests {
 
     }
     @Test
-    public void changeSeverity_Bug() {
+    public void change_Should_changeSeverity_WithNewOne() {
         //Arrange
         BugImpl bug = initializeTestBug();
 
@@ -86,7 +86,7 @@ public class BugTests {
 
     }
     @Test
-    public void changeStatus_Bug() {
+    public void change_Should_changeStatus_WithNewOne() {
         //Arrange
         BugImpl bug = initializeTestBug();
 
@@ -96,7 +96,7 @@ public class BugTests {
         assertEquals(StatusBug.DONE,bug.getStatusBug());
 
     } @Test
-    public void changeAssignee_Bug() {
+    public void change_Should_changeAssignee_WithNewOne() {
         //Arrange
         BugImpl bug = initializeTestBug();
 
@@ -108,15 +108,15 @@ public class BugTests {
     }
     @Test
     public void getStepOfReproduce_Should_ReturnCopyOfCollection() {
-        // Arrange
+        // Arrange, Act
         BugImpl bug = initializeTestBug();
-        List<String> stepOfReproduce = bug.getStepOfReproduce();
-        List<String> copyOfStepOfReproduce = bug.getStepOfReproduce();
+        bug.getStepOfReproduce().clear();
 
-        // Act, Assert
-        Assertions.assertNotSame(stepOfReproduce, copyOfStepOfReproduce);
+        // Assert
+        Assertions.assertEquals(1, bug.getStepOfReproduce().size());
+
     }
-    private static BugImpl initializeTestBug() {
+    public static BugImpl initializeTestBug() {
         return new BugImpl(
                 1,
                 TaskBaseConstants.VALID_TITLE,
