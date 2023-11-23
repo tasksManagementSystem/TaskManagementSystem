@@ -2,13 +2,17 @@ package com.company.oop.TaskManagementSystem2.tests.models;
 
 
 import com.company.oop.TaskManagementSystem2.tests.utils.TaskBaseConstants;
+import models.BugImpl;
 import models.StoryImpl;
 import models.enums.Priority;
+import models.enums.Severity;
 import models.enums.Size;
 import models.enums.StatusStory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -62,5 +66,33 @@ public class StoryTests {
     public void shoud_Change_Size_When_New_Size_Is_Passed(){
         testStory.changeSize(Size.LARGE);
         Assertions.assertEquals(Size.LARGE, testStory.getSize());
+    }
+
+    @Test
+    public void constructor_Should_Throw_When_TitleLengthOutOfBounds() {
+        // Arrange, Act, Assert
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> new StoryImpl(
+                        1,
+                        TaskBaseConstants.INVALID_TITLE,
+                        TaskBaseConstants.VALID_DESCRIPTION,
+                        Priority.LOW,
+                        Size.SMALL,
+                        "testAssignee"
+
+                ));
+    }
+
+    @Test
+    public void constructor_Should_Throw_When_DescriptionLengthOutOfBounds() {
+        // Arrange, Act, Assert
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> new StoryImpl(
+                        1,
+                        TaskBaseConstants.VALID_TITLE,
+                        TaskBaseConstants.INVALID_DESCRIPTION,
+                        Priority.LOW,
+                        Size.SMALL,
+                        "testAssignee"));
     }
 }
