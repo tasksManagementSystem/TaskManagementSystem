@@ -11,4 +11,6 @@ public interface Team {
 
     void addMembers(Member member);
 
+    void addBoards(Board board);
+
 }

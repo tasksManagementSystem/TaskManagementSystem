@@ -3,8 +3,12 @@ package com.company.oop.TaskManagementSystem2.tests.models;
 import com.company.oop.TaskManagementSystem2.tests.utils.TaskBaseConstants;
 import models.BoardImpl;
 import models.BugImpl;
+import models.enums.Priority;
+import models.enums.Severity;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -61,7 +65,14 @@ public class BoardTests {
     public void add_Should_addBugToList() {
         //Arrange
         BoardImpl board = initializeTestBoard();
-        BugImpl bug = BugTests.initializeTestBug();
+        BugImpl bug = new BugImpl(
+                1,
+                TaskBaseConstants.VALID_TITLE,
+                TaskBaseConstants.VALID_DESCRIPTION,
+                List.of("test1;test2;test3"),
+                Priority.LOW,
+                Severity.CRITICAL,
+                "Ivan");
         // Act
         board.addBug(bug);
         // Assert

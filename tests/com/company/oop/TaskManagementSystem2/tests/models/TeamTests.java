@@ -1,8 +1,10 @@
 package com.company.oop.TaskManagementSystem2.tests.models;
 
 import com.company.oop.TaskManagementSystem2.tests.utils.TaskBaseConstants;
+import models.BoardImpl;
 import models.MemberImpl;
 import models.TeamImpl;
+import models.contracts.Board;
 import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -34,6 +36,14 @@ public class TeamTests {
         Assertions.assertEquals(team.getMembers().size(), 1);
     }
 
+    @Test
+    public void should_Add_BoardToTeam_When_BoardIsPassed(){
+        BoardImpl testBoard = new BoardImpl(
+                TaskBaseConstants.VALID_NAME
+        );
+        team.addBoards(testBoard);
+        Assertions.assertEquals(team.getBoards().size(), 1);
+    }
 
 
 }

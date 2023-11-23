@@ -36,6 +36,7 @@ public class CreateNewBoard extends BaseCommand {
         Member member = getRepository().getLoggedInMember();
         Board board = getRepository().createBoard(boardName);
         Team team = getRepository().findTeamByName(teamName);
+        team.addBoards(board);
         getRepository().addBoard(board);
 
         member.addHistory(String.format(BOARD_CREATED_SUCCESSFULLY, boardName));

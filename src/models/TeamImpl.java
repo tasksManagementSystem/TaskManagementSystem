@@ -41,6 +41,8 @@ public class TeamImpl implements Team {
         members.add(member);
     }
 
+    public void addBoards(Board board){boards.add(board);}
+
     @Override
     public String toString() {
         return "TeamImpl{" +

@@ -7,6 +7,7 @@ import models.enums.Priority;
 import models.enums.Severity;
 import models.enums.StatusBug;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -15,10 +16,23 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BugTests {
+
+    private BugImpl bug;
+    @BeforeEach
+    public void setupBug(){
+        bug = new BugImpl(
+                1,
+                TaskBaseConstants.VALID_TITLE,
+                TaskBaseConstants.VALID_DESCRIPTION,
+                List.of("test1;test2;test3"),
+                Priority.LOW,
+                Severity.CRITICAL,
+                "Ivan");
+    }
     @Test
     public void BugImpl_Should_ImplementBugInterface() {
         // Arrange, Act
-        BugImpl bug = initializeTestBug();
+
         // Assert
         Assertions.assertTrue(bug instanceof Bug);
     }
@@ -67,7 +81,7 @@ public class BugTests {
     @Test
     public void change_Should_changePriority_WithNewOne() {
         //Arrange
-        BugImpl bug = initializeTestBug();
+
 
         // Act
         bug.changePriority(Priority.MEDIUM);
@@ -79,7 +93,7 @@ public class BugTests {
     @Test
     public void change_Should_changeSeverity_WithNewOne() {
         //Arrange
-        BugImpl bug = initializeTestBug();
+
 
         // Act
         bug.changeSeverity(Severity.MINOR);
@@ -91,7 +105,7 @@ public class BugTests {
     @Test
     public void change_Should_changeStatus_WithNewOne() {
         //Arrange
-        BugImpl bug = initializeTestBug();
+
 
         // Act
         bug.changeStatus(StatusBug.DONE);
@@ -103,7 +117,6 @@ public class BugTests {
     @Test
     public void change_Should_changeAssignee_WithNewOne() {
         //Arrange
-        BugImpl bug = initializeTestBug();
 
         // Act
         bug.changeAssignee("Pesho");
@@ -115,7 +128,7 @@ public class BugTests {
     @Test
     public void getStepOfReproduce_Should_ReturnCopyOfCollection() {
         // Arrange, Act
-        BugImpl bug = initializeTestBug();
+
         bug.getStepOfReproduce().clear();
 
         // Assert
@@ -123,16 +136,6 @@ public class BugTests {
 
     }
 
-    public static BugImpl initializeTestBug() {
-        return new BugImpl(
-                1,
-                TaskBaseConstants.VALID_TITLE,
-                TaskBaseConstants.VALID_DESCRIPTION,
-                List.of("test1;test2;test3"),
-                Priority.LOW,
-                Severity.CRITICAL,
-                "Ivan");
 
-    }
 }
 
