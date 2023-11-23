@@ -7,7 +7,6 @@ import java.util.List;
 public class BoardImpl implements Board {
 
     private String name;
-    private List<Task> tasks;
     private List<History> activityHistory= new ArrayList<>();
     private final List<Feedback> feedbacks;
     private final List<Story> stories;
@@ -15,7 +14,6 @@ public class BoardImpl implements Board {
 
     public BoardImpl(String name) {
         setName(name);
-        this.tasks = new ArrayList<>();
         this.activityHistory = new ArrayList<>();
         this.feedbacks = new ArrayList<>();
         this.stories = new ArrayList<>();
@@ -24,9 +22,6 @@ public class BoardImpl implements Board {
 
     public String getName() {
         return name;
-    }
-    public List<Task> getTasks() {
-        return new ArrayList<>();
     }
 
     public List<Bug> getBugs() {

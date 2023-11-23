@@ -6,8 +6,6 @@ public interface Board {
 
     String getName();
 
-    List<Task> getTasks();
-
     List<Bug> getBugs();
 
     List<Story> getStories();

@@ -11,7 +11,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BugTests {
     @Test
@@ -71,9 +72,10 @@ public class BugTests {
         // Act
         bug.changePriority(Priority.MEDIUM);
         // Assert
-       assertEquals(Priority.MEDIUM,bug.getPriority());
+        assertEquals(Priority.MEDIUM, bug.getPriority());
 
     }
+
     @Test
     public void change_Should_changeSeverity_WithNewOne() {
         //Arrange
@@ -82,9 +84,10 @@ public class BugTests {
         // Act
         bug.changeSeverity(Severity.MINOR);
         // Assert
-        assertEquals(Severity.MINOR,bug.getSeverity());
+        assertEquals(Severity.MINOR, bug.getSeverity());
 
     }
+
     @Test
     public void change_Should_changeStatus_WithNewOne() {
         //Arrange
@@ -93,9 +96,11 @@ public class BugTests {
         // Act
         bug.changeStatus(StatusBug.DONE);
         // Assert
-        assertEquals(StatusBug.DONE,bug.getStatusBug());
+        assertEquals(StatusBug.DONE, bug.getStatusBug());
 
-    } @Test
+    }
+
+    @Test
     public void change_Should_changeAssignee_WithNewOne() {
         //Arrange
         BugImpl bug = initializeTestBug();
@@ -103,9 +108,10 @@ public class BugTests {
         // Act
         bug.changeAssignee("Pesho");
         // Assert
-        assertEquals("Pesho",bug.getAssignee());
+        assertEquals("Pesho", bug.getAssignee());
 
     }
+
     @Test
     public void getStepOfReproduce_Should_ReturnCopyOfCollection() {
         // Arrange, Act
@@ -116,6 +122,7 @@ public class BugTests {
         Assertions.assertEquals(1, bug.getStepOfReproduce().size());
 
     }
+
     public static BugImpl initializeTestBug() {
         return new BugImpl(
                 1,
