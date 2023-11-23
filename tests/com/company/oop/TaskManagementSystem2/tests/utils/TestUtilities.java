@@ -1,4 +1,4 @@
-package com.company.oop.taskManagementSystem.tests.utils;
+package com.company.oop.TaskManagementSystem2.tests.utils;
 
 import java.util.Arrays;
 import java.util.List;
