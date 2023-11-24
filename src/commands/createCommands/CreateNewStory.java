@@ -40,26 +40,19 @@ public class CreateNewStory extends BaseCommand {
 
     private String createStory(String boardToAdd,String title,String description, Priority priority, Size size, String assignee) {
         Member member = getRepository().getLoggedInMember();
-        Team teamOfLoggedInMember = getRepository().findTeamByName(member.getName());
+        Team teamOfLoggedInMember = getRepository().findTeamByMember(member.getName());
         List<Member> membersInTeam = teamOfLoggedInMember.getMembers();
         throwIfInvalidAssignee(assignee, teamOfLoggedInMember, membersInTeam);
         List<Board> boards = teamOfLoggedInMember.getBoards();
         Board board = findBoardInTeam(boards, boardToAdd);
         Story storyToAdd = getRepository().createStory(title,boardToAdd, description,priority, size, assignee);
-        List<Story> storyList = getRepository().getStoryList();
-        throwIfStoryExist(title, storyList);
+
         getRepository().addStory(storyToAdd);
         board.addStory(storyToAdd);
 
         member.addHistory(String.format(STORY_CREATED, title, boardToAdd));
         board.addHistory(String.format(STORY_CREATED, title, boardToAdd));
         return String.format(STORY_CREATED, title, boardToAdd);
-    }
-
-    private static void throwIfStoryExist(String nameOfTask, List<Story> storyList) {
-        if (storyList.stream().anyMatch(story -> story.getTitle().equals(nameOfTask))) {
-            throw new IllegalArgumentException("Story with such a title already exists");
-        }
     }
 
     private static void throwIfInvalidAssignee(String assignee, Team teamOfLoggedInMember, List<Member> membersInTeam) {

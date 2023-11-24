@@ -1,12 +1,9 @@
 package models.enums;
 
 public enum StatusStory {
-    NOT_DONE,
-    IN_PROGRESS,
-
     DONE,
-
-    ;
+    IN_PROGRESS,
+    NOT_DONE;
 
     @Override
     public String toString() {

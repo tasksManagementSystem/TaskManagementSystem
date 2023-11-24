@@ -2,8 +2,8 @@ package models.enums;
 
 public enum Priority {
     HIGH,
-    MEDIUM,
-    LOW;
+    LOW,
+    MEDIUM;
 
     @Override
     public String toString() {

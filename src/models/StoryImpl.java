@@ -23,6 +23,11 @@ public class StoryImpl extends TaskImpl implements Story {
     }
 
     @Override
+    public StatusFeedback getStatusFeedback() {
+        return null;
+    }
+
+    @Override
     public Priority getPriority() {
         return priority;
     }
@@ -73,6 +78,11 @@ public class StoryImpl extends TaskImpl implements Story {
                 ", assignee='" + assignee + '\'' +
                 ", statusStory=" + statusStory +
                 '}';
+    }
+
+    @Override
+    public StatusBug getStatusBug() {
+        return null;
     }
 
 }

@@ -3,9 +3,8 @@ package models.enums;
 public enum StatusFeedback {
     DONE,
     NEW,
-    UNSCHEDULED,
     SCHEDULED,
-    ;
+    UNSCHEDULED;
 
     @Override
     public String toString() {

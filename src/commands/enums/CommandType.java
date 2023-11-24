@@ -24,5 +24,6 @@ public enum CommandType {
     CHANGE_BUG,
     CHANGE_STORY,
     CHANGE_FEEDBACK,
+    SORT,
 
 }

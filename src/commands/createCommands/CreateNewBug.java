@@ -52,25 +52,15 @@ public class CreateNewBug extends BaseCommand {
         throwIfInvalidAssignee(assignee, teamOfLoggedInMember, membersInTeam);
         Board board = findBoardInTeam(teamOfLoggedInMember, boardToAdd);
         Bug bugToAdd = getRepository().createBug(title, boardToAdd, description, stepsToReproduce, priority, severity, assignee);
-        List<Bug> bugList = getRepository().getBugList();
-        throwIfBugExist(title, bugList);
 
         getRepository().addBug(bugToAdd);
         board.addBug(bugToAdd);
 
         member.addHistory(String.format(BUG_CREATED, title, boardToAdd));
-        ;
         board.addHistory(String.format(BUG_CREATED, title, boardToAdd));
         return String.format(BUG_CREATED, title, boardToAdd);
     }
 
-    private static void throwIfBugExist(String nameOfTask, List<Bug> bugList) {
-        for (Bug bug : bugList) {
-            if (bug.getTitle().equals(nameOfTask)) {
-                throw new IllegalArgumentException("Bug with such a title already exists");
-            }
-        }
-    }
 
     private static void throwIfInvalidAssignee(String assignee, Team teamOfLoggedInMember, List<Member> membersInTeam) {
         boolean isMember = false;

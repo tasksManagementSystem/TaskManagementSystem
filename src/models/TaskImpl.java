@@ -78,4 +78,14 @@ abstract class TaskImpl implements Task {
         History event = new HistoryImpl(events);
         history.add(event);
     }
+
+    @Override
+    public String toString() {
+        return "TaskImpl{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
 }

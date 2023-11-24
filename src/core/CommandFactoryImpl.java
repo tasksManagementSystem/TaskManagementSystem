@@ -12,6 +12,7 @@ import commands.changeCommands.ChangeStoryCommand;
 import commands.contracts.Command;
 import commands.createCommands.*;
 import commands.enums.CommandType;
+import commands.listCommands.SortCommand;
 import commands.showCommands.*;
 import core.contracts.CommandFactory;
 import core.contracts.TaskManagementRepository;
@@ -66,6 +67,8 @@ public class CommandFactoryImpl implements CommandFactory {
                 return new ChangeStoryCommand(taskManagementRepository);
             case CHANGE_FEEDBACK:
                 return new ChangeFeedbackCommand(taskManagementRepository);
+            case SORT:
+                return new SortCommand(taskManagementRepository);
             default:
                 throw new IllegalArgumentException();
         }

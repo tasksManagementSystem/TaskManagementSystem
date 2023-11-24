@@ -1,5 +1,9 @@
 package models.contracts;
 
+import models.enums.StatusBug;
+import models.enums.StatusFeedback;
+import models.enums.StatusStory;
+
 import java.util.List;
 
 public interface Task extends Identifiable {
@@ -13,5 +17,11 @@ public interface Task extends Identifiable {
     List<History> getHistories();
 
     void addHistory(String events);
+
+    String toString();
+
+    StatusBug getStatusBug();
+    StatusStory getStatusStory();
+    StatusFeedback getStatusFeedback();
 
 }

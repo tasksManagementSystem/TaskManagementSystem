@@ -1,9 +1,7 @@
 package models;
 
 import models.contracts.Bug;
-import models.enums.Priority;
-import models.enums.Severity;
-import models.enums.StatusBug;
+import models.enums.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +41,17 @@ public class BugImpl extends TaskImpl implements Bug {
     public StatusBug getStatusBug() {
         return statusBug;
     }
+
+    @Override
+    public StatusStory getStatusStory() {
+        return null;
+    }
+
+    @Override
+    public StatusFeedback getStatusFeedback() {
+        return null;
+    }
+
     @Override
     public String getAssignee() {
         return assignee;
@@ -61,14 +70,7 @@ public class BugImpl extends TaskImpl implements Bug {
     }
     @Override
     public String toString() {
-        return "BugImpl{" +
-                "stepOfReproduce=" + stepOfReproduce +
-                ", priority=" + priority +
-                ", severity=" + severity +
-                ", assignee='" + assignee + '\'' +
-                ", statusBug=" + statusBug +
-                ", id=" + id +
-                '}';
+        return super.toString();
     }
 
 }

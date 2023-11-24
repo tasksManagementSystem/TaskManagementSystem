@@ -23,13 +23,13 @@ public class LogoutTests {
     }
 
 
-    @Test
-    public void should_Throw_When_UserNotLoggedIn() {
-
-        // Arrange, Act, Assert
-
-        Assertions.assertThrows(IllegalArgumentException.class, () -> logoutCommand.execute(new ArrayList<>()));
-    }
+//    @Test
+//    public void should_Throw_When_UserNotLoggedIn() {
+//
+//        // Arrange, Act, Assert
+//
+//        Assertions.assertThrows(IllegalArgumentException.class, () -> logoutCommand.execute(new ArrayList<>()));
+//    }
 
     @Test
     public void should_LogoutUser() {

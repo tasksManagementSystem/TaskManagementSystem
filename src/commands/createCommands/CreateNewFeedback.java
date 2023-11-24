@@ -40,8 +40,8 @@ public class CreateNewFeedback extends BaseCommand {
         Team teamOfLoggedInMember = getRepository().findTeamByMember(member.getName());
         List<Board> boards = teamOfLoggedInMember.getBoards();
         Board board = findBoardInTeam(boards, boardToAdd);
-        List<Feedback> feedbacks = getRepository().getFeedbackList();
-        throwIfFeedbackExist(title, feedbacks);
+
+
         Feedback feedbackToAdd = getRepository().createFeedback(title, description, rating);
         getRepository().addFeedback(feedbackToAdd);
         board.addFeedback(feedbackToAdd);
@@ -52,13 +52,6 @@ public class CreateNewFeedback extends BaseCommand {
         return String.format(FEEDBACK_CREATED, title, boardToAdd);
     }
 
-    private static void throwIfFeedbackExist(String nameOfTask, List<Feedback> feedbackList) {
-        for (Feedback feedback : feedbackList) {
-            if (feedback.getTitle().equals(nameOfTask)) {
-                throw new IllegalArgumentException(FEEDBACK_EXIST_ERR_MESSAGE);
-            }
-        }
-    }
 
     private Board findBoardInTeam(List<Board> boardList, String board) {
         for (Board board1 : boardList) {

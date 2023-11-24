@@ -1,7 +1,9 @@
 package models;
 
 import models.contracts.Feedback;
+import models.enums.StatusBug;
 import models.enums.StatusFeedback;
+import models.enums.StatusStory;
 
 
 public class FeedbackImpl extends TaskImpl implements Feedback {
@@ -17,7 +19,7 @@ public class FeedbackImpl extends TaskImpl implements Feedback {
     private void setRating(int rating) {
         this.rating = rating;
     }
-@Override
+    @Override
     public StatusFeedback getStatusFeedback() {return statusFeedback;}
 
     public  void changeStatus(StatusFeedback status){statusFeedback=status;
@@ -32,5 +34,15 @@ public class FeedbackImpl extends TaskImpl implements Feedback {
                 "rating=" + rating +
                 ", statusFeedback=" + statusFeedback +
                 '}';
+    }
+
+    @Override
+    public StatusBug getStatusBug() {
+        return null;
+    }
+
+    @Override
+    public StatusStory getStatusStory() {
+        return null;
     }
 }
