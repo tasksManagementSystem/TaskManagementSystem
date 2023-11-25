@@ -27,7 +27,7 @@ public class ShowTeamActivityCommand extends BaseCommand {
     }
 
     @Override
-    protected boolean requiresLogin() {
+    public boolean requiresLogin() {
         return true;
     }
 

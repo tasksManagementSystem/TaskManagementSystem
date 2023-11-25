@@ -2,6 +2,7 @@ package com.company.oop.TaskManagementSystem2.tests.utils;
 
 import commands.createCommands.*;
 import commands.showCommands.ShowMemberActivityCommand;
+import commands.showCommands.ShowTeamActivityCommand;
 import models.TaskImpl;
 
 import java.util.List;
@@ -36,8 +37,13 @@ public class TaskBaseConstants {
 
     //team
     public static final int EXPECTED_NUMBER_OF_ARGUMENTS_FOR_CREATE_NEW_TEAM = CreateNewTeam.EXPECTED_NUMBER_OF_ARGUMENTS;
+    public static final int EXPECTED_NUMBER_OF_ARGUMENTS_FOR_SHOW_TEAM_ACTIVITY = ShowTeamActivityCommand.EXPECT_NUMBER_OF_ARGUMENTS;
     public static final int NAME_MIN_LENGTH = 5;
     public static final String VALID_NAME = TestUtilities.getString(NAME_MIN_LENGTH + 1);
+
+    //board
+    public static final int EXPECTED_NUMBER_OF_ARGUMENTS_FOR_SHOW_BOARD_ACTIVITY = ShowTeamActivityCommand.EXPECT_NUMBER_OF_ARGUMENTS;
+
 
 }
 
