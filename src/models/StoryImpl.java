@@ -58,7 +58,7 @@ public class StoryImpl extends TaskImpl implements Story {
         this.assignee = newAssignee;
     }
 
-    public void changeStatus(StatusStory status) {
+    public void changeStatusStory(StatusStory status) {
         statusStory = status;
     }
 

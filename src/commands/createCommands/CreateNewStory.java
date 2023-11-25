@@ -48,6 +48,7 @@ public class CreateNewStory extends BaseCommand {
         Story storyToAdd = getRepository().createStory(title,boardToAdd, description,priority, size, assignee);
 
         getRepository().addStory(storyToAdd);
+        getRepository().addTask(storyToAdd);
         board.addStory(storyToAdd);
 
         member.addHistory(String.format(STORY_CREATED, title, boardToAdd));

@@ -1,18 +1,18 @@
-package com.company.oop.TaskManagementSystem2.tests.commands;
+package com.company.oop.TaskManagementSystem2.tests.createCommands;
 
 import com.company.oop.TaskManagementSystem2.tests.utils.TaskBaseConstants;
 import com.company.oop.TaskManagementSystem2.tests.utils.TestUtilities;
 import commands.addCommands.AddMemberToTeamCommand;
 import commands.contracts.Command;
 import commands.createCommands.CreateNewBoard;
-import commands.createCommands.CreateNewBug;
+import commands.createCommands.CreateNewStory;
 import core.TaskManagementRepositoryImpl;
 import core.contracts.TaskManagementRepository;
-import models.contracts.Bug;
 import models.contracts.Member;
+import models.contracts.Story;
 import models.contracts.Team;
 import models.enums.Priority;
-import models.enums.Severity;
+import models.enums.Size;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,10 +21,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class CreateBugCommandTests {
+public class CreateStoryCommandTests {
 
-
-    private Command createBugCommand;
+    private Command createStoryCommand;
     private TaskManagementRepository repository;
 
     private final String boardName = "BoardOne";
@@ -32,13 +31,13 @@ public class CreateBugCommandTests {
     @BeforeEach
     public void before() {
         this.repository = new TaskManagementRepositoryImpl();
-        this.createBugCommand = new CreateNewBug(repository);
+        this.createStoryCommand = new CreateNewStory(repository);
 
-        Member member = repository.createMember("Gosho");
+        Member member = repository.createMember("Pesho");
         repository.addMember(member);
         repository.login(member);
 
-        Team team = repository.createTeam("TEAM7");
+        Team team = repository.createTeam("TEAM5");
         repository.addTeam(team);
 
         AddMemberToTeamCommand memberToTeamCommand = new AddMemberToTeamCommand(repository);
@@ -51,10 +50,10 @@ public class CreateBugCommandTests {
     @Test
     public void should_ThrowException_When_ArgumentCountDifferentThanExpected() {
         // Arrange
-        List<String> params = TestUtilities.getList(TaskBaseConstants.EXPECTED_NUMBER_OF_ARGUMENTS_FOR_CREATE_NEW_BUG - 1);
+        List<String> params = TestUtilities.getList(TaskBaseConstants.EXPECTED_NUMBER_OF_ARGUMENTS_FOR_CREATE_NEW_Story - 1);
 
         // Act, Assert
-        assertThrows(IllegalArgumentException.class, () -> createBugCommand.execute(params));
+        assertThrows(IllegalArgumentException.class, () -> createStoryCommand.execute(params));
     }
 
 
@@ -65,24 +64,22 @@ public class CreateBugCommandTests {
                 boardName,
                 TaskBaseConstants.VALID_TITLE,
                 TaskBaseConstants.VALID_DESCRIPTION,
-                TaskBaseConstants.STEPS_TO_REPRODUCE.toString(),
                 Priority.LOW.toString(),
-                Severity.CRITICAL.toString(),
-                TaskBaseConstants.ASSIGNEE);
+                Size.MEDIUM.toString(),
+                "Pesho");
 
         // Act
-        createBugCommand.execute(params);
+        createStoryCommand.execute(params);
 
-        Bug bug = (Bug) repository.getTaskList().get(0);
+        Story story = (Story) repository.getTaskList().get(0);
 
         //Assert
 
-        Assertions.assertEquals(TaskBaseConstants.VALID_TITLE, bug.getTitle());
-        Assertions.assertEquals(TaskBaseConstants.VALID_DESCRIPTION, bug.getDescription());
-        Assertions.assertEquals(TaskBaseConstants.STEPS_TO_REPRODUCE_TEST, bug.getStepOfReproduce().toString().replaceAll("[\\[\\]]", ""));
-        Assertions.assertEquals(Priority.LOW, bug.getPriority());
-        Assertions.assertEquals(Severity.CRITICAL, bug.getSeverity());
-        Assertions.assertEquals(TaskBaseConstants.ASSIGNEE, bug.getAssignee());
+        Assertions.assertEquals(TaskBaseConstants.VALID_TITLE, story.getTitle());
+        Assertions.assertEquals(TaskBaseConstants.VALID_DESCRIPTION, story.getDescription());
+        Assertions.assertEquals(Priority.LOW, story.getPriority());
+        Assertions.assertEquals(Size.MEDIUM, story.getSize());
+        Assertions.assertEquals("Pesho", story.getAssignee());
 
     }
 
@@ -92,13 +89,12 @@ public class CreateBugCommandTests {
                 boardName,
                 TaskBaseConstants.VALID_TITLE,
                 TaskBaseConstants.VALID_DESCRIPTION,
-                TaskBaseConstants.STEPS_TO_REPRODUCE.toString(),
                 Priority.LOW.toString(),
-                Severity.CRITICAL.toString(),
-                "Martin");
+                Size.MEDIUM.toString(),
+                "Teodor");
 
         // Act, Assert
-        Assertions.assertThrows(IllegalArgumentException.class, () -> createBugCommand.execute(params));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> createStoryCommand.execute(params));
     }
 
     @Test
@@ -107,12 +103,11 @@ public class CreateBugCommandTests {
                 "BoardTwo",
                 TaskBaseConstants.VALID_TITLE,
                 TaskBaseConstants.VALID_DESCRIPTION,
-                TaskBaseConstants.STEPS_TO_REPRODUCE.toString(),
                 Priority.LOW.toString(),
-                Severity.CRITICAL.toString(),
-                TaskBaseConstants.ASSIGNEE);
+                Size.MEDIUM.toString(),
+                "Pesho");
 
         // Act, Assert
-        Assertions.assertThrows(IllegalArgumentException.class, () -> createBugCommand.execute(params));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> createStoryCommand.execute(params));
     }
 }
