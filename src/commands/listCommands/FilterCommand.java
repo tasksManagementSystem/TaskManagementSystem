@@ -112,7 +112,7 @@ public class FilterCommand extends BaseCommand {
     }
 
 
-    private <T extends Task & TaskInfo> String listMatchingAssignee(String pattern, List<T> genericList) {
+    private <T extends TaskInfo> String listMatchingAssignee(String pattern, List<T> genericList) {
         String result = genericList.stream()
                 .filter(taskType -> taskType.getAssignee().equals(pattern))
                 .collect(StringBuilder::new,

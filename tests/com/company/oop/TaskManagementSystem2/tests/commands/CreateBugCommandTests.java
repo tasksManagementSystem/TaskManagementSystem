@@ -57,7 +57,7 @@ public class CreateBugCommandTests {
     @Test
     public void should_ThrowException_When_ArgumentCountDifferentThanExpected() {
         // Arrange
-        List<String> params = TestUtilities.getList(TaskBaseConstants.EXPECTED_NUMBER_OF_ARGUMENTS - 1);
+        List<String> params = TestUtilities.getList(TaskBaseConstants.EXPECTED_NUMBER_OF_ARGUMENTS_FOR_CREATE_NEW_BUG - 1);
 
         // Act, Assert
         assertThrows(IllegalArgumentException.class, () -> createBugCommand.execute(params));

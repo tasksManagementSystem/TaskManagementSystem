@@ -8,7 +8,7 @@ import utils.ValidationHelpers;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract class TaskImpl implements Task {
+public abstract class TaskImpl implements Task {
     public static final int TITLE_MIN_LENGTH = 10;
     public static final int TITLE_MAX_LENGTH = 100;
     public static final String INVALID_TITLE_MESSAGE =
