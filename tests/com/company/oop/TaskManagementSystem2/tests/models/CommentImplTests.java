@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CommentTests {
+public class CommentImplTests {
 
     @Test
     public void should_Create_Comment_When_ValidValuesArePassed() {

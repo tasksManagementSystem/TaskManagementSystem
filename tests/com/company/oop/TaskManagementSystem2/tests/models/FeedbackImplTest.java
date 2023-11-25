@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FeedbackTest {
+public class FeedbackImplTest {
 
     private FeedbackImpl feedback;
 

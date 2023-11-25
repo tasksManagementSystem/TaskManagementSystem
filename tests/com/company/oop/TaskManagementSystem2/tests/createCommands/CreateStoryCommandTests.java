@@ -58,7 +58,7 @@ public class CreateStoryCommandTests {
 
 
     @Test
-    public void should_CreateBug_When_InputIsValid() {
+    public void should_CreateStory_When_InputIsValid() {
         // Act
         List<String> params = List.of(
                 boardName,

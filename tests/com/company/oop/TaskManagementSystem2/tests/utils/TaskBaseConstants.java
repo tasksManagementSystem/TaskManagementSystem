@@ -1,8 +1,6 @@
 package com.company.oop.TaskManagementSystem2.tests.utils;
 
-import commands.createCommands.CreateNewBug;
-import commands.createCommands.CreateNewFeedback;
-import commands.createCommands.CreateNewStory;
+import commands.createCommands.*;
 import commands.showCommands.ShowMemberActivityCommand;
 import models.TaskImpl;
 
@@ -28,16 +26,16 @@ public class TaskBaseConstants {
     public static final int EXPECTED_NUMBER_OF_ARGUMENTS_FOR_CREATE_NEW_Story = CreateNewStory.EXPECTED_NUMBER_OF_ARGUMENTS;
 
 
-
     //feedback
     public static final int EXPECTED_NUMBER_OF_ARGUMENTS_FOR_CREATE_NEW_FEEDBACK = CreateNewFeedback.EXPECTED_NUMBER_OF_ARGUMENTS;
     public static final int RATING = 12;
 
-
-
+    //member
+    public static final int EXPECTED_NUMBER_OF_ARGUMENTS_FOR_CREATE_NEW_MEMBER = CreateNewMember.EXPECTED_NUMBER_OF_ARGUMENTS;
     public static final int EXPECTED_NUMBER_OF_ARGUMENTS_FOR_SHOW_MEMBER_ACTIVITY = ShowMemberActivityCommand.EXPECT_NUMBER_OF_ARGUMENTS;
 
-
+    //team
+    public static final int EXPECTED_NUMBER_OF_ARGUMENTS_FOR_CREATE_NEW_TEAM = CreateNewTeam.EXPECTED_NUMBER_OF_ARGUMENTS;
     public static final int NAME_MIN_LENGTH = 5;
     public static final String VALID_NAME = TestUtilities.getString(NAME_MIN_LENGTH + 1);
 

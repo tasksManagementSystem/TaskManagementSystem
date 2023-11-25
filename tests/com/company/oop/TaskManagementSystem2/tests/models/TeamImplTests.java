@@ -8,9 +8,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-public class TeamTests {
+public class TeamImplTests {
 
     private TeamImpl team;
     @BeforeEach

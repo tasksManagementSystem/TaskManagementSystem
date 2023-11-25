@@ -56,7 +56,7 @@ public class CreateFeedbackCommandTests {
 
 
     @Test
-    public void should_CreateBug_When_InputIsValid() {
+    public void should_CreateFeedback_When_InputIsValid() {
         // Act
         List<String> params = List.of(
                 boardName,

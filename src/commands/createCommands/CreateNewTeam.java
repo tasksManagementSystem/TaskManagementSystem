@@ -9,7 +9,7 @@ import java.util.List;
 
 public class CreateNewTeam extends BaseCommand {
     public static final String INVALID_NUMBER_OF_ARGUMENTS = "Invalid number of arguments.";
-    public static final int COUNT = 1;
+    public static final int EXPECTED_NUMBER_OF_ARGUMENTS = 1;
     public static final String TEAM_CREATED_SUCCESSFULLY = "Team with name %s was created.";
 
 
@@ -19,7 +19,7 @@ public class CreateNewTeam extends BaseCommand {
 
     @Override
     public String execute(List<String> parameters) {
-        ValidationHelpers.validateArgumentCount(parameters, COUNT, INVALID_NUMBER_OF_ARGUMENTS);
+        ValidationHelpers.validateArgumentCount(parameters, EXPECTED_NUMBER_OF_ARGUMENTS, INVALID_NUMBER_OF_ARGUMENTS);
         String name = parameters.get(0);
         return createTeam(name);
 

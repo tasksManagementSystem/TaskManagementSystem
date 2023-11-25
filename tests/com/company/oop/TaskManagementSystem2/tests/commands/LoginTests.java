@@ -2,6 +2,7 @@ package com.company.oop.TaskManagementSystem2.tests.commands;
 
 import com.company.oop.TaskManagementSystem2.tests.utils.TaskBaseConstants;
 import com.company.oop.TaskManagementSystem2.tests.utils.TestUtilities;
+import commands.BaseCommand;
 import commands.LoginCommand;
 import core.TaskManagementRepositoryImpl;
 import core.contracts.TaskManagementRepository;
@@ -49,7 +50,6 @@ public class LoginTests {
     }
 
 
-
     @Test
     public void should_Throw_When_UserDoesNotExists() {
         // Arrange
@@ -79,7 +79,6 @@ public class LoginTests {
                 memberToLogin.getName());
 
 
-
         // Act
         loginCommand.execute(params);
 
@@ -93,4 +92,7 @@ public class LoginTests {
         repository.login(testMember);
         return testMember;
     }
+
+
 }
+

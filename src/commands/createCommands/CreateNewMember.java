@@ -11,7 +11,7 @@ public class CreateNewMember extends BaseCommand {
 
 
     public static final String INVALID_NUMBER_OF_ARGUMENTS = "Invalid number of arguments.";
-    public static final int COUNT = 1;
+    public static final int EXPECTED_NUMBER_OF_ARGUMENTS = 1;
     public static final String MEMBER_S_REGISTER_SUCCESSFULLY = "Member %s register successfully.";
 
     public CreateNewMember(TaskManagementRepository repository) {
@@ -20,7 +20,7 @@ public class CreateNewMember extends BaseCommand {
 
     @Override
     public String execute(List<String> parameters) {
-        ValidationHelpers.validateArgumentCount(parameters, COUNT, INVALID_NUMBER_OF_ARGUMENTS);
+        ValidationHelpers.validateArgumentCount(parameters, EXPECTED_NUMBER_OF_ARGUMENTS, INVALID_NUMBER_OF_ARGUMENTS);
         String username = parameters.get(0);
 
         return registerMember(username);
@@ -29,7 +29,7 @@ public class CreateNewMember extends BaseCommand {
 
     @Override
     protected boolean requiresLogin() {
-        return false;
+        return true;
     }
 
     private String registerMember(String username) {
