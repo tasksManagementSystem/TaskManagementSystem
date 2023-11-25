@@ -19,9 +19,10 @@ public class TaskBaseConstants {
     public static final String VALID_DESCRIPTION = TestUtilities.getString(TaskImpl.DESCRIPTION_MIN_LENGTH + 1);
     public static final String STEPS_TO_REPRODUCE_TEST ="Open the application, Click Log In, The application freezes!";
     public static final List <String> STEPS_TO_REPRODUCE = List.of("Open the application, Click Log In, The application freezes!");
-    public static final String VALID_PRIORITY = "LOW";
-    public static final String VALID_SEVERITY = "CRITICAL";
+
     public static final String ASSIGNEE = "Gosho";
+
+
     //story
     //feedback
 

@@ -50,13 +50,13 @@ public class StoryTests {
     }
 
     @Test
-    public void shoud_Change_Status_When_New_Status_Is_Passed() {
-        testStory.changeStatus(StatusStory.DONE);
+    public void should_Change_Status_When_New_Status_Is_Passed() {
+        testStory.changeStatusStory(StatusStory.DONE);
         Assertions.assertEquals(StatusStory.DONE, testStory.getStatusStory());
     }
 
     @Test
-    public void shoud_Change_Priority_When_New_Priority_Is_Passed() {
+    public void should_Change_Priority_When_New_Priority_Is_Passed() {
         testStory.changePriority(Priority.HIGH);
         Assertions.assertEquals(Priority.HIGH, testStory.getPriority());
     }

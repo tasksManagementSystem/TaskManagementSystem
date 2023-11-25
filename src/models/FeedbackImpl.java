@@ -22,7 +22,7 @@ public class FeedbackImpl extends TaskImpl implements Feedback {
     @Override
     public StatusFeedback getStatusFeedback() {return statusFeedback;}
 
-    public  void changeStatus(StatusFeedback status){statusFeedback=status;
+    public  void changeStatusFeedback(StatusFeedback status){statusFeedback=status;
     }
     public  void changeRating(int newRating){
         rating=newRating;

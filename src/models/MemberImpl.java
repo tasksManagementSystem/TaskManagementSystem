@@ -24,7 +24,7 @@ public class MemberImpl implements Member {
     }
 
     public List<Task> getTasks() {
-        return tasks;
+        return new ArrayList<>(tasks);
     }
 
     public List<History> getActivityHistory() {

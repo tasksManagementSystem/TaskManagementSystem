@@ -47,7 +47,7 @@ public class ChangeStoryCommand extends BaseCommand {
 
             case "STATUS":
                 oldValue = story.getStatusStory().toString();
-                story.changeStatus(ParsingHelpers.tryParseEnum(newValue, StatusStory.class));
+                story.changeStatusStory(ParsingHelpers.tryParseEnum(newValue, StatusStory.class));
                 break;
             case "SIZE":
                 oldValue = story.getSize().toString();

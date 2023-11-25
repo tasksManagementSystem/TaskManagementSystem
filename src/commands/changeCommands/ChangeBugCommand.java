@@ -15,7 +15,7 @@ public class ChangeBugCommand extends BaseCommand {
     public static final String INVALID_NUMBER_OF_ARGUMENTS = "Invalid number of arguments.";
     public static final int COUNT = 3;
     public static final String STATUS_OF_BUG_HAS_BEEN_CHANGED_SUCCESSFULLY_FROM_S_TO_S = "Status of bug has been changed successfully from %s to %s!";
-    public static final String RATING_WHOLE_NUMBER_ERR_MESSAGE = "Rating must be a whole number";
+    public static final String ID_WHOLE_NUMBER_ERR_MESSAGE = "ID must be a whole number";
     public static final String TYPE_OF_FIELD_DOES_NOT_EXIST = "Type of field does not exist.";
 
     public ChangeBugCommand(TaskManagementRepository repository) {
@@ -30,7 +30,7 @@ public class ChangeBugCommand extends BaseCommand {
     @Override
     public String execute(List<String> parameters) {
         ValidationHelpers.validateArgumentCount(parameters, COUNT, INVALID_NUMBER_OF_ARGUMENTS);
-        int id = ParsingHelpers.tryParseInt(parameters.get(0), RATING_WHOLE_NUMBER_ERR_MESSAGE);
+        int id = ParsingHelpers.tryParseInt(parameters.get(0), ID_WHOLE_NUMBER_ERR_MESSAGE);
         String typeOfField = parameters.get(1).toUpperCase();
         String newValue = parameters.get(2);
         return changeValueFields(id, typeOfField, newValue);
@@ -47,7 +47,7 @@ public class ChangeBugCommand extends BaseCommand {
 
             case "STATUS":
                 oldValue = bug.getStatusBug().toString();
-                bug.changeStatus(ParsingHelpers.tryParseEnum(newValue, StatusBug.class));
+                bug.changeStatusBug(ParsingHelpers.tryParseEnum(newValue, StatusBug.class));
                 break;
             case "SEVERITY":
                 oldValue = bug.getSeverity().toString();

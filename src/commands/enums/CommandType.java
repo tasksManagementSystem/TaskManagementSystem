@@ -25,5 +25,6 @@ public enum CommandType {
     CHANGE_STORY,
     CHANGE_FEEDBACK,
     SORT,
+    FILTER,
 
 }

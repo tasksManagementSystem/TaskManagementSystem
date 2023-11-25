@@ -97,7 +97,7 @@ public class BugTests {
     @Test
     public void change_Should_changeStatus_WithNewOne() {
         //Arrange, Act
-        bug.changeStatus(StatusBug.DONE);
+        bug.changeStatusBug(StatusBug.DONE);
         // Assert
         assertEquals(StatusBug.DONE, bug.getStatusBug());
 
