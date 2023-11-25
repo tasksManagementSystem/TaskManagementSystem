@@ -23,7 +23,7 @@ public class BugTests {
                 TaskBaseConstants.VALID_ID,
                 TaskBaseConstants.VALID_TITLE,
                 TaskBaseConstants.VALID_DESCRIPTION,
-                TaskBaseConstants.STEP_TO_REPRODUCE,
+                TaskBaseConstants.STEPS_TO_REPRODUCE,
                 Priority.LOW,
                 Severity.CRITICAL,
                 TaskBaseConstants.ASSIGNEE);
@@ -43,7 +43,7 @@ public class BugTests {
                         TaskBaseConstants.VALID_ID,
                         TaskBaseConstants.INVALID_TITLE,
                         TaskBaseConstants.VALID_DESCRIPTION,
-                        TaskBaseConstants.STEP_TO_REPRODUCE,
+                        TaskBaseConstants.STEPS_TO_REPRODUCE,
                         Priority.LOW,
                         Severity.CRITICAL,
                         TaskBaseConstants.ASSIGNEE));
@@ -57,7 +57,7 @@ public class BugTests {
                         TaskBaseConstants.VALID_ID,
                         TaskBaseConstants.VALID_TITLE,
                         TaskBaseConstants.INVALID_DESCRIPTION,
-                        TaskBaseConstants.STEP_TO_REPRODUCE,
+                        TaskBaseConstants.STEPS_TO_REPRODUCE,
                         Priority.LOW,
                         Severity.CRITICAL,
                         TaskBaseConstants.ASSIGNEE));
@@ -70,7 +70,7 @@ public class BugTests {
                 TaskBaseConstants.VALID_ID,
                 TaskBaseConstants.VALID_TITLE,
                 TaskBaseConstants.VALID_DESCRIPTION,
-                TaskBaseConstants.STEP_TO_REPRODUCE,
+                TaskBaseConstants.STEPS_TO_REPRODUCE,
                 Priority.LOW,
                 Severity.CRITICAL,
                 TaskBaseConstants.ASSIGNEE));

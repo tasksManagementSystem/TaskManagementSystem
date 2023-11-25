@@ -65,7 +65,7 @@ public class BoardTests {
                 TaskBaseConstants.VALID_ID,
                 TaskBaseConstants.VALID_TITLE,
                 TaskBaseConstants.VALID_DESCRIPTION,
-                TaskBaseConstants.STEP_TO_REPRODUCE,
+                TaskBaseConstants.STEPS_TO_REPRODUCE,
                 Priority.LOW,
                 Severity.CRITICAL,
                 TaskBaseConstants.ASSIGNEE);
