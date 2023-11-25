@@ -13,7 +13,6 @@ public class CreateNewFeedback extends BaseCommand {
 
     public static final int EXPECTED_NUMBER_OF_ARGUMENTS = 4;
     public static final String RATING_WHOLE_NUMBER_ERR_MESSAGE = "Rating must be a whole number";
-    public static final String FEEDBACK_EXIST_ERR_MESSAGE = "Feedback with such a title already exists!";
     public static final String BOARD_NOT_EXIST_ERR_MESSAGE = "Board %s does not exist in this team!";
 
     public CreateNewFeedback(TaskManagementRepository repository) {
@@ -22,7 +21,7 @@ public class CreateNewFeedback extends BaseCommand {
 
     @Override
     protected boolean requiresLogin() {
-        return false;
+        return true;
     }
 
     public String execute(List<String> parameters) {
@@ -44,7 +43,9 @@ public class CreateNewFeedback extends BaseCommand {
 
         Feedback feedbackToAdd = getRepository().createFeedback(title, description, rating);
         getRepository().addFeedback(feedbackToAdd);
+        getRepository().addTask(feedbackToAdd);
         board.addFeedback(feedbackToAdd);
+
 
 
         member.addHistory(String.format(FEEDBACK_CREATED, title, boardToAdd));

@@ -25,49 +25,52 @@ public class BugImpl extends TaskImpl implements Bug {
         this.statusBug = StatusBug.ACTIVE;
 
     }
+
     @Override
     public List<String> getStepOfReproduce() {
         return new ArrayList<>(stepOfReproduce);
     }
+
     @Override
     public Priority getPriority() {
         return priority;
     }
+
     @Override
     public Severity getSeverity() {
         return severity;
     }
+
     @Override
     public StatusBug getStatusBug() {
         return statusBug;
     }
 
     @Override
-    public StatusStory getStatusStory() {
-        return null;
-    }
-
-    @Override
-    public StatusFeedback getStatusFeedback() {
-        return null;
-    }
-
-    @Override
     public String getAssignee() {
         return assignee;
     }
+
+    @Override
     public void changeAssignee(String newAssignee) {
         this.assignee = newAssignee;
     }
-    public void changeStatus(StatusBug status) {
+
+    @Override
+    public void changeStatusBug(StatusBug status) {
         statusBug = status;
     }
+
+    @Override
     public void changePriority(Priority newPriority) {
         priority = newPriority;
     }
+
+    @Override
     public void changeSeverity(Severity newSeverity) {
         severity = newSeverity;
     }
+
     @Override
     public String toString() {
         return super.toString();

@@ -66,7 +66,7 @@ public class FeedbackTest {
     @Test
     public void change_Should_changeStatus_WithNewOne() {
         //Arrange, Act
-        feedback.changeStatus(StatusFeedback.DONE);
+        feedback.changeStatusFeedback(StatusFeedback.DONE);
         // Assert
         assertEquals(StatusFeedback.DONE, feedback.getStatusFeedback());
 

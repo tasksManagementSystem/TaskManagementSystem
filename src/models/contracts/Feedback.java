@@ -7,7 +7,7 @@ public interface Feedback extends Task, Identifiable {
 
     StatusFeedback getStatusFeedback();
 
-    void changeStatus(StatusFeedback status);
+    void changeStatusFeedback(StatusFeedback status);
 
     void changeRating(int newRating);
 }

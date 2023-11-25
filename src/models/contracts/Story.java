@@ -11,7 +11,7 @@ public interface Story extends Task, TaskInfo, Identifiable {
 
     void changeAssignee(String newAssignee);
 
-    void changeStatus(StatusStory status);
+    void changeStatusStory(StatusStory status);
 
     StatusStory getStatusStory();
 

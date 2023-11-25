@@ -41,7 +41,7 @@ public class ChangeFeedbackCommand extends BaseCommand {
 
             case "STATUS":
                 oldValue = feedback.getStatusFeedback().toString();
-                feedback.changeStatus(ParsingHelpers.tryParseEnum(newValue, StatusFeedback.class));
+                feedback.changeStatusFeedback(ParsingHelpers.tryParseEnum(newValue, StatusFeedback.class));
                 break;
             case "RATING":
                 oldValue = String.valueOf(feedback.getRating());
