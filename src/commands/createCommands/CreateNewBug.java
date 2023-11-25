@@ -54,6 +54,7 @@ public class CreateNewBug extends BaseCommand {
         Bug bugToAdd = getRepository().createBug(title, boardToAdd, description, stepsToReproduce, priority, severity, assignee);
 
         getRepository().addBug(bugToAdd);
+        getRepository().addTask(bugToAdd);
         board.addBug(bugToAdd);
 
         member.addHistory(String.format(BUG_CREATED, title, boardToAdd));

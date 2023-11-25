@@ -68,6 +68,8 @@ public interface TaskManagementRepository {
 
     List<Feedback> getFeedbackList();
 
+    List<Task> getTaskList();
+
     public List<Story> getStoryList();
 
     int getNextId();
@@ -75,6 +77,11 @@ public interface TaskManagementRepository {
     void addBug(Bug bug);
 
     void addStory(Story story);
+
+
+    <T extends Task> void addTask(T task);
+
+
 
     void addFeedback(Feedback feedback);
 

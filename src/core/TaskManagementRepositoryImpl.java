@@ -32,6 +32,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     private final List<Board> boardList = new ArrayList<>();
     private final List<Bug> bugList = new ArrayList<>();
     private final List<Feedback> feedbackList = new ArrayList<>();
+    private final List<Task> taskList = new ArrayList<>();
     private final List<Story> storyList = new ArrayList<>();
     private final List<Team> teamsList = new ArrayList<>();
     private final List<Comment> comments = new ArrayList<>();
@@ -55,6 +56,11 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public List<Feedback> getFeedbackList() {
         return new ArrayList<>(feedbackList);
     }
+
+    public List<Task> getTaskList() {
+        return new ArrayList<>(taskList);
+    }
+
     @Override
     public List<Team> getTeamsList() {
         return new ArrayList<>(teamsList);
@@ -190,11 +196,16 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public void addBoard(Board board) {
         boardList.add(board);
     }
+    public <T extends Task> void addTask(T task){
+        taskList.add(task);
+    }
+
     public void addComments(Comment comment) {
         comments.add(comment);
     }
     @Override
     public void addBug(Bug bug) {bugList.add(bug);}
+
     @Override
     public void addStory(Story story) {storyList.add(story);}
     @Override
