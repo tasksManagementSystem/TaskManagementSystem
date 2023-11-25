@@ -92,9 +92,9 @@ public class FilterCommand extends BaseCommand {
 
     private <T extends Task> String listMatchingStatus(String pattern, List<T> genericList) {
         String result = genericList.stream()
-                .filter(taskType -> taskType.getStatusBug().toString().equals(pattern))
-                .filter(taskType -> taskType.getStatusStory().toString().equals(pattern))
-                .filter(taskType -> taskType.getStatusFeedback().toString().equals(pattern))
+                .filter(taskType -> taskType.getStatusBug() == null || taskType.getStatusBug().toString().equals(pattern))
+                .filter(taskType -> taskType.getStatusStory() == null || taskType.getStatusStory().toString().equals(pattern))
+                .filter(taskType -> taskType.getStatusFeedback() == null || taskType.getStatusFeedback().toString().equals(pattern))
                 .collect(StringBuilder::new,
                         (stringBuilder, taskType) -> {
                             stringBuilder.append(taskType);
@@ -133,9 +133,9 @@ public class FilterCommand extends BaseCommand {
     private <T extends Task & TaskInfo> String listMatchingAssigneeAndStatus(List<T> genericList, String[] filterParams) {
         String result = genericList.stream()
                 .filter(taskType -> taskType.getAssignee().equals(filterParams[1]))
-                .filter(taskType -> taskType.getStatusBug().toString().equals(filterParams[0]))
-                .filter(taskType -> taskType.getStatusStory().toString().equals(filterParams[0]))
-                .filter(taskType -> taskType.getStatusFeedback().toString().equals(filterParams[0]))
+                .filter(taskType -> taskType.getStatusBug() == null || taskType.getStatusBug().toString().equals(filterParams[0]))
+                .filter(taskType -> taskType.getStatusStory() == null || taskType.getStatusStory().toString().equals(filterParams[0]))
+                .filter(taskType -> taskType.getStatusFeedback() == null || taskType.getStatusFeedback().toString().equals(filterParams[0]))
                 .collect(StringBuilder::new,
                         (stringBuilder, taskType) -> {
                             stringBuilder.append(taskType);
