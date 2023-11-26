@@ -2,16 +2,17 @@ package com.company.oop.TaskManagementSystem2.tests.models;
 
 
 import com.company.oop.TaskManagementSystem2.tests.utils.TaskBaseConstants;
+import models.BugImpl;
 import models.StoryImpl;
 import models.enums.Priority;
+import models.enums.Severity;
 import models.enums.Size;
 import models.enums.StatusStory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class StoryImplTests {
 
@@ -65,6 +66,18 @@ public class StoryImplTests {
     public void should_Change_Size_When_New_Size_Is_Passed() {
         testStory.changeSize(Size.LARGE);
         Assertions.assertEquals(Size.LARGE, testStory.getSize());
+    }
+    @Test
+    public void Should_Change_Status_To_NotAssign_When_There_Is_NoAssign() {
+        // Arrange, Act, Assert
+        testStory.changeAssignee(null);
+        assertDoesNotThrow(() -> new StoryImpl(
+                TaskBaseConstants.VALID_ID,
+                TaskBaseConstants.VALID_TITLE,
+                TaskBaseConstants.VALID_DESCRIPTION,
+                Priority.LOW,
+                Size.SMALL,
+                null));
     }
 
     @Test

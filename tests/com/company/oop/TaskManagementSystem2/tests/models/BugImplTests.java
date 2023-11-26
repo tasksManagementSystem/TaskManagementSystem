@@ -50,6 +50,20 @@ public class BugImplTests {
     }
 
     @Test
+    public void Should_Change_Status_To_NotAssign_When_There_Is_NoAssign() {
+        // Arrange, Act, Assert
+        bug.changeAssignee(null);
+        assertDoesNotThrow(() -> new BugImpl(
+                        TaskBaseConstants.VALID_ID,
+                        TaskBaseConstants.VALID_TITLE,
+                        TaskBaseConstants.VALID_DESCRIPTION,
+                        TaskBaseConstants.STEPS_TO_REPRODUCE,
+                        Priority.LOW,
+                        Severity.CRITICAL,
+                        null));
+    }
+
+    @Test
     public void constructor_Should_Throw_When_DescriptionLengthOutOfBounds() {
         // Arrange, Act, Assert
         Assertions.assertThrows(IllegalArgumentException.class,
