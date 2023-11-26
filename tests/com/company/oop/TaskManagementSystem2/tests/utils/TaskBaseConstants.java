@@ -1,6 +1,8 @@
 package com.company.oop.TaskManagementSystem2.tests.utils;
 
 import commands.addCommands.AddCommentToTaskCommand;
+import commands.assignCommands.AssignBugCommand;
+import commands.assignCommands.AssignStoryCommand;
 import commands.createCommands.*;
 import commands.showCommands.*;
 import models.TaskImpl;
@@ -22,9 +24,11 @@ public class TaskBaseConstants {
     public static final List<String> STEPS_TO_REPRODUCE = List.of("Open the application, Click Log In, The application freezes!");
     public static final String ASSIGNEE = "Gosho";
 
+    public static final int EXPECTED_NUMBER_OF_ASSIGN_BUG = AssignBugCommand.EXPECTED_NUMBER_OF_ARGUMENTS;
 
     //story
-    public static final int EXPECTED_NUMBER_OF_ARGUMENTS_FOR_CREATE_NEW_Story = CreateNewStory.EXPECTED_NUMBER_OF_ARGUMENTS;
+    public static final int EXPECTED_NUMBER_OF_ARGUMENTS_FOR_CREATE_NEW_STORY = CreateNewStory.EXPECTED_NUMBER_OF_ARGUMENTS;
+    public static final int EXPECTED_NUMBER_OF_ARGUMENTS_FOR_ASSIGN_STORY = AssignStoryCommand.EXPECTED_NUMBER_OF_ARGUMENTS;
 
 
     //feedback

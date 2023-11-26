@@ -50,7 +50,7 @@ public class CreateStoryCommandTests {
     @Test
     public void should_ThrowException_When_ArgumentCountDifferentThanExpected() {
         // Arrange
-        List<String> params = TestUtilities.getList(TaskBaseConstants.EXPECTED_NUMBER_OF_ARGUMENTS_FOR_CREATE_NEW_Story - 1);
+        List<String> params = TestUtilities.getList(TaskBaseConstants.EXPECTED_NUMBER_OF_ARGUMENTS_FOR_CREATE_NEW_STORY - 1);
 
         // Act, Assert
         assertThrows(IllegalArgumentException.class, () -> createStoryCommand.execute(params));

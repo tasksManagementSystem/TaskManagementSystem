@@ -7,12 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BugImpl extends TaskImpl implements Bug {
-    private List<String> stepOfReproduce = new ArrayList<>();
+    public static final String NOT_ASSIGN = "Not assign";
+    private List<String> stepOfReproduce;
     private Priority priority;
     private Severity severity;
     private String assignee;
     private StatusBug statusBug;
-    private int id;
+
 
 
     public BugImpl(int id, String title, String description, List<String> stepOfReproduce,
@@ -21,7 +22,7 @@ public class BugImpl extends TaskImpl implements Bug {
         this.stepOfReproduce = stepOfReproduce;
         this.priority = priority;
         this.severity = severity;
-        this.assignee = assignee;
+        setAssignee(assignee);
         this.statusBug = StatusBug.ACTIVE;
 
     }
@@ -59,6 +60,14 @@ public class BugImpl extends TaskImpl implements Bug {
     @Override
     public String getAssignee() {
         return assignee;
+    }
+
+    private void setAssignee(String assignee) {
+        if (assignee == null) {
+            this.assignee = NOT_ASSIGN;
+        } else {
+            this.assignee = assignee;
+        }
     }
 
     @Override

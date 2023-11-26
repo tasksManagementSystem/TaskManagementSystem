@@ -4,6 +4,7 @@ import models.contracts.Story;
 import models.enums.*;
 
 public class StoryImpl extends TaskImpl implements Story {
+    public static final String NOT_ASSIGN = "Not assign";
     private Priority priority;
     private Size size;
     private String assignee;
@@ -42,6 +43,7 @@ public class StoryImpl extends TaskImpl implements Story {
         return assignee;
     }
 
+
     private void setPriority(Priority priority) {
         this.priority = priority;
     }
@@ -51,9 +53,12 @@ public class StoryImpl extends TaskImpl implements Story {
     }
 
     private void setAssignee(String assignee) {
-        this.assignee = assignee;
+        if (assignee == null) {
+            this.assignee = NOT_ASSIGN;
+        } else {
+            this.assignee = assignee;
+        }
     }
-
     public void changeAssignee(String newAssignee) {
         this.assignee = newAssignee;
     }
