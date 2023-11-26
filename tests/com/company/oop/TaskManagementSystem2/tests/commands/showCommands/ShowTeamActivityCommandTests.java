@@ -22,37 +22,30 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ShowTeamActivityCommandTests {
     private Command showTeamActivity;
-    private TaskManagementRepository repository;
 
-    private List<Team> teamList = new ArrayList<>();
-    private Team team;
-    private Member member;
-
-    private AddMemberToTeamCommand addMemberToTeamCommand;
-
-    private BaseCommand command;
+    private final List<Team> teamList = new ArrayList<>();
 
     @BeforeEach
     public void before() {
-        this.repository = new TaskManagementRepositoryImpl();
+        TaskManagementRepository repository = new TaskManagementRepositoryImpl();
         this.showTeamActivity = new ShowTeamActivityCommand(repository);
 
-        member = repository.createMember("Gosho");
+        Member member = repository.createMember("Gosho");
         repository.addMember(member);
         repository.login(member);
 
-        team = repository.createTeam("TEAM7");
+        Team team = repository.createTeam("TEAM7");
         teamList.add(team);
         repository.addTeam(team);
 
         AddMemberToTeamCommand memberToTeamCommand = new AddMemberToTeamCommand(repository);
         memberToTeamCommand.execute(List.of(team.getName()));
-
         member.addHistory("Test activity");
+        repository.logout();
 
-        member = repository.createMember("Pesho");
-        repository.addMember(member);
-        repository.login(member);
+        Member member2 = repository.createMember("Pesho");
+        repository.addMember(member2);
+        repository.login(member2);
 
         team = repository.createTeam("TEAM8");
         teamList.add(team);
