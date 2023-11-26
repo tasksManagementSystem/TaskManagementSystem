@@ -1,5 +1,6 @@
 package com.company.oop.TaskManagementSystem2.tests.utils;
 
+import commands.addCommands.AddCommentToTaskCommand;
 import commands.createCommands.*;
 import commands.showCommands.*;
 import models.TaskImpl;
@@ -45,6 +46,9 @@ public class TaskBaseConstants {
 
     //board
     public static final int EXPECTED_NUMBER_OF_ARGUMENTS_FOR_SHOW_BOARD_ACTIVITY = ShowTeamActivityCommand.EXPECT_NUMBER_OF_ARGUMENTS;
+
+    //comments
+    public static final int EXPECTED_NUMBER_OF_ARGUMENTS_FOR_ADD_COMMENT = AddCommentToTaskCommand.EXPECTED_NUMBER_OF_ARGUMENTS;
 
 
 }

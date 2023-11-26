@@ -18,6 +18,8 @@ public interface Task extends Identifiable {
 
     void addHistory(String events);
 
+    void addComment(Comment comment);
+
     String toString();
 
      StatusBug getStatusBug();

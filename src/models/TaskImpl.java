@@ -22,15 +22,15 @@ public abstract class TaskImpl implements Task {
     private String description;
 
     //TO DO
-    private List<Comment> comments;
-    private List<History> history = new ArrayList<>();
+    private final List<Comment> commentList;
+    private final List<History> history = new ArrayList<>();
 
 
     public TaskImpl(int id, String title, String description) {
         setId(id);
         setTitle(title);
         setDescription(description);
-        this.comments = new ArrayList<>();
+        this.commentList = new ArrayList<>();
         addHistory(String.format("Create task with ID %d", id));
 
     }
@@ -52,7 +52,7 @@ public abstract class TaskImpl implements Task {
 
     @Override
     public List<Comment> getComments() {
-        return new ArrayList<>(comments);
+        return new ArrayList<>(commentList);
     }
 
     @Override
@@ -77,6 +77,10 @@ public abstract class TaskImpl implements Task {
     public void addHistory(String events) {
         History event = new HistoryImpl(events);
         history.add(event);
+    }
+
+    public void addComment(Comment comment) {
+        commentList.add(comment);
     }
 
     @Override

@@ -58,7 +58,7 @@ public class TaskManagementEngineImpl implements TaskManagementEngine {
     }
 
     private String extractCommandName(String inputLine) {
-        return inputLine.split(" ")[0];
+        return inputLine.split("/ ")[0];
     }
 
 
@@ -66,7 +66,7 @@ public class TaskManagementEngineImpl implements TaskManagementEngine {
         if (inputLine.contains(COMMENT_OPEN_SYMBOL)) {
             return extractCommentParameters(inputLine);
         }
-        String[] commandParts = inputLine.split(" ");
+        String[] commandParts = inputLine.split("/ ");
         List<String> parameters = new ArrayList<>();
         for (int i = 1; i < commandParts.length; i++) {
             parameters.add(commandParts[i]);

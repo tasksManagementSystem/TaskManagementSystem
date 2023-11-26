@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Objects;
 
 
-
 public class TaskManagementRepositoryImpl implements TaskManagementRepository {
 
     public static final int NAME_MAX_LENGTH = 15;
@@ -21,7 +20,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public static final int NAME_MIN_LENGTH = 5;
     public static final String NAME_ALREADY_EXIST_MESSAGE = "This name already exist.";
     public static final String INVALID_NAME_MESSAGE =
-            String.format("Name should be between %d and %d symbols.",NAME_MIN_LENGTH,NAME_MAX_LENGTH);
+            String.format("Name should be between %d and %d symbols.", NAME_MIN_LENGTH, NAME_MAX_LENGTH);
     public static final String THERE_ARE_IS_NO_MEMBER_WITH_NAME = "There is no member with this name";
     public static final String THERE_IS_NO_TEAM_WITH_NAME_S = "There is no Team with name %s ";
     public static final String NO_LOGGED_IN_MEMBER = "There is no logged in member.";
@@ -41,7 +40,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
 
     public TaskManagementRepositoryImpl() {
         this.loggedMember = null;
-         nextId =0;
+        nextId = 0;
     }
 
     public int getNextId() {
@@ -52,6 +51,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public List<Bug> getBugList() {
         return new ArrayList<>(bugList);
     }
+
     @Override
     public List<Feedback> getFeedbackList() {
         return new ArrayList<>(feedbackList);
@@ -65,15 +65,18 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public List<Team> getTeamsList() {
         return new ArrayList<>(teamsList);
     }
+
     @Override
     public List<Story> getStoryList() {
         return new ArrayList<>(storyList);
     }
+
     @Override
     public List<Board> getBoardList() {
         return new ArrayList<>(boardList);
 
     }
+
     @Override
     public Severity getSeverity() {
         return null;
@@ -91,18 +94,21 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
         }
         return loggedMember;
     }
+
     public List<Comment> getComments() {
         return new ArrayList<>(comments);
     }
 
     @Override
-    public <T extends Task> T findElementById(List<T> elements, int id, String elementType){
-        for(T element:elements){
-            if(element.getId()==id){
+    public <T extends Task> T findElementById(List<T> elements, int id, String elementType) {
+        for (T element : elements) {
+            if (element.getId() == id) {
                 return element;
             }
-        }throw new IllegalArgumentException(String.format(ID_DOES_NOT_EXIST,elementType,id));
+        }
+        throw new IllegalArgumentException(String.format(ID_DOES_NOT_EXIST, elementType, id));
     }
+
     @Override
     public Member findMemberByUsername(String username) {
         return memberList
@@ -111,84 +117,82 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(THERE_ARE_IS_NO_MEMBER_WITH_NAME));
     }
+
     @Override
     public Team findTeamByMember(String member) {
         return teamsList.stream()
                 .filter(team1 -> team1.getMembers().stream()
-                .anyMatch(memberName->memberName.getName().equals(member)))
+                        .anyMatch(memberName -> memberName.getName().equals(member)))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(THERE_IS_NO_TEAM_WITH_THIS_MEMBER));
 
-//        for (Team team :
-//                teamsList) {
-//            List<Member> members = team.getMembers();
-//            for (Member memberName :
-//                    members) {
-//                if (memberName.getName().equals(member)) {
-//
-//                    return team;
-                //}
-
-
-//     throw new IllegalArgumentException(THERE_IS_NO_TEAM_WITH_THIS_MEMBER);
     }
+
     @Override
     public Team findTeamByName(String name) {
-        Team team = teamsList.stream()
+        return teamsList.stream()
                 .filter(u -> u.getName().equalsIgnoreCase(name))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(String.format(THERE_IS_NO_TEAM_WITH_NAME_S, name)));
-        return team;
     }
 
     @Override
     public Board findBoardByName(String name) {
-        Board board = boardList.stream()
+        return boardList.stream()
                 .filter(u -> u.getName().equalsIgnoreCase(name))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(String.format(THERE_IS_NO_TEAM_WITH_NAME_S, name)));
-        return board;
     }
+
     @Override
     public boolean memberExist(String username) {
         return memberList
                 .stream()
                 .anyMatch(u -> u.getName().equals(username));
     }
+
     @Override
     public Member createMember(String username) {
-        ValidationHelpers.validateStringLength(username, NAME_MIN_LENGTH, NAME_MAX_LENGTH,String.format(INVALID_NAME_MESSAGE));
-        ValidationHelpers.validateMemberName(memberList,username,NAME_ALREADY_EXIST_MESSAGE);
+        ValidationHelpers.validateStringLength(username, NAME_MIN_LENGTH, NAME_MAX_LENGTH, String.format(INVALID_NAME_MESSAGE));
+        ValidationHelpers.validateMemberName(memberList, username, NAME_ALREADY_EXIST_MESSAGE);
 
         return new MemberImpl(username);
     }
+
     @Override
     public Board createBoard(String name) {
-        ValidationHelpers.validateStringLength(name, NAME_MIN_LENGTH, NAME_MAX_LENGTH_BOARD,String.format(INVALID_NAME_MESSAGE));
-        ValidationHelpers.validateBoardName(boardList,name,NAME_ALREADY_EXIST_MESSAGE);
+        ValidationHelpers.validateStringLength(name, NAME_MIN_LENGTH, NAME_MAX_LENGTH_BOARD, String.format(INVALID_NAME_MESSAGE));
+        ValidationHelpers.validateBoardName(boardList, name, NAME_ALREADY_EXIST_MESSAGE);
 
         return new BoardImpl(name);
     }
 
     @Override
     public Team createTeam(String name) {
-        ValidationHelpers.validateStringLength(name, NAME_MIN_LENGTH, NAME_MAX_LENGTH,String.format(INVALID_NAME_MESSAGE,NAME_MIN_LENGTH,NAME_MAX_LENGTH));
-        ValidationHelpers.validateTeamName(teamsList,name,NAME_ALREADY_EXIST_MESSAGE);
+        ValidationHelpers.validateStringLength(name, NAME_MIN_LENGTH, NAME_MAX_LENGTH, String.format(INVALID_NAME_MESSAGE, NAME_MIN_LENGTH, NAME_MAX_LENGTH));
+        ValidationHelpers.validateTeamName(teamsList, name, NAME_ALREADY_EXIST_MESSAGE);
         return new TeamImpl(name);
     }
+
     @Override
-    public Bug createBug(String title,String boardToAdd, String description, List<String> stepsToReproduce,
+    public Bug createBug(String title, String boardToAdd, String description, List<String> stepsToReproduce,
                          Priority priority, Severity severity, String assignee) {
         return new BugImpl(++nextId, title, description, stepsToReproduce, priority, severity, assignee);
     }
+
     @Override
     public Story createStory(String title, String boardToAdd, String description, Priority priority, Size size, String assignee) {
         return new StoryImpl(++nextId, title, description, priority, size, assignee);
     }
+
     public Feedback createFeedback(String title, String description, int rating) {
         return new FeedbackImpl(++nextId, title, description, rating);
     }
-    public void addMember(Member member) {memberList.add(member);}
+
+    public void addMember(Member member) {
+        memberList.add(member);
+    }
+
     public void addTeam(Team team) {
         teamsList.add(team);
     }
@@ -196,40 +200,52 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public void addBoard(Board board) {
         boardList.add(board);
     }
-    public <T extends Task> void addTask(T task){
+
+    public <T extends Task> void addTask(T task) {
         taskList.add(task);
     }
 
     public void addComments(Comment comment) {
         comments.add(comment);
     }
-    @Override
-    public void addBug(Bug bug) {bugList.add(bug);}
 
     @Override
-    public void addStory(Story story) {storyList.add(story);}
+    public void addBug(Bug bug) {
+        bugList.add(bug);
+    }
+
     @Override
-    public void addFeedback(Feedback feedback) {feedbackList.add(feedback);}
+    public void addStory(Story story) {
+        storyList.add(story);
+    }
+
+    @Override
+    public void addFeedback(Feedback feedback) {
+        feedbackList.add(feedback);
+    }
+
     @Override
     public boolean hasLoggedInMember() {
         return loggedMember != null;
     }
+
     @Override
     public void login(Member member) {
         loggedMember = member;
     }
+
     @Override
     public void logout() {
-            loggedMember.addHistory((MEMBER_LOGGED_OUT));
+        loggedMember.addHistory((MEMBER_LOGGED_OUT));
 
         loggedMember = null;
     }
 
-    public String showAllTeams(){
+    public String showAllTeams() {
         StringBuilder allNames = new StringBuilder();
         for (Team name :
                 teamsList) {
-            allNames.append(name.getName() + ", ");
+            allNames.append(name.getName()).append(", ");
         }
         return allNames.toString();
     }
