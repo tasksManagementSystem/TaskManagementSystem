@@ -47,6 +47,16 @@ public class BugImpl extends TaskImpl implements Bug {
     }
 
     @Override
+    public StatusStory getStatusStory() {
+        return null;
+    }
+
+    @Override
+    public StatusFeedback getStatusFeedback() {
+        return null;
+    }
+
+    @Override
     public String getAssignee() {
         return assignee;
     }

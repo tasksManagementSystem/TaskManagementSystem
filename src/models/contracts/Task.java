@@ -20,8 +20,8 @@ public interface Task extends Identifiable {
 
     String toString();
 
-  default StatusBug getStatusBug(){ return StatusBug.ACTIVE;}
-  default StatusStory getStatusStory(){return  StatusStory.NOT_DONE;}
- default StatusFeedback getStatusFeedback(){return StatusFeedback.NEW;};
+     StatusBug getStatusBug();
+     StatusStory getStatusStory();
+    StatusFeedback getStatusFeedback();
 
 }
