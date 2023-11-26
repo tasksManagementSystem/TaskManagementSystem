@@ -27,6 +27,8 @@ public class ShowMemberActivityCommandTests {
         this.repository = new TaskManagementRepositoryImpl();
         this.showMemberActivity = new ShowMemberActivityCommand(repository);
 
+        member=repository.createMember("Gosho");
+        repository.addMember(member);
         member.addHistory("Test activity");
 
     }
