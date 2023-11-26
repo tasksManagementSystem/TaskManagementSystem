@@ -31,7 +31,7 @@ public class ShowBoardActivityCommandTests {
         TaskManagementRepository repository = new TaskManagementRepositoryImpl();
         this.showBoardActivity = new ShowBoardActivityCommand(repository);
 
-        member=repository.createMember("Gosho");
+        member = repository.createMember("Gosho");
         repository.login(member);
 
         Team team = repository.createTeam("TEAM7");
@@ -45,7 +45,7 @@ public class ShowBoardActivityCommandTests {
 
         CreateNewBoard createNewBoard = new CreateNewBoard(repository);
         createNewBoard.execute(List.of("BoardTwo", team.getName()));
-        Board board2=repository.findBoardByName("BoardTwo");
+        Board board2 = repository.findBoardByName("BoardTwo");
         boardList.add(board2);
         board2.addHistory("Test activity");
     }
@@ -60,7 +60,7 @@ public class ShowBoardActivityCommandTests {
     }
 
     @Test
-    public void should_Show_Member_Activity_When_InputIsValid() {
+    public void should_Show_Board_Activity_When_InputIsValid() {
         List<String> params = List.of(
 
         );
@@ -76,11 +76,10 @@ public class ShowBoardActivityCommandTests {
         }
 
 
-
-            Assertions.assertEquals(
-                    sb.toString()
-                    , showBoardActivity.execute(params)
-            );
-        }
+        Assertions.assertEquals(
+                sb.toString()
+                , showBoardActivity.execute(params)
+        );
+    }
 
 }

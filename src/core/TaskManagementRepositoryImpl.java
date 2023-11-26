@@ -22,7 +22,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public static final String NAME_ALREADY_EXIST_MESSAGE = "This name already exist.";
     public static final String INVALID_NAME_MESSAGE =
             String.format("Name should be between %d and %d symbols.",NAME_MIN_LENGTH,NAME_MAX_LENGTH);
-    public static final String THERE_ARE_IS_NO_MEMBER_WITH_NAME = "There are is no member with this name";
+    public static final String THERE_ARE_IS_NO_MEMBER_WITH_NAME = "There is no member with this name";
     public static final String THERE_IS_NO_TEAM_WITH_NAME_S = "There is no Team with name %s ";
     public static final String NO_LOGGED_IN_MEMBER = "There is no logged in member.";
     public static final String THERE_IS_NO_TEAM_WITH_THIS_MEMBER = "There is no team with this member";

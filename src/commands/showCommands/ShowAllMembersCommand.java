@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ShowAllMembersCommand extends BaseCommand {
 
-    public static final int EXPECTED_NUMBER_OF_ARGUMENTS = 0;
+    public static final int EXPECT_NUMBER_OF_ARGUMENTS = 0;
     public static final String INVALID_NUMBER_OF_ARGUMENTS = "Invalid number of arguments.";
     public static final String THERE_ARE_NO_MEMBERS_IN_S = "There are no members in %s.";
 
@@ -26,7 +26,7 @@ public class ShowAllMembersCommand extends BaseCommand {
 
     @Override
     public String execute(List<String> parameters) {
-        ValidationHelpers.validateArgumentCount(parameters, EXPECTED_NUMBER_OF_ARGUMENTS, INVALID_NUMBER_OF_ARGUMENTS);
+        ValidationHelpers.validateArgumentCount(parameters, EXPECT_NUMBER_OF_ARGUMENTS, INVALID_NUMBER_OF_ARGUMENTS);
 
         return showAllMembers();
     }
@@ -41,7 +41,7 @@ public class ShowAllMembersCommand extends BaseCommand {
             List<Member> memberList = team.getMembers();
             if (memberList.isEmpty()) {
                 sb.append(String.format(THERE_ARE_NO_MEMBERS_IN_S, team.getName()));
-                return sb.toString();
+                throw new IllegalArgumentException(sb.toString());
             }
             for (Member member : memberList) {
 

@@ -1,6 +1,7 @@
 package com.company.oop.TaskManagementSystem2.tests.utils;
 
 import commands.createCommands.*;
+import commands.showCommands.ShowAllMembersCommand;
 import commands.showCommands.ShowMemberActivityCommand;
 import commands.showCommands.ShowTeamActivityCommand;
 import models.TaskImpl;
@@ -34,6 +35,7 @@ public class TaskBaseConstants {
     //member
     public static final int EXPECTED_NUMBER_OF_ARGUMENTS_FOR_CREATE_NEW_MEMBER = CreateNewMember.EXPECTED_NUMBER_OF_ARGUMENTS;
     public static final int EXPECTED_NUMBER_OF_ARGUMENTS_FOR_SHOW_MEMBER_ACTIVITY = ShowMemberActivityCommand.EXPECT_NUMBER_OF_ARGUMENTS;
+    public static final int EXPECTED_NUMBER_OF_ARGUMENTS_FOR_SHOW_ALL_MEMBERS_ACTIVITY = ShowAllMembersCommand.EXPECT_NUMBER_OF_ARGUMENTS;
 
     //team
     public static final int EXPECTED_NUMBER_OF_ARGUMENTS_FOR_CREATE_NEW_TEAM = CreateNewTeam.EXPECTED_NUMBER_OF_ARGUMENTS;

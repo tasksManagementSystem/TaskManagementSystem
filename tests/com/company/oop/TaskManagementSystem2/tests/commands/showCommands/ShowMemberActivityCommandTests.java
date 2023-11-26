@@ -2,16 +2,12 @@ package com.company.oop.TaskManagementSystem2.tests.commands.showCommands;
 
 import com.company.oop.TaskManagementSystem2.tests.utils.TaskBaseConstants;
 import com.company.oop.TaskManagementSystem2.tests.utils.TestUtilities;
-import commands.addCommands.AddMemberToTeamCommand;
 import commands.contracts.Command;
-import commands.createCommands.CreateNewBoard;
-import commands.createCommands.CreateNewBug;
 import commands.showCommands.ShowMemberActivityCommand;
 import core.TaskManagementRepositoryImpl;
 import core.contracts.TaskManagementRepository;
 import models.contracts.History;
 import models.contracts.Member;
-import models.contracts.Team;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,11 +27,12 @@ public class ShowMemberActivityCommandTests {
         this.repository = new TaskManagementRepositoryImpl();
         this.showMemberActivity = new ShowMemberActivityCommand(repository);
 
-        member=repository.createMember("Gosho");
+        member = repository.createMember("Gosho");
         repository.addMember(member);
         member.addHistory("Test activity");
 
     }
+
     @Test
     public void should_ThrowException_When_ArgumentCountDifferentThanExpected() {
         // Arrange
@@ -46,7 +43,7 @@ public class ShowMemberActivityCommandTests {
     }
 
     @Test
-    public void should_Show_Member_Activity_When_InputIsValid(){
+    public void should_Show_Member_Activity_When_InputIsValid() {
         List<String> params = List.of(
                 member.getName()
         );
@@ -63,7 +60,7 @@ public class ShowMemberActivityCommandTests {
 
         Assertions.assertEquals(
                 sb.toString()
-                ,showMemberActivity.execute(params)
+                , showMemberActivity.execute(params)
         );
     }
 }

@@ -5,7 +5,6 @@ import com.company.oop.TaskManagementSystem2.tests.utils.TestUtilities;
 import commands.BaseCommand;
 import commands.addCommands.AddMemberToTeamCommand;
 import commands.contracts.Command;
-import commands.showCommands.ShowMemberActivityCommand;
 import commands.showCommands.ShowTeamActivityCommand;
 import core.TaskManagementRepositoryImpl;
 import core.contracts.TaskManagementRepository;
@@ -20,13 +19,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ShowTeamActivityCommandTests {
     private Command showTeamActivity;
     private TaskManagementRepository repository;
 
-    private List<Team> teamList=new ArrayList<>();
+    private List<Team> teamList = new ArrayList<>();
     private Team team;
     private Member member;
 
@@ -56,7 +54,7 @@ public class ShowTeamActivityCommandTests {
         repository.addMember(member);
         repository.login(member);
 
-         team = repository.createTeam("TEAM8");
+        team = repository.createTeam("TEAM8");
         teamList.add(team);
         repository.addTeam(team);
 
@@ -75,7 +73,6 @@ public class ShowTeamActivityCommandTests {
         // Act, Assert
         assertThrows(IllegalArgumentException.class, () -> showTeamActivity.execute(params));
     }
-
 
 
     @Test
