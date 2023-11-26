@@ -11,7 +11,7 @@ import java.util.List;
 public class ShowTeamMembersCommand extends BaseCommand {
 
     public static final String INVALID_NUMBER_OF_ARGUMENTS = "Invalid number of arguments.";
-    public static final int COUNT = 1;
+    public static final int EXPECTED_NUMBER_OF_ARGUMENTS = 1;
     public static final String THERE_ARE_NO_MEMBERS_IN_S = "There are no members in %s.";
 
     public ShowTeamMembersCommand(TaskManagementRepository repository) {
@@ -21,7 +21,7 @@ public class ShowTeamMembersCommand extends BaseCommand {
 
     @Override
     public String execute(List<String> parameters) {
-        ValidationHelpers.validateArgumentCount(parameters, COUNT, INVALID_NUMBER_OF_ARGUMENTS);
+        ValidationHelpers.validateArgumentCount(parameters, EXPECTED_NUMBER_OF_ARGUMENTS, INVALID_NUMBER_OF_ARGUMENTS);
         String teamName = parameters.get(0);
         return showTeamMembers(teamName);
     }

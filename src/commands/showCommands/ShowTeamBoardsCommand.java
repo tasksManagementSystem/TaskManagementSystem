@@ -34,11 +34,11 @@ public class ShowTeamBoardsCommand extends BaseCommand {
         Team team = getRepository().findTeamByName(teamName);
         List<Board> boardList = team.getBoards();
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("All boards in team %s: ", team.getName()));
         if (boardList.isEmpty()) {
             sb.append(String.format(THERE_ARE_NO_BOARDS, teamName));
             return sb.toString();
         }
+        sb.append(String.format("All boards in team %s: ", team.getName()));
         for (Board board : boardList) {
             sb.append(board.getName()).append(", ");
         }
