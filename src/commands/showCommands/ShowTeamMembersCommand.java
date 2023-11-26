@@ -35,11 +35,11 @@ public class ShowTeamMembersCommand extends BaseCommand {
         Team team = getRepository().findTeamByName(teamName);
         List<Member> memberList = team.getMembers();
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("All members in team %s: ", teamName));
         if (memberList.isEmpty()) {
             sb.append(String.format(THERE_ARE_NO_MEMBERS_IN_S, teamName));
-            return sb.toString();
+          return sb.toString();
         }
+        sb.append(String.format("All members in team %s: ", teamName));
         for (Member member : memberList) {
             sb.append(member.getName()).append(", ");
         }
