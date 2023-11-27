@@ -1,8 +1,12 @@
 package com.company.oop.TaskManagementSystem2.tests.utils;
 
+import com.company.oop.TaskManagementSystem2.tests.commands.changeCommands.ChangeStoryCommandTests;
 import commands.addCommands.AddCommentToTaskCommand;
 import commands.assignCommands.AssignBugCommand;
 import commands.assignCommands.AssignStoryCommand;
+import commands.changeCommands.ChangeBugCommand;
+import commands.changeCommands.ChangeFeedbackCommand;
+import commands.changeCommands.ChangeStoryCommand;
 import commands.createCommands.*;
 import commands.showCommands.*;
 import models.TaskImpl;
@@ -20,6 +24,7 @@ public class TaskBaseConstants {
 
     //bug
     public static final int EXPECTED_NUMBER_OF_ARGUMENTS_FOR_CREATE_NEW_BUG = CreateNewBug.EXPECTED_NUMBER_OF_ARGUMENTS;
+    public static final int EXPECTED_NUMBER_OF_ARGUMENTS_FOR_CHANGE_BUG = ChangeBugCommand.EXPECTED_NUMBER_OF_ARGUMENTS;
     public static final String STEPS_TO_REPRODUCE_TEST = "Open the application, Click Log In, The application freezes!";
     public static final List<String> STEPS_TO_REPRODUCE = List.of("Open the application, Click Log In, The application freezes!");
     public static final String ASSIGNEE = "Gosho";
@@ -29,10 +34,12 @@ public class TaskBaseConstants {
     //story
     public static final int EXPECTED_NUMBER_OF_ARGUMENTS_FOR_CREATE_NEW_STORY = CreateNewStory.EXPECTED_NUMBER_OF_ARGUMENTS;
     public static final int EXPECTED_NUMBER_OF_ARGUMENTS_FOR_ASSIGN_STORY = AssignStoryCommand.EXPECTED_NUMBER_OF_ARGUMENTS;
+    public static final int EXPECTED_NUMBER_OF_ARGUMENTS_FOR_CHANGE_STORY = ChangeStoryCommand.EXPECTED_NUMBER_OF_ARGUMENTS;
 
 
     //feedback
     public static final int EXPECTED_NUMBER_OF_ARGUMENTS_FOR_CREATE_NEW_FEEDBACK = CreateNewFeedback.EXPECTED_NUMBER_OF_ARGUMENTS;
+    public static final int EXPECTED_NUMBER_OF_ARGUMENTS_FOR_CHANGE_FEEDBACK = ChangeFeedbackCommand.EXPECTED_NUMBER_OF_ARGUMENTS;
     public static final int RATING = 12;
 
     //member
