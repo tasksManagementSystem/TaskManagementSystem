@@ -26,5 +26,7 @@ public enum CommandType {
     CHANGE_FEEDBACK,
     SORT,
     FILTER,
+    UNASSIGNED_BUG,
+    UNASSIGNED_STORY,
 
 }

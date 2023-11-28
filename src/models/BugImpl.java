@@ -69,6 +69,9 @@ public class BugImpl extends TaskImpl implements Bug {
             this.assignee = assignee;
         }
     }
+    public void unassigned(String name){
+        assignee=NOT_ASSIGN;
+    }
 
     @Override
     public void changeAssignee(String newAssignee) {

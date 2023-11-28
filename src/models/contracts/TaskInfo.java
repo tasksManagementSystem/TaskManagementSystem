@@ -9,4 +9,5 @@ public interface TaskInfo {
     Priority getPriority();
 
     String getAssignee();
+    void unassigned(String name);
 }

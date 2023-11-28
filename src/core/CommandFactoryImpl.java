@@ -6,6 +6,8 @@ import commands.addCommands.AddCommentToTaskCommand;
 import commands.addCommands.AddMemberToTeamCommand;
 import commands.assignCommands.AssignBugCommand;
 import commands.assignCommands.AssignStoryCommand;
+import commands.assignCommands.UnassignedBugCommand;
+import commands.assignCommands.UnassignedStoryCommand;
 import commands.changeCommands.ChangeBugCommand;
 import commands.changeCommands.ChangeFeedbackCommand;
 import commands.changeCommands.ChangeStoryCommand;
@@ -72,6 +74,10 @@ public class CommandFactoryImpl implements CommandFactory {
                 return new SortCommand(taskManagementRepository);
             case FILTER:
                 return new FilterCommand(taskManagementRepository);
+            case UNASSIGNED_BUG:
+                    return new UnassignedBugCommand(taskManagementRepository);
+            case UNASSIGNED_STORY:
+                return new UnassignedStoryCommand(taskManagementRepository);
             default:
                 throw new IllegalArgumentException();
         }

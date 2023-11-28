@@ -42,6 +42,9 @@ public class StoryImpl extends TaskImpl implements Story {
     public String getAssignee() {
         return assignee;
     }
+    public void unassigned(String name){
+        assignee=NOT_ASSIGN;
+    }
 
 
     private void setPriority(Priority priority) {

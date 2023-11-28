@@ -80,6 +80,16 @@ public class ChangeBugCommandTests {
 
         Assertions.assertEquals(Priority.HIGH,bug.getPriority());
 
+    }@Test
+    public void should_Change_Priority_When_InputIsValidTest(){
+
+        Bug bug = (Bug) repository.getTaskList().get(0);
+
+        List<String> changeParam = List.of("1","SIZE","HIGH");
+
+
+        assertThrows(IllegalArgumentException.class, () -> changeBugCommand.execute(changeParam));
+
     }
 
     @Test
